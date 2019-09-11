@@ -1,0 +1,84 @@
+<!-- <h1>おっす！オラ悟空</h1> -->
+<!-- <h1>オラ、つえーやつみるとワクワクすっぞ!!</h1> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+      <nav class="nav navbar-nav navbar-left">
+        <span>KIN-RECO</span>
+      </nav>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class="glyphicon glyphicon-home top" href="top"> TOPページへ戻る</a></li>
+          <li><a class="glyphicon glyphicon-link " href="top"> 商品登録</a></li>
+          <li><a class="glyphicon glyphicon-edit sign_up" href="top"> レーベル　ジャンル登録</a></li>
+          <li><a class="glyphicon glyphicon-log-in sign_in" href="top"> ログアウト</a></li>
+        </ul>
+      </nav>
+      </div>
+    </header><br><br><br><br>
+  <head>
+
+<table>
+	<p>管理者ページ</p>
+  <thead>
+    <tr>
+      <th>商品について</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= link_to "商品の登録 ", top_path  %></td>
+     </tr>
+      <tr>
+        <td><%= link_to "受注一覧 ", top_path  %></td> 
+        <td><%= link_to "入荷予定 ", top_path  %></td>
+      </tr>
+      
+      </tr>
+  </tbody>
+</table><br>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>商品一覧</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= link_to "商品一覧 ", top_path  %></td>
+      </tr>
+      
+      </tr>
+  </tbody>
+</table><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>ユーザー 一覧</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= link_to "ユーザー 一覧 ", top_path  %></td>
+      </tr>
+      
+      </tr>
+  </tbody>
+</table>
+
+
+</body>
+</html>
+
+
+
