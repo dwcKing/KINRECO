@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
          redirect_to items_path(item.id)
     end
 
-    def index 
+    def index
     	@items = Item.all
     end
 
