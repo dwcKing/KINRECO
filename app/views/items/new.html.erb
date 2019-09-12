@@ -1,0 +1,19 @@
+<h1>商品登録</h1>
+<!-- form_for部分 -->
+<%= form_for(@item) do |f| %>
+ 
+    <h4>商品名</h4>
+    <%= f.text_field :title %>
+    
+    <h4>アーティスト名</h4>
+    <%= f.text_field :artist %>
+
+    <h4>商品価格</h4>
+    <%= f.text_field :price %>
+
+    
+
+     <td><%= link_to "戻る ", top_path  %></td>
+    <%= f.submit '送信' %>
+ 
+<% end %>

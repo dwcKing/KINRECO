@@ -13,7 +13,7 @@
       <nav>
         <ul class="nav navbar-nav navbar-right">
           <li><a class="glyphicon glyphicon-home top" href="top"> TOPページへ戻る</a></li>
-          <li><a class="glyphicon glyphicon-link " href="top"> 商品登録</a></li>
+          <li><a class="glyphicon glyphicon-link " href="/items/new"> 商品登録</a></li>
           <li><a class="glyphicon glyphicon-edit sign_up" href="top"> レーベル　ジャンル登録</a></li>
           <li><a class="glyphicon glyphicon-log-in sign_in" href="top"> ログアウト</a></li>
         </ul>
@@ -32,7 +32,7 @@
 
   <tbody>
       <tr>
-        <td><%= link_to "商品の登録 ", top_path  %></td>
+        <td><%= link_to "商品の登録 ", new_item_path  %></td>
      </tr>
       <tr>
         <td><%= link_to "受注一覧 ", top_path  %></td> 
@@ -53,7 +53,7 @@
 
   <tbody>
       <tr>
-        <td><%= link_to "商品一覧 ", top_path  %></td>
+        <td><%= link_to "商品一覧 ", items_path  %></td>
       </tr>
       
       </tr>
