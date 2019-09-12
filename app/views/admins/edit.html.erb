@@ -1,0 +1,19 @@
+<p>ユーザー情報の変更</p>
+<%= form_for(@enduser) do |f| %>
+
+  <p>名前(姓)</p><%= f.text_field :last_name %>
+  <p>名前(名)</p><%= f.text_field :first_name %>
+  <p>フリガナ(姓)</p><%= f.text_field :last_kana %>
+  <p>フリガナ(名)</p><%= f.text_field :first_kana %>
+  <p>電話番号</p><%= f.text_field :phone_number %>
+  <p>メールアドレス</p><%= f.text_field :email %>
+  <p>郵便番号</p><%= f.text_field :post_code %>
+  <p>住所</p><%= f.text_area :address %>
+
+
+  <%= f.submit "登録", class: "btn btn-default" %>
+<% end %>
+
+<%= link_to "パスワード登録画面","/admin/#{@enduser.id}/edit/password", class: "btn btn-default" %>
+<%= link_to "戻る",admin_path, class: "btn btn-default" %>
+<%= link_to "削除",end_user_path(@enduser.id) ,method: :delete ,class: "btn btn-default","data-confirm"=>'削除しますか？' %>
