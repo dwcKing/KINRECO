@@ -1,5 +1,6 @@
-class EndUsersController < ApplicationController
+class Users::EndUsersController < ApplicationController
   def index
+    @cart_items = Item.where(enduser_id: current_user.id) #現在のエンドユーザのidを持っている商品の一覧
   end
 
   def destroy
