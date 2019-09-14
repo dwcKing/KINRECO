@@ -8,9 +8,9 @@
 住所 <%= @enduser.address %><br>
 電話番号 <%= @enduser.phone_number %> <p>*ハイフン不要</p>
 メールアドレス <%= @enduser.email %><br>
-<%= link_to "編集",edit_admin_path(@enduser.id) %>
+<%= link_to "編集",edit_admins_admin_path(@enduser.id) %>
 
 
 <!-- 注文購入履歴を書く -->
 
-<%= link_to "戻る", admins_path %>
+<%= link_to "戻る", admins_admins_path %>

@@ -1,9 +1,9 @@
-class AdminsController < ApplicationController
+class Admins::AdminsController < ApplicationController
 	def top
 	end
 
 	def index
-	  @endusers = EndUser.page(params[:page]).per(20)
+	  @endusers = EndUser.page(params[:page]).per(1)
   end
 
   def show
