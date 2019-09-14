@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :end_users
   get 'items/top' => 'items#top'
   get '/admin/:id/edit/password' => 'admins#edit_password'
+  resources :items
 end
