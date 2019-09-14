@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   devise_for :end_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'top' => 'admins#top'
-  root 'admins#index'
-  resources :admins
-  resources :end_users
-  get 'items/top' => 'items#top'
-  get '/admin/:id/edit/password' => 'admins#edit_password'
-  resources :items
+  namespace :admins do
+    resources :admins,:items
+  end
+
+  namespace :users do
+    resources :end_users,:items
+  end
+  get 'admins' => 'admins/admins#top'
+  get 'items/top' => 'admins/items#top'
+  get '/admin/:id/edit/password' => 'admins/admins#edit_password'
+  get '/item' => 'users/items#index'
 end

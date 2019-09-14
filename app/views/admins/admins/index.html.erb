@@ -17,10 +17,11 @@
         <%= enduser.address %>
       </td>
       <td>
-      <%= link_to "詳細へ",admin_path(enduser.id) %>
+      <%= link_to "詳細へ",admins_admin_path(enduser.id) %>
       </td>
     </tr>
     <% end %>
+    <%= paginate @endusers %>
   </table>
 </div>
 </div>
