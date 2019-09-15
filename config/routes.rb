@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :end_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-get 'top' => 'admins#top'
+  get 'top' => 'admins#top'
 
 
   namespace :admins do
@@ -18,4 +18,6 @@ get 'top' => 'admins#top'
   get '/item' => 'users/items#index'
   get 'users/:id' => 'users/end_users#mypage', as: 'mypage'
   get 'users/:id/quit' => 'users/end_users#quit'
+  get 'mypage' => 'end_users#mypage'
+  get 'quit' => 'end_users#quit'
 end
