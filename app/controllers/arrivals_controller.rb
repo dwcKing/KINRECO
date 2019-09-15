@@ -1,2 +1,0 @@
-class ArrivalsController < ApplicationController
-end

@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   get 'top' => 'admins#top'
 
-
   namespace :admins do
     resources :admins,:items
   end
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
   namespace :users do
     resources :end_users,:items
   end
+
   get 'admins' => 'admins/admins#top'
   get 'items/top' => 'admins/items#top'
   get '/admin/:id/edit/password' => 'admins/admins#edit_password'

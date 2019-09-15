@@ -36,4 +36,24 @@ ActiveRecord::Schema.define(version: 2019_09_14_092944) do
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string "genre_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "title"
+    t.integer "price"
+    t.string "artist"
+    t.integer "disc_type"
+    t.string "image_id"
+    t.integer "selling_status"
+    t.integer "label_id"
+    t.integer "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "comment"
+  end
+
 end
