@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :configure_update_parameters, only: [:update]
   protected
@@ -11,12 +13,13 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:account_update, keys: [:last_name, :first_name, :last_kana, :first_kana, :post_code, :address, :phone_number])
   end
 
-  def after_sign_up_path_for(resource_or_scope)
-    mypage_path(current_end_user)
-  end
 
-  def after_sign_in_path_for(resource_or_scope)
-    mypage_path(current_end_user)
+  def after_sign_in_path_for(resource)
+    case resource
+      when Admin
+      admins_path
+      when EndUser
+      mypage_path(current_end_user)
   end
 
   def after_sign_out_path_for(resource_or_scope)
@@ -26,4 +29,5 @@ class ApplicationController < ActionController::Base
      items_top_path
     end
   end
+
 end
