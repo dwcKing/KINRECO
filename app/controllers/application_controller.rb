@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
       admins_path
       when EndUser
       mypage_path(current_end_user)
+    end
   end
 
   def after_sign_out_path_for(resource_or_scope)
