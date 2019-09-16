@@ -1,4 +1,5 @@
 class Admins::ArrivalsController < ApplicationController
+<<<<<<< HEAD
 
 	def new
 		@item = Item.find(1)
@@ -51,4 +52,6 @@ class Admins::ArrivalsController < ApplicationController
 	def item_params
         params.require(:item).permit(:title, :artist, :price, :disc_type,:comment)
     end
+=======
+>>>>>>> master
 end

@@ -10,11 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 ActiveRecord::Schema.define(version: 2019_09_11_072546) do
 =======
 ActiveRecord::Schema.define(version: 2019_09_15_114541) do
 >>>>>>> Stashed changes
+=======
+ActiveRecord::Schema.define(version: 2019_09_13_002156) do
+>>>>>>> master
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -71,10 +75,42 @@ ActiveRecord::Schema.define(version: 2019_09_15_114541) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.integer "quit_status"
 >>>>>>> Stashed changes
+=======
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_kana"
+    t.string "first_kana"
+    t.string "phone_number"
+    t.string "post_code"
+    t.text "address"
+    t.string "password"
+    t.integer "quit_status"
+>>>>>>> master
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "genre_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "title"
+    t.integer "price"
+    t.string "artist"
+    t.integer "disc_type"
+    t.string "image_id"
+    t.integer "selling_status"
+    t.integer "label_id"
+    t.integer "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "comment"
   end
 
 end
