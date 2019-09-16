@@ -62,3 +62,14 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+<<<<<<< Updated upstream
+=======
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
+gem 'kaminari', '~> 0.17.0'
+
+gem 'ransack'
+
+gem 'pry-byebug'
+>>>>>>> Stashed changes

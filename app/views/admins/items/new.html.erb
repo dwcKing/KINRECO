@@ -1,0 +1,34 @@
+<h1>商品登録</h1>
+<!-- form_for部分 -->
+<%= form_for @item, url: admins_items_path do |f| %>
+
+    <h4>商品名</h4>
+    <%= f.text_field :title %>
+
+    <h4>アーティスト名</h4>
+    <%= f.text_field :artist %>
+
+    <h4>シングル・アルバム</h4>
+    <%= f.select :disc_type, Item.disc_types.keys %>
+
+    <h4>ジャンル</h4>
+    <%#= f.select :genre,
+    @genres.each do |genre|
+      array_box = []
+      array_box.push([genre])
+    end
+    array_box
+     %>
+
+     <h4>商品数量</h4>
+    <%#= f.select :arrivals_quantity,[[1,1],[2,2]]  %>
+    <h4>商品説明</h4>
+    <%= f.text_area :comment %>
+
+    <h4>商品価格</h4>
+    <%= f.text_field :price %>
+
+     <td><%= link_to "戻る ", admins_path  %></td>
+    <%= f.submit '送信' %>
+
+<% end %>

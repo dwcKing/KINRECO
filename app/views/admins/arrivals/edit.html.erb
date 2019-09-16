@@ -1,0 +1,11 @@
+<%= form_for @arrival, url: admins_item_arrival_path(@item.id, @arrival.id) do |f| %>
+  <div class="field">
+    <p>入荷日程</p>
+    <%= f.date_select :arrivals_date %>
+  </div>
+    <p>入荷枚数<br></p>
+     <%= f.number_field :arrivals_quantity  %>
+     <%= f.submit'編集' ,class: 'btn btn-primary btn-block' %>
+     <%= link_to '削除', admins_item_arrival_path(@item.id, @arrival.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<% end %>
+<%= link_to '戻る', :back %>
