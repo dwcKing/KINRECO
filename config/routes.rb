@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   get 'users/:id/quit' => 'users/end_users#quit'
   get 'mypage' => 'end_users#mypage'
   get 'quit' => 'end_users#quit'
+  # get 'end_users/:id/edit' => 'end_users#edit'
 end
