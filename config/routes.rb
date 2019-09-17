@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   namespace :users do
     resources :end_users,:items
   end
@@ -33,5 +34,6 @@ Rails.application.routes.draw do
   get 'items/top' => 'admins/items#top'
   get '/admin/:id/edit/password' => 'admins/admins#edit_password'
   get '/item' => 'users/items#index'
+  get '/arrivals_index' => 'admins/arrivals#arrivals_index'
 
 end
