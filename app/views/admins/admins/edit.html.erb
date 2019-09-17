@@ -1,5 +1,5 @@
 <p>ユーザー情報の変更</p>
-<%= form_for(@enduser) do |f| %>
+<%= form_for @enduser,url: do |f| %>
 
   <p>名前(姓)</p><%= f.text_field :last_name %>
   <p>名前(名)</p><%= f.text_field :first_name %>

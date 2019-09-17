@@ -65,10 +65,12 @@ gem 'devise'
 
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-
+gem 'pry-rails'
 gem 'kaminari', '~> 0.17.0'
 
 gem 'ransack'
 
 gem 'pry-byebug'
 
+gem 'bootstrap-sass','~>3.3.6'
+gem 'jquery-rails'
