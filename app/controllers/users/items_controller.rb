@@ -3,4 +3,7 @@ class Users::ItemsController < ApplicationController
   @q = Item.ransack(params[:q])
   @users = @q.result(distinct: true)
   end
+
+  def top
+  end
 end

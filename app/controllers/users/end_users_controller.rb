@@ -1,4 +1,8 @@
 class Users::EndUsersController < ApplicationController
+ def top
+  @user = EndUser.find(params[:id])
+ end
+
   def index
     @cart_items = Item.where(enduser_id: current_user.id) #現在のエンドユーザのidを持っている商品の一覧
   end
@@ -21,6 +25,9 @@ class Users::EndUsersController < ApplicationController
 
   def quit
     @user = EndUser.find(params[:id])
+  end
+
+  def edit
   end
 
   private

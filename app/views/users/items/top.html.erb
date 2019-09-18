@@ -1,0 +1,62 @@
+<div class="main-visual">
+    <div class="main-visual-content">
+    </div>
+  </div>
+  
+<h2>新着一覧</h2>
+
+<div id="Carousel" class="glide">
+  <ul class="gride__wrapper">
+    <li class="glide__slide"><img src="/img/nature-4476546_640.jpg"></li>
+    <li class="glide__slide"><img src="/img/bridges-4474817_640.jpg" /></li>
+    <li class="glide__slide"><img src="/img/man-4475240_640.png" /></li>
+    <li class="glide__slide"><img src="/img/skull-and-crossbones-4430581_640.jpg" /></li>
+    <li class="glide__slide"><img src="/img/money-4474715_640.jpg" /></li>
+    <li class="glide__slide"><img src="/img/background-4477221_640.jpg" /></li>
+    <li class="glide__slide"><img src="/img/dogs-4429513_640.jpg" /></li>
+    <li class="glide__slide"><img src="/img/chose-4473945_640.jpg" /></li>
+    <li class="glide__slide"><img src="/img/beer-garden-4471014_640.jpg" /></li>
+    <li class="glide__slide"><img src="/img/hamburger-1238246_640.jpg" /></li>
+
+    </ul>
+  </div>
+
+<script>
+
+$(function(){
+// $('.center').slick({
+//   centerMode: true,
+//   centerPadding: '60px',
+//   slidesToShow: 3,
+//   responsive: [
+//     {
+//       breakpoint: 768,
+//       settings: {
+//         arrows: false,
+//         centerMode: true,
+//         centerPadding: '40px',
+//         slidesToShow: 3
+//       }
+//     },
+//     {
+//       breakpoint: 480,
+//       settings: {
+//         arrows: false,
+//         centerMode: true,
+//         centerPadding: '40px',
+//         slidesToShow: 1
+//       }
+//     }
+//   ]
+// });
+
+ $('.gride__wrapper').slick(
+  { autoplay:true,
+   autoplayspeed:3000,
+   dots:true,
+ }
+   );
+});
+</script>
+
+
