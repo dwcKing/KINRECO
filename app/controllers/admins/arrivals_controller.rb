@@ -30,7 +30,7 @@ class Admins::ArrivalsController < ApplicationController
     end
 
 	def index
-		@arrivals = Arrival.all
+    	@arrivals = Arrival.page(params[:page]).per(4)
 	end
 
 

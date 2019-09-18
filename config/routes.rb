@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get '/item' => 'users/items#index'
 
   resources :orders
+  resources :users
 
   get '/arrivals_index' => 'admins/arrivals#arrivals_index'
 
