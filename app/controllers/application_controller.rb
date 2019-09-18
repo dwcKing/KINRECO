@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
       admins_path
       when EndUser
       users_items_path
+
   end
 end
 end

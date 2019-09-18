@@ -14,7 +14,6 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a class="glyphicon glyphicon-home top" href="top"> TOPページへ戻る</a></li>
           <li><a class="glyphicon glyphicon-link " href="/admins/items/new"> 商品登録</a></li>
-
           <li><a class="glyphicon glyphicon-edit sign_up" href="top"> レーベル　ジャンル登録</a></li>
           <li><a class="glyphicon glyphicon-log-in sign_in" href="top"> ログアウト</a></li>
           <li><%= link_to destroy_admin_session_path,method: :delete do%>
@@ -83,6 +82,40 @@
   </tbody>
 </table>
 
+<table>
+  <thead>
+    <tr>
+      <th>レーベル一覧</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+
+        <td><%= link_to "レーベル　登録 ", new_admins_label_path  %></td>
+        <td><%= link_to "レーベル　一覧 ", admins_labels_path  %></td>
+      </tr>
+
+      </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>ジャンル一覧</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= link_to "ジャンル　登録 ", new_admins_genre_path  %></td>
+        <td><%= link_to "ジャンル　一覧 ", admins_genres_path  %></td>
+      </tr>
+
+      </tr>
+  </tbody>
+</table>
 
 </body>
 </html>

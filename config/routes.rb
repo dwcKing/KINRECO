@@ -21,9 +21,11 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :admins
+
     resources :items do
         resources :arrivals
     end
+    resources :labels,:genres
   end
 
   namespace :users do
