@@ -39,4 +39,5 @@ Rails.application.routes.draw do
   get '/users/:id/destinations' => 'users/end_users#destinations', as: 'destinations'
   get '/item' => 'users/items#index'
   resources :orders
+  get 'orders/:id/confirmation' => 'orders#confirmation', as: 'confirmation'
 end
