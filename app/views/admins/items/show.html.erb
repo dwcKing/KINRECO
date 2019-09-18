@@ -3,13 +3,32 @@
   <span><%= @item.title %></span>
 <p>アーティスト名</p>
   <span><%= @item.artist %></span>
+<p>シングル・アルバム</p>
+  <span><%=@item.disc_type %></span>
+<p>ジャンル</p>
+  <span><%=@genre.genre_name %></span>
+
+  <% @item.discs.each do |disc| %>
+  <br>ディスク<%= disc.disc %>
+  <% disc.songs.each do |song| %>
+  曲<%= song.song_order %>
+  <%= song.song_title %>
+  <% end %>
+  <% end %>
+<p>レーベル</p>
+  <span><%=@label.labels_name %></span>
+<p>商品説明</p>
+  <span><%=@item.comment %></span>
 <p>商品価格</p>
   <span><%= @item.price %></span>
+ <p>画像</p>
+  <% @item.items_images.each do |image| %>
+  <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+<%end%>
+
+
 <td><%= link_to "戻る ", admins_items_path %></td>
   <%= link_to "編集", edit_admins_item_path(@item.id) %>
   <%= link_to "削除",admins_item_path(@item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-<<<<<<< HEAD
 
   <%= link_to '入荷編集',  new_admins_item_arrival_path(@item.id) %>
-=======
->>>>>>> master

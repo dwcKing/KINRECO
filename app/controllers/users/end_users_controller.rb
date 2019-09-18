@@ -28,6 +28,10 @@ class Users::EndUsersController < ApplicationController
   end
 
   def edit
+
+  def destinations
+    @order = Order.new
+    @destination = Destination.all
   end
 
   private

@@ -1,0 +1,15 @@
+<% @cart_items.each do |cart_item| %>
+  <%= form_for @item,url: update_item_path(@item),method: :post do |f| %>
+    <%= cart_item.item.title %>
+    <%= cart_item.quantity %>枚<br>
+    <%= f.hidden_field :item_id, :value => "#{cart_item.item_id}" %>
+
+    <%= f.fields_for :arrivals do |b| %>
+      <%= b.select :quantity, @current_stock_array %>
+    <% end %>
+
+    <%= f.submit "削除" %>
+    <%= f.submit "更新", :name => 'update' %>
+    <%= f.submit "レジに進む", :name => 'register' %>
+  <% end %>
+<% end %>

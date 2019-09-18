@@ -43,7 +43,9 @@
       <tr>
 
         <td><%= link_to "受注一覧 ", admins_path  %></td>
-        <td><%#= link_to "入荷予定 ", admins_arrivals_path  %></td>
+
+        <td><%#= link_to "入荷予定 ", admins_item_arrivals_path(arrival.item.id) %></td>
+
 
       </tr>
 
@@ -84,6 +86,40 @@
   </tbody>
 </table>
 
+<table>
+  <thead>
+    <tr>
+      <th>レーベル一覧</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+
+        <td><%= link_to "レーベル　登録 ", new_admins_label_path  %></td>
+        <td><%= link_to "レーベル　一覧 ", admins_labels_path  %></td>
+      </tr>
+
+      </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>ジャンル一覧</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= link_to "ジャンル　登録 ", new_admins_genre_path  %></td>
+        <td><%= link_to "ジャンル　一覧 ", admins_genres_path  %></td>
+      </tr>
+
+      </tr>
+  </tbody>
+</table>
 
 </body>
 </html>
