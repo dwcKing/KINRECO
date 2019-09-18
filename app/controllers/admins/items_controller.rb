@@ -1,9 +1,13 @@
 class Admins::ItemsController < ApplicationController
  def new
         @item = Item.new
+        @images = @item.items_images.build
         @genres = Genre.all
-    end
+        @labels = Label.all
+        @disc = @item.discs.build
+        @song = @disc.songs.build
 
+    end
 
     def create
          item = Item.new(item_params)
@@ -17,14 +21,16 @@ class Admins::ItemsController < ApplicationController
 
     def show
         @item = Item.find(params[:id])
+        @genre = @item.genre
+        @label = @item.label
     end
 
     def edit
         @item = Item.find(params[:id])
     end
 
-
     def update
+
         item = Item.find(params[:id])
         item.update(item_params)
         redirect_to admins_items_path(item.id)
@@ -40,6 +46,8 @@ class Admins::ItemsController < ApplicationController
 
  private
     def item_params
-        params.require(:item).permit(:title, :artist, :price, :disc_type,:comment)
+        params.require(:item).permit(:title, :artist, :price, :disc_type, :genre_id, :label_id, :comment,:genres,items_images_images: [],
+        discs_attributes: [:id, :disc, :_destroy,
+        songs_attributes: [:id, :song_title,:song_order, :_destroy]])
     end
 end

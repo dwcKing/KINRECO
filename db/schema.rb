@@ -34,12 +34,43 @@ ActiveRecord::Schema.define(version: 2019_09_17_064755) do
     t.integer "arrivals_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
+=======
     t.integer "item_id"
   end
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cart_contents", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "end_user_id"
+  end
+
+  create_table "destinations", force: :cascade do |t|
+    t.string "post_code"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_kana"
+    t.string "first_kana"
+    t.text "address"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "end_user_id"
+  end
+
+  create_table "discs", force: :cascade do |t|
+    t.integer "disc"
+>>>>>>> master
+    t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -102,13 +133,25 @@ ActiveRecord::Schema.define(version: 2019_09_17_064755) do
     t.integer "price"
     t.string "artist"
     t.integer "disc_type"
-    t.string "image_id"
     t.integer "selling_status"
     t.integer "label_id"
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "comment"
+  end
+
+  create_table "items_images", force: :cascade do |t|
+    t.string "image_id"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "labels_name"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -123,6 +166,14 @@ ActiveRecord::Schema.define(version: 2019_09_17_064755) do
     t.string "phone_number"
     t.integer "payment"
     t.integer "end_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "songs", force: :cascade do |t|
+    t.integer "disc_id"
+    t.string "song_title"
+    t.integer "song_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

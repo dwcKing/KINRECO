@@ -21,9 +21,11 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :admins
+
     resources :items do
         resources :arrivals
     end
+    resources :labels,:genres
   end
 
 
@@ -41,9 +43,13 @@ Rails.application.routes.draw do
   get '/item' => 'users/items#index'
 
   resources :orders
+<<<<<<< HEAD
   resources :users
 
   get '/arrivals_index' => 'admins/arrivals#arrivals_index'
 
 
+=======
+  get 'orders/:id/confirmation' => 'orders#confirmation', as: 'confirmation'
+>>>>>>> master
 end

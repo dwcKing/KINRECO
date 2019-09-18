@@ -1,0 +1,11 @@
+<h1>レーベル登録</h1>
+<!-- form_for部分 -->
+<%= form_for @label, url: admins_labels_path do |f| %>
+
+
+    <h4>レーベル</h4>
+    <%= f.text_field :labels_name %>
+     <td><%= link_to "戻る ", admins_labels_path  %></td>
+    <%= f.submit '送信' %>
+
+<% end %>
