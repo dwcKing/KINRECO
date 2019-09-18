@@ -1,0 +1,11 @@
+<p>お届け先情報</p>
+名前(姓)<%= @order.last_name %><br>
+名前(名)<%= @order.first_name %><br>
+フリガナ(姓)<%= @order.last_kana %><br>
+フリガナ(名)<%= @order.first_kana %><br>
+電話番号<%= @order.phone_number %><br>
+郵便番号〒<%= @order.post_code %><br>
+住所<%= @order.address %><br>
+決済方法<%= @order.payment %><br>
+<%= link_to "ショッピングカートに戻る",cart_content_path(current_end_user) %>
+<%= link_to "お届け先編集",destinations_path(current_end_user) %>

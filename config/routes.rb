@@ -25,9 +25,11 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :admins
+
     resources :items do
         resources :arrivals
     end
+    resources :labels,:genres
   end
 
   namespace :users do
@@ -51,4 +53,5 @@ Rails.application.routes.draw do
   # get 'end_users/:id/edit' => 'end_users#edit'
 
   resources :orders
+  get 'orders/:id/confirmation' => 'orders#confirmation', as: 'confirmation'
 end
