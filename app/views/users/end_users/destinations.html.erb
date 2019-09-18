@@ -1,11 +1,44 @@
-<%= form_for @destination,url: new_order_path, method: :get do |f| %>
-  <%# @end_user.destinations.each do |destination| %>
+<!-- <script>
+  function AutoCheck(str,checkname) {
+    if(str.length > 0) { //入力文字1文字以上の時
+      document.getElementById(checkname).checked = true; //checknameが入った部分にチェックを入れる
+    } else {
+      document.getElementbyId(checkname).checked = false; // 文字が入っていない時チェックを外す
+    }
+  }
+</script> -->
+
+<%= form_for @order,url: new_order_path, method: :get do |f| %>
 
   <div>
-  <%= f.radio_button :address, "A"%>
-  <%= f.collection_select :first_name, Destination.all, :id, :address %><br>
-  <%= f.radio_button :address, "B" %>
-  <%= f.submit "送信" %>
+  <%= f.radio_button :end_user_id, "new"%>登録されている住所に送付する<br>
+  <%= f.collection_select :delivery_charge, @destination, :id, :view_name_and_address %><br>
   </div>
-  <%# end %>
+
+  <div>
+  <%= f.radio_button :end_user_id, "exist" %>別のお届け先を入力する<br>
+
+  <%= f.label :last_name, "名前(姓)"%>
+  <%= f.text_field :last_name %><br>
+  <%= f.label :first_name, "名前(名)" %>
+  <%= f.text_field :first_name %><br>
+  <%= f.label :last_kana, "フリガナ(姓)" %>
+  <%= f.text_field :last_kana %><br>
+  <%= f.label :first_kana, "フリガナ(名)" %>
+  <%= f.text_field :first_kana %><br>
+  <%= f.label :phone_number, "電話番号" %>
+  <%= f.text_field :phone_number %><br>
+  <%= f.label :post_code, "郵便番号" %>〒
+  <%= f.text_field :post_code %><br>
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address %><br>
+  </div>
+
+  <div>
+    <%= label :payment, "決済方法の選択" %>
+    <%= f.select :payment, Order.payments.keys %>
+    </div>
+
+    <%= f.submit "次へ進む" %>
+
 <% end %>
