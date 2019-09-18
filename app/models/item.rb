@@ -3,4 +3,5 @@ class Item < ApplicationRecord
 
   has_many :arrivals
 
+  has_many :cart_contents
 end

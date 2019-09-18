@@ -32,6 +32,11 @@ Rails.application.routes.draw do
   get 'admins' => 'admins/admins#top'
   get 'items/top' => 'admins/items#top'
   get '/admin/:id/edit/password' => 'admins/admins#edit_password'
+  post '/add_item' => 'cart_contents#add_item'
+  post '/update_item' => 'cart_contents#update_item'
+  delete '/delete_item' => 'cart_contents#delete_item'
+  resources :cart_contents, only: [:show]
+  get '/users/:id/destinations' => 'users/end_users#destinations', as: 'destinations'
   get '/item' => 'users/items#index'
-
+  resources :orders
 end
