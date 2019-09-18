@@ -1,18 +1,29 @@
 <h1>入荷情報一覧</h1>
-<table class="table table-hover table-inverse">
-	<tbody>
+<div class="container-fluid">
+	<div class="row-md-2"></div>
 
-		<% @arrivals.each do |arrival| %>
-		
-			<p>商品名</p>
-			<span><%= link_to arrival.item.title, admins_item_path(arrival.item_id) %></span>
-			<p>入荷枚数</p>
-			<span><%= arrival.arrivals_quantity %>枚</span>
-			<p>入荷予定日</p>
-			<span><%= arrival.arrivals_date.strftime("%Y年%-m月%-d日 ") %></span>
-			<%= link_to '編集', edit_admins_item_arrival_path(arrival.item.id, arrival.id) %>
-            <%#= link_to '削除', admins_arrival_path(@arrival.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-		<% end %>
-
-	</tbody>
-</table>
+				<div class="row-md-8">
+				    <table class="table table">
+						<% @arrivals.each do |arrival| %>
+							<td>
+								<p>商品名</p>
+								<span><%= link_to arrival.item.title, admins_item_path(arrival.item_id) %></span>
+							</td>
+							<td>
+								<p>入荷枚数</p>
+								<span><%= arrival.arrivals_quantity %>枚</span>
+						    </td>
+						    <td>
+								<p>入荷予定日</p>
+								<span><%= arrival.arrivals_date.strftime("%Y年%-m月%-d日 ") %></span>
+						    </td>
+						    <td>
+								<%= link_to '編集', edit_admins_item_arrival_path(arrival.item.id, arrival.id) %>
+								<%= link_to '削除', "/admins/items/#{arrival.item.id}/arrivals/#{arrival.id}",method: :delete, "data-confirm" => "本当に削除しますか？" %>
+						    </td>
+						<% end %>
+				    </table>
+			    </div>
+			<td><%= link_to "TOPへ ", admins_path  %></td>
+	<div class="row-md-2"></div>
+</div>

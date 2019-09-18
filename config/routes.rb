@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   namespace :users do
     resources :end_users,:items
   end
@@ -38,5 +39,10 @@ Rails.application.routes.draw do
   resources :cart_contents, only: [:show]
   get '/users/:id/destinations' => 'users/end_users#destinations', as: 'destinations'
   get '/item' => 'users/items#index'
+
   resources :orders
+
+  get '/arrivals_index' => 'admins/arrivals#arrivals_index'
+
+
 end
