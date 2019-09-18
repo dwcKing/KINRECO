@@ -15,6 +15,11 @@ class Users::EndUsersController < ApplicationController
     redirect_to admins_path(enduser.id)
   end
 
+  def destinations
+    @order = Order.new
+    @destination = Destination.all
+  end
+
   private
   def enduser_params
     params.require(:end_user).permit(:last_name,:first_name,:last_kana,:first_kana,:phone_number,:email,:post_code,:address,:password)
