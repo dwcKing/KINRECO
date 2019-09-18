@@ -7,4 +7,7 @@ class Users::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
   end
+
+  def top
+  end
 end

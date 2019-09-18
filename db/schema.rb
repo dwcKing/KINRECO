@@ -10,8 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_09_17_064755) do
 
+<<<<<<< HEAD
+=======
+
+  create_table "discs", force: :cascade do |t|
+    t.integer "disc"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
+
+>>>>>>> 63f9ce5db3bddcdf033eec484dc2995fa2a16bfb
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -94,6 +106,8 @@ ActiveRecord::Schema.define(version: 2019_09_17_064755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quit_status"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_end_users_on_deleted_at"
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end

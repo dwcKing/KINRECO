@@ -3,6 +3,7 @@ class Item < ApplicationRecord
 
   has_many :arrivals
 
+
   has_many :cart_contents
 
   has_many :items_images, dependent: :destroy
@@ -12,6 +13,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
   belongs_to :genre
   belongs_to :label
+
 end
 
 
