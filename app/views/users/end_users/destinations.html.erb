@@ -1,0 +1,11 @@
+<%= form_for @destination,url: new_order_path, method: :get do |f| %>
+  <%# @end_user.destinations.each do |destination| %>
+
+  <div>
+  <%= f.radio_button :address, "A"%>
+  <%= f.collection_select :first_name, Destination.all, :id, :address %><br>
+  <%= f.radio_button :address, "B" %>
+  <%= f.submit "送信" %>
+  </div>
+  <%# end %>
+<% end %>

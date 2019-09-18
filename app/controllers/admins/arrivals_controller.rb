@@ -1,5 +1,4 @@
 class Admins::ArrivalsController < ApplicationController
-<<<<<<< HEAD
 
 	def new
 		@item = Item.find(1)
@@ -32,15 +31,13 @@ class Admins::ArrivalsController < ApplicationController
 
 	def index
 		@arrivals = Arrival.all
-		
-
 	end
 
 
 	def destroy
 		@arrival = Arrival.find(params[:id])
 		@arrival.destroy
-		redirect_to admins_arrivals_path
+		admins_item_arrivals_path
 	end
 
 	private
@@ -52,6 +49,5 @@ class Admins::ArrivalsController < ApplicationController
 	def item_params
         params.require(:item).permit(:title, :artist, :price, :disc_type,:comment)
     end
-=======
->>>>>>> master
+
 end

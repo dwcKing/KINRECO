@@ -1,8 +1,7 @@
 class Item < ApplicationRecord
   enum disc_type: %i[シングル アルバム]
-<<<<<<< HEAD
 
   has_many :arrivals
-=======
->>>>>>> master
+
+  has_many :cart_contents
 end

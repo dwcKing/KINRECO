@@ -65,8 +65,14 @@ gem 'devise'
 gem 'paranoia'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+<<<<<<< HEAD
+=======
+gem 'pry-rails'
+>>>>>>> aa408a8edbf4e3748f94fdd94f9ccf846cd38b46
 gem 'kaminari', '~> 0.17.0'
 gem 'ransack'
 
 gem 'pry-byebug'
 
+gem 'bootstrap-sass','~>3.3.6'
+gem 'jquery-rails'

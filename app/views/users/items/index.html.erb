@@ -1,8 +1,17 @@
-<p>検索結果</p>
 
-<%= search_form_for @q, url: admins_items_path do |f| %>
-  <%= f.label :name_cont %>
-  <%= f.search_field :name_cont %>
+<%= search_form_for @q, url: users_items_path do |f| %>
+  <%= f.label :title, "商品名" %>
+  <%= f.search_field :title_cont %>
 
-  <%= f.submit %>
+  <%= f.submit "検索" %>
 <% end %>
+
+<p>検索結果</p>
+<table>
+  <% @items.each do |item| %>
+  <tr>
+  <td><%= item.title %></td>
+  <td><%= link_to "詳細",users_item_path(item.id) %></td>
+  </tr>
+  <% end %>
+</table>
