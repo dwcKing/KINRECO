@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<table>
+	<h3>マイページ</h3>
+  <thead>
+    <tr>
+      <th>ご注文について(テキスト)</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <th>注文購入履歴</th>
+        <td><%= link_to "商品注文状況 " %></td>
+        <td><%= link_to "購入履歴"  %></td>
+      </tr>
+      
+  </tbody>
+</table><br>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>登録情報について(テキスト)</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <th>登録情報について</th>
+        <td><%= link_to "ユーザー情報編集 " ,edit_end_user_registration_path %></td>
+        <td><%= link_to "退会ページ", "#{@user.id}/quit"%></td>
+      </tr>
+  </tbody>
+</table><br>
+
+</body>
+</html>
