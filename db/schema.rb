@@ -26,8 +26,16 @@ ActiveRecord::Schema.define(version: 2019_09_19_065447) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
-    t.index ["email"], name: "index_admins_on_email"
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token"
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "arrivals", force: :cascade do |t|
+    t.integer "arrivals_quantity"
+    t.integer "item_id"
+    t.date "arrivals_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "authors", force: :cascade do |t|
