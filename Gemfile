@@ -79,4 +79,3 @@ gem "refile-mini_magick"
 gem 'cocoon'
 gem "jquery-rails"
 gem 'pry-byebug'
->>>>>>> Stashed changes

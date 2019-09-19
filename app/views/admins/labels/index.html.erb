@@ -1,11 +1,11 @@
 <h1>レーベル一覧</h1>
 <% @labels.each do |label| %>
-   
-
-   <p>レーベル</p>
-     <span><%= label.labels_name %></span>
+     <br><span><%= label.labels_name %></span>
        <%= link_to "編集", edit_admins_label_path(label.id) %>
        <%= link_to "削除",admins_label_path(label.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-     <% end %>
+     <% end %><br>
 <%= paginate @labels %>
 <td><%= link_to "戻る ", admins_path  %></td>
+
+
+

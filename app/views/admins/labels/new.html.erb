@@ -1,11 +1,57 @@
-<h1>レーベル登録</h1>
-<!-- form_for部分 -->
-<%= form_for @label, url: admins_labels_path do |f| %>
+
+<div class="container text-center">
+  <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post">レーベルを登録する</button>
+  <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= form_for @label, url: admins_labels_path do |f| %>
+      </div>
+        <div class="modal-footer">
+          <h4>レーベル</h4>
+           <%= f.text_field :labels_name,class: "form-control", placeholder:"レーベル内容を入力" %>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+             <%= f.submit '送信' , class: "btn btn-primary"%>
+           </div>
+         <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-    <h4>レーベル</h4>
-    <%= f.text_field :labels_name %>
-     <td><%= link_to "戻る ", admins_labels_path  %></td>
-    <%= f.submit '送信' %>
+<td><%= link_to "戻る ", admins_labels_path  %></td>
 
-<% end %>
+
+
+<body>
+    <!-- モーダルを開くボタン・リンク -->
+    <div class="container">
+       
+        <div class="row mb-5">
+            <div class="col-2">
+                <button type="button" class="btn btn-primary mb-12" data-toggle="modal" data-target="#testModal">削除</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>class="modal-title" id="myModalLabel">削除確認画面</h4></h4>
+                </div>
+                <div class="modal-body">
+                    <label>データを削除しますか？</label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                    <button type="button" class="btn btn-danger">削除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
