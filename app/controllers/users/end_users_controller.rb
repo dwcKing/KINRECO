@@ -1,4 +1,8 @@
 class Users::EndUsersController < ApplicationController
+ def top
+  @user = EndUser.find(params[:id])
+ end
+
   def index
     @cart_items = Item.where(enduser_id: current_user.id) #現在のエンドユーザのidを持っている商品の一覧
   end
@@ -14,6 +18,16 @@ class Users::EndUsersController < ApplicationController
     enduser.update(enduser_params)
     redirect_to admins_path(enduser.id)
   end
+
+  def mypage
+    @user = EndUser.find(params[:id])
+  end
+
+  def quit
+    @user = EndUser.find(params[:id])
+  end
+
+  def edit
 
   def destinations
     @order = Order.new

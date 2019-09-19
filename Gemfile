@@ -60,14 +60,14 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
 gem 'devise'
 
+gem 'paranoia'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'pry-rails'
-gem 'kaminari', '~> 0.17.0'
 
+gem 'kaminari', '~> 0.17.0'
 gem 'ransack'
 
 

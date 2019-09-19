@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_064755) do
+ActiveRecord::Schema.define(version: 2019_09_18_113332) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,18 +25,9 @@ ActiveRecord::Schema.define(version: 2019_09_17_064755) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
-
-  create_table "arrivals", force: :cascade do |t|
-    t.datetime "arrivals_date"
-    t.integer "arrivals_quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-<<<<<<< HEAD
-=======
-    t.integer "item_id"
   end
 
   create_table "authors", force: :cascade do |t|
@@ -69,31 +60,9 @@ ActiveRecord::Schema.define(version: 2019_09_17_064755) do
 
   create_table "discs", force: :cascade do |t|
     t.integer "disc"
->>>>>>> master
     t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "cart_contents", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "end_user_id"
-  end
-
-  create_table "destinations", force: :cascade do |t|
-    t.string "post_code"
-    t.string "last_name"
-    t.string "first_name"
-    t.string "last_kana"
-    t.string "first_kana"
-    t.text "address"
-    t.string "phone_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "end_user_id"
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -118,6 +87,8 @@ ActiveRecord::Schema.define(version: 2019_09_17_064755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quit_status"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_end_users_on_deleted_at"
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end
