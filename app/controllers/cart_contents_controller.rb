@@ -2,8 +2,6 @@ class CartContentsController < ApplicationController
   before_action :setup_cart_item!,only:[:add_item, :update_item, :delete_item]
 
   def show
-    #arrival = Arrival.new(arrivals_quantity: 3)
-    #arrival.save
     @item = Item.new
     @cart_items = current_end_user.cart_contents
 
@@ -37,7 +35,7 @@ class CartContentsController < ApplicationController
 
   def update_item
     if params[:update]
-      @cart_item.update(quantity: params[:item][:arrivals][:quantity].to_i)
+      @cart_item.update(quantity:params[:item][:arrivals][:quantity].to_i)
       redirect_to cart_content_path(current_end_user.id)
     elsif params[:register]
       redirect_to destinations_path(current_end_user)
@@ -51,4 +49,7 @@ class CartContentsController < ApplicationController
   def setup_cart_item!
     @cart_item = current_end_user.cart_contents.find_by(item_id: params[:item][:item_id])
   end
+
+  #def update_params
+    #params.require(:item).permit(:arri)
 end

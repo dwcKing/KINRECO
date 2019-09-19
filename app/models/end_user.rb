@@ -6,6 +6,7 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cart_contents
+  has_many :items, through: :cart_contents
   has_many :destinations
   acts_as_paranoid
 end

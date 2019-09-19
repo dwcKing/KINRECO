@@ -2,9 +2,15 @@ class Item < ApplicationRecord
   enum disc_type: %i[シングル アルバム]
 
   has_many :arrivals
-
-
   has_many :cart_contents
+  has_many :end_users, through: :cart_contents
+  has_many :items_orders
+  has_many :orders, through: :items_orders
+
+
+
+
+
 
   has_many :items_images, dependent: :destroy
   accepts_attachments_for :items_images, attachment: :image
@@ -15,5 +21,3 @@ class Item < ApplicationRecord
   belongs_to :label
 
 end
-
-
