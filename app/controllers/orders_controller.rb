@@ -33,6 +33,7 @@ class OrdersController < ApplicationController
   def confirmation
     @order = Order.find(params[:id])
     @cart_contents = CartContent.where(end_user_id: current_end_user.id)
+
   end
 
 end

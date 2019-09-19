@@ -2,7 +2,8 @@
 
 <% @cart_contents.each do |cart_content| %>
 <%= cart_content.item.title %>
-数量<%= cart_content.quantity%>枚<br>
+数量<%= cart_content.quantity%>枚
+<%= cart_content.item.price %>円<br>
 <% end %>
 
 

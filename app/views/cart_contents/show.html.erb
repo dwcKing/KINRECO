@@ -1,17 +1,20 @@
-<%= form_for @item,url: update_item_path(@item),method: :post do |f| %>
+  <% total_price = 0 %>
+  <%= form_for @item,url: update_item_path(@item),method: :post do |f| %>
     <% @cart_items.each do |cart_item| %>
-      <%= f.hidden_field :item_id, :value => "#{cart_item.item_id}" %>
-
       <%= cart_item.item.title %>
       <%= cart_item.quantity %>枚
+      <%= cart_item.item.price %>円
+
+      <% total_price += cart_item.item.price * cart_item.quantity %>
+      <%= f.hidden_field :item_id, :value => "#{cart_item.item_id}" %>
 
       <%= f.fields_for :arrivals do |b| %>
         <%= b.select :quantity, @current_stock_array %>
-      <% end %>
-
+      <%end %>
 
       <%= f.submit "削除" %>
       <%= f.submit "更新", :name => 'update' %><br>
     <% end %>
-    <%= f.submit "レジに進む", :name => 'register' %>
-<% end %>
+      合計価格<%= total_price %>円<br>
+      <%= f.submit "レジに進む", :name => 'register' %>
+  <% end %>
