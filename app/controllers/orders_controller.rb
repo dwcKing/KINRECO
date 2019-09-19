@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
       order.payment = params[:order][:payment]
       order.save
     else
-      render "/admins/admins/top"
+      render "/admins/a
     end
       redirect_to  confirmation_path(order.id)
   end

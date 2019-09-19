@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 2019_09_18_113332) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "arrivals", force: :cascade do |t|
+    t.integer "arrivals_quantity"
+    t.integer "item_id"
+    t.integer "arrivals_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.integer "age"
