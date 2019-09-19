@@ -5,8 +5,8 @@
 		<div class="col-md-2"></div>
 				<div class="col-md-8">
 				    <table class="table table-striped">
-				     <tr>
 						<% @arrivals.each do |arrival| %>
+							<tr>
 								<td>商品名</td>
 								<td><%= link_to arrival.item.title, admins_item_path(arrival.item_id) %></td>
 								<td>入荷枚数</td>
@@ -15,8 +15,8 @@
 								<td><%= arrival.arrivals_date.strftime("%Y年 %m月 %d日") %></td>
 								<%= link_to '編集', edit_admins_item_arrival_path(arrival.item.id, arrival.id) %>
 								<%= link_to '削除', "/admins/items/#{arrival.item.id}/arrivals/#{arrival.id}",method: :delete, "data-confirm" => "本当に削除しますか？" %>
+							</tr>
 						<% end %>
-					 </tr>
 				    </table>
 				    <%= paginate @arrivals %>
 				   <p><%= link_to "TOPへ ", admins_path  %></p>
