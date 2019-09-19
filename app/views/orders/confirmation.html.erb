@@ -1,3 +1,16 @@
+<p>ご注文内容の確認</p>
+
+<% @cart_contents.each do |cart_content| %>
+<%= cart_content.item.title %>
+数量<%= cart_content.quantity%>枚
+<%= cart_content.item.price %>円<br>
+<% end %>
+
+
+
+
+
+
 <p>お届け先情報</p>
 名前(姓)<%= @order.last_name %><br>
 名前(名)<%= @order.first_name %><br>
