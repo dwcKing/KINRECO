@@ -24,8 +24,6 @@ class OrdersController < ApplicationController
       order.phone_number = params[:order][:phone_number]
       order.payment = params[:order][:payment]
       order.save
-    else
-      render "/admins/a
     end
       redirect_to  confirmation_path(order.id)
   end
