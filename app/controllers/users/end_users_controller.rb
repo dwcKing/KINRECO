@@ -30,7 +30,6 @@ class Users::EndUsersController < ApplicationController
   def edit
   end
 
-
   def destinations
     @order = Order.new
     @destination = Destination.all

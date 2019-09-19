@@ -5,12 +5,13 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :price
       t.string :artist
       t.integer :disc_type
-      t.string :image_id
       t.integer :selling_status
-      t.integer :label_id
-      t.integer :genre_id
+      t.text :comment
+      t.references :label, foreign_key: true
+      t.references :genre, foreign_key: true
       t.datetime :created_at
       t.datetime :updated_at
+
 
       t.timestamps
     end

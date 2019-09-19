@@ -15,7 +15,8 @@
 				<tr>
 			     <% @items.each do |item| %>
 			     <tr>
-					<td><img src="queen.jpeg" ></td>
+					<td><% @item.items_images.each do |image| %>
+					<%= attachment_image_tag image, :image, :fill, 200, 200 %></td>
 					<td>商品名<td>
 					<td><%= item.title %></td>
 					<td>アーティスト名</td>

@@ -6,15 +6,18 @@ class Admins::ArrivalsController < ApplicationController
 	end
 
 	def create
-
 		arrival = Arrival.new(arrival_params)
-	    arrival.save
-	    redirect_to admins_item_arrivals_path(arrival.item_id)
+		arrival.item_id = params[:item_id]
+	    if arrival.save
+	    	redirect_to "/admins/items/#{arrival.item_id}/arrivals"
+	    else
+	    	render :new
+		end
 	end
 
 	def show
         @arrival = Arrival.find(params[:id])
-        @arrival = Item.find(params[:id])
+        @arrival = Item.find(params[:item_id])
 
     end
 
@@ -41,7 +44,7 @@ class Admins::ArrivalsController < ApplicationController
 	end
 
 	def arrivals_index
-		@arrivals = Arrival.all
+    	@arrivals = Arrival.page(params[:page]).per(4)
 	end
 
 	private
