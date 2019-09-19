@@ -29,11 +29,7 @@ class Users::EndUsersController < ApplicationController
 
   def edit
   end
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> master
   def destinations
     @order = Order.new
     @destination = Destination.all
