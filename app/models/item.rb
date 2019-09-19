@@ -19,5 +19,5 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
   belongs_to :genre
   belongs_to :label
-
+  enum selling_status:{販売中:1,販売停止中:0}
 end
