@@ -12,12 +12,13 @@
 								<td>入荷枚数</td>
 								<td><%= arrival.arrivals_quantity %>枚</td>
 								<td>入荷予定日</td>
-								<td><%= arrival.arrivals_date.strftime("%Y年%-m月%-d日 ") %></td>
-								<td><%= link_to '編集', edit_admins_item_arrival_path(arrival.item.id, arrival.id) %></td>
-							    <td><%= link_to '削除', "/admins/items/#{arrival.item.id}/arrivals/#{arrival.id}",method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+								<td><%= arrival.arrivals_date.strftime("%Y年 %m月 %d日") %></td>
+								<%= link_to '編集', edit_admins_item_arrival_path(arrival.item.id, arrival.id) %>
+								<%= link_to '削除', "/admins/items/#{arrival.item.id}/arrivals/#{arrival.id}",method: :delete, "data-confirm" => "本当に削除しますか？" %>
 							</tr>
 						<% end %>
 				    </table>
+				    <%= paginate @arrivals %>
 				   <p><%= link_to "TOPへ ", admins_path  %></p>
 			    </div>
 		<div class="col-md-2"></div>

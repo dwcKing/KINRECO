@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  arrivals_date: 2019-09-13 06:02:12
   arrivals_quantity: 1
+  item_id: 1
+  arrivals_date: 1
 
 two:
-  arrivals_date: 2019-09-13 06:02:12
   arrivals_quantity: 1
+  item_id: 1
+  arrivals_date: 1

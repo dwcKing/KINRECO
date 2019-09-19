@@ -13,15 +13,6 @@
 
     <h4>ジャンル</h4>
 
-    <%#= f.select :genre,
-    @genres.each do |genre|
-      array_box = []
-      array_box.push([genre])
-    end
-    array_box
-     %>
-
-
     <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
 
 
