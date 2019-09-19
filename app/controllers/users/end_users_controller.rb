@@ -28,7 +28,7 @@ class Users::EndUsersController < ApplicationController
   end
 
   def edit
-
+  end
   def destinations
     @order = Order.new
     @destination = Destination.all
