@@ -6,12 +6,29 @@
   <%= f.submit "検索" %>
 <% end %>
 
-<p>検索結果</p>
-<table>
-  <% @items.each do |item| %>
-  <tr>
-  <td><%= item.title %></td>
-  <td><%= link_to "詳細",users_item_path(item.id) %></td>
-  </tr>
-  <% end %>
-</table>
+</h1>検索結果</h>
+<div class="container-fluid">
+    <div class="row">
+	<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<table class=table >
+				<tr>
+			     <% @items.each do |item| %>
+			     <tr>
+					<td><img src="queen.jpeg" ></td>
+					<td>商品名<td>
+					<td><%= item.title %></td>
+					<td>アーティスト名</td>
+					<td><%= item.artist %></td>
+					<td>商品価格</td>
+					<td><%= item.price %></td>
+					<td><%= link_to "詳細",users_item_path(item.id) %></td>
+				</tr>
+				 <% end %>
+				</tr>
+			</table>
+			<%= paginate @items %>
+		</div>
+	<div class="row">
+	</div>
+</div>

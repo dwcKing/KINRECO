@@ -13,7 +13,17 @@
 
     <h4>ジャンル</h4>
 
+    <%#= f.select :genre,
+    @genres.each do |genre|
+      array_box = []
+      array_box.push([genre])
+    end
+    array_box
+     %>
+
+
     <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
+
 
 
     <h4>曲名</h4>
@@ -30,6 +40,8 @@
     <h4>レーベル</h4>
     <%= f.collection_select :label_id, Label.all, :id, :labels_name %>
      <h4>商品数量</h4>
+
+    <%#= f.select :arrivals_quantity,[[1,1],[2,2]]  %>
 
 
 

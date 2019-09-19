@@ -1,7 +1,7 @@
 class Admins::ArrivalsController < ApplicationController
 
 	def new
-		@item = Item.find(1)
+		@item = Item.find(params[:item_id])
 		@arrivals = @item.arrivals.build
 	end
 
@@ -30,14 +30,18 @@ class Admins::ArrivalsController < ApplicationController
     end
 
 	def index
-		@arrivals = Arrival.all
+    	@arrivals = Arrival.page(params[:page]).per(4)
 	end
 
 
 	def destroy
 		@arrival = Arrival.find(params[:id])
 		@arrival.destroy
-		admins_item_arrivals_path
+		redirect_to admins_item_arrivals_path(params[:item_id])
+	end
+
+	def arrivals_index
+		@arrivals = Arrival.all
 	end
 
 	private

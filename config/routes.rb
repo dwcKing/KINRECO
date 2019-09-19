@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :labels,:genres
   end
 
+
   namespace :users do
     resources :end_users,:items
   end
@@ -52,6 +53,12 @@ Rails.application.routes.draw do
   get 'quit' => 'end_users#quit'
   # get 'end_users/:id/edit' => 'end_users#edit'
 
+
   resources :orders
+  resources :users
+
+  get '/arrivals_index' => 'admins/arrivals#arrivals_index'
+
   get 'orders/:id/confirmation' => 'orders#confirmation', as: 'confirmation'
+
 end
