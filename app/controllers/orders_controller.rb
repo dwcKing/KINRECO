@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def new
 
-    if params[:order][:end_user_id] == "new" #newの文字列を受け取った時
+    if params[:order][:end_user_id] == "new"
       order = Order.new
       destination = Destination.find(params[:order][:delivery_charge])
       order.post_code = destination.post_code
@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
       order.phone_number = destination.phone_number
       order.payment = params[:order][:payment]
       order.save
-    elsif params[:order][:end_user_id] == "exist" #exitの文字列を受け取った時
+    elsif params[:order][:end_user_id] == "exist"
       order = Order.new
       order.post_code = params[:order][:post_code]
       order.last_name = params[:order][:last_name]
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
   end
 
   def confirmation
-    @order = Order.find(params[:id]) 
+    @order = Order.find(params[:id])
     @cart_contents = CartContent.where(end_user_id: current_end_user.id)
 
   end

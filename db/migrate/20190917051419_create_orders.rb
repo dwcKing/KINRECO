@@ -11,7 +11,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.text    :address
       t.string  :phone_number
       t.integer :payment
-      t.references :end_user, foreign_key: true
+      t.references :end_user_id, foreign_key: true
 
       t.timestamps
     end
