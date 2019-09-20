@@ -1,8 +1,8 @@
 
-<%= @item.title %> 
+<%= @item.title %>
 
 <%= form_for @item,url: add_item_path,method: :post do |f| %>
-<%= f.hidden_field :item_id, :value => "#{@item.id}" %>
-<%= f.hidden_field :quantity, :value => "1" %>
-<%= f.submit 'カートに入れる' %>
+  <%= f.hidden_field :item_id, :value => "#{@item.id}" %>
+  <%= f.hidden_field :quantity, :value => "1" %>
+  <%= f.submit 'カートに入れる' %>
 <% end %>

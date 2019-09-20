@@ -5,26 +5,28 @@ class CartContentsController < ApplicationController
     @item = Item.new
     @cart_items = current_end_user.cart_contents
 
-    @quantities = Arrival.where(item_id: params[:item_id]).select("arrivals_quantity")
-
-    total_quantity = 0
-    @quantities.each do |quantity|
-      total_quantity += quantity.arrivals_quantity
-    end
-    @current_stock_array = []
-
-    total_quantity.times do |num|
-      if num < 10
-        @current_stock_array.push(num + 1)
-      else
-        break
+    @cart_items.each do |cart_item|
+      quantities = Arrival.where(item_id: cart_item.item_id).select("arrivals_quantity")
+      total_quantity = 0
+      quantities.each do |quantity|
+        total_quantity += quantity.arrivals_quantity
       end
-    end
+      @current_stock_array = []
 
+      total_quantity.times do |num|
+        if num < 10
+          @current_stock_array.push(num + 1)
+        else
+          break
+        end
+      end
+
+    end
   end
 
   def add_item
     if @cart_item
+      #if #在庫が1個以上あるとき
       @cart_item.quantity += params[:item][:quantity].to_i
     else
       @cart_item = current_end_user.cart_contents.build(item_id: params[:item][:item_id],quantity: params[:item][:quantity].to_i)
@@ -36,7 +38,7 @@ class CartContentsController < ApplicationController
   def update_item
     if params[:update]
       @cart_item.update(quantity:params[:item][:arrivals][:quantity].to_i)
-      redirect_to cart_content_path(current_end_user.id)
+      render cart_content_path(current_end_user.id)
     elsif params[:register]
       redirect_to destinations_path(current_end_user)
     else

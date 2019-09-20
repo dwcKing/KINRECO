@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     if resource_or_scope == :end_user
      new_end_user_session_path
     else
-     items_top_path
+     root_path
     end
 
   end
