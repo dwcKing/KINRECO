@@ -41,9 +41,11 @@
 
     <h4>商品価格</h4>
     <%= f.text_field :price %>
-
     <h4>商品画像</h4>
     <%= f.attachment_field :items_images_images, multiple: true %>
+    <h4>販売ステータス</h4>
+    <%= select :selling_status,:name,Item.selling_statuses.keys.to_a %>
+    <%= select :selling_status,:name,Item.selling_statuses.values.to_a %>
 
      <td><%= link_to "戻る ", admins_path  %></td>
     <%= f.submit '送信' %>

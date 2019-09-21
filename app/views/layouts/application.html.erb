@@ -1,6 +1,9 @@
+<!-- <if admin> -->
+<!-- <h1>おっす！オラ悟空</h1> -->
+<!-- <h1>オラ、つえーやつみるとワクワクすっぞ!!</h1> -->
 <!DOCTYPE html>
-<html>
-  <head>
+<html land="ja">
+<head>
     <title>KINReco</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -8,12 +11,36 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-  </head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+</head>
+<body>
+  <%if admin_signed_in? %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">%
+      <nav class="nav navbar-nav navbar-left">
+        <span>KIN-RECO</span>
+      </nav>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class="glyphicon glyphicon-home top" href="top"> TOPページへ戻る</a></li>
 
-  <body>
+          <li><a class="glyphicon glyphicon-link " href="/admins/items/new"> 商品登録</a></li>
+
+          <li><a class="glyphicon glyphicon-edit sign_up" href="top"> レーベル　ジャンル登録</a></li>
+          <li><a class="glyphicon glyphicon-log-in sign_in" href="top"> ログアウト</a></li>
+          <li><%= link_to destroy_admin_session_path,method: :delete do%>
+             <span class="glyphicon glyphicon-log-out logout"></span>  logout
+            <%end%>
+          </li>
+        </ul>
+      </nav>
+      </div>
+    </header><br><br><br><br>
+
+<% elsif end_user_signed_in? %>  
+  
     <header class="navbar navbar-inverse">
     <div class="container">
     <nav class="nav navbar-nav navbar-left">
@@ -57,6 +84,7 @@
           <%= link_to "ショッピングカート"  %>
         </li>
       <% end %>
+      <%end%>
       </ul>
      </div>
     </nav>
