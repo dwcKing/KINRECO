@@ -46,13 +46,13 @@ ActiveRecord::Schema.define(version: 2019_09_19_065447) do
   end
 
   create_table "cart_contents", force: :cascade do |t|
-    t.integer "item_id_id"
-    t.integer "end_user_id_id"
+    t.integer "item_id"
+    t.integer "end_user_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["end_user_id_id"], name: "index_cart_contents_on_end_user_id_id"
-    t.index ["item_id_id"], name: "index_cart_contents_on_item_id_id"
+    t.index ["end_user_id"], name: "index_cart_contents_on_end_user_id"
+    t.index ["item_id"], name: "index_cart_contents_on_item_id"
   end
 
   create_table "destinations", force: :cascade do |t|
@@ -63,18 +63,18 @@ ActiveRecord::Schema.define(version: 2019_09_19_065447) do
     t.string "first_kana"
     t.text "address"
     t.string "phone_number"
-    t.integer "end_user_id_id"
+    t.integer "end_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["end_user_id_id"], name: "index_destinations_on_end_user_id_id"
+    t.index ["end_user_id"], name: "index_destinations_on_end_user_id"
   end
 
   create_table "discs", force: :cascade do |t|
     t.integer "disc"
-    t.integer "item_id_id"
+    t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id_id"], name: "index_discs_on_item_id_id"
+    t.index ["item_id"], name: "index_discs_on_item_id"
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -137,12 +137,12 @@ ActiveRecord::Schema.define(version: 2019_09_19_065447) do
     t.integer "tax_add_price"
     t.integer "price"
     t.integer "quantity"
-    t.integer "item_id_id"
-    t.integer "order_id_id"
+    t.integer "item_id"
+    t.integer "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id_id"], name: "index_items_orders_on_item_id_id"
-    t.index ["order_id_id"], name: "index_items_orders_on_order_id_id"
+    t.index ["item_id"], name: "index_items_orders_on_item_id"
+    t.index ["order_id"], name: "index_items_orders_on_order_id"
   end
 
   create_table "labels", force: :cascade do |t|
@@ -162,19 +162,19 @@ ActiveRecord::Schema.define(version: 2019_09_19_065447) do
     t.text "address"
     t.string "phone_number"
     t.integer "payment"
-    t.integer "end_user_id_id"
+    t.integer "end_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["end_user_id_id"], name: "index_orders_on_end_user_id_id"
+    t.index ["end_user_id"], name: "index_orders_on_end_user_id"
   end
 
   create_table "songs", force: :cascade do |t|
-    t.integer "disc_id_id"
+    t.integer "disc_id"
     t.string "song_title"
     t.integer "song_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["disc_id_id"], name: "index_songs_on_disc_id_id"
+    t.index ["disc_id"], name: "index_songs_on_disc_id"
   end
 
 end

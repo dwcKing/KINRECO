@@ -13,6 +13,8 @@ class Users::ItemsController < ApplicationController
   end
 
   def top
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
  private

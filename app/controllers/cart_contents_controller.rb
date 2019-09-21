@@ -8,8 +8,8 @@ class CartContentsController < ApplicationController
     @a = []
     total_quantity = 0
     @cart_items.each do |cart_item|
-      quantity = Arrival.find_by(item_id: cart_item.item_id)
-      a = quantity.arrivals_quantity
+      #quantity = Arrival.find_by(item_id: cart_item.item_id)
+      #a = quantity.arrivals_quantity
     end
 
     #
@@ -43,6 +43,7 @@ class CartContentsController < ApplicationController
   end
 
   def update_item
+    binding.pry
     if params[:update]
       @cart_item.update(quantity:params[:item][:arrivals][:quantity].to_i)
       render cart_content_path(current_end_user.id)

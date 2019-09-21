@@ -42,6 +42,15 @@
     <nav>
     <div id= "slidemenu">
      <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+
+
+       <%= search_form_for @q, url: users_items_path do |f| %>
+         <%= f.label :title, "商品名" %>
+         <%= f.search_field :title_cont %>
+
+         <%= f.submit "検索" %>
+       <% end %>
+
         <li class="">
           <%= link_to current_end_user.last_name + current_end_user.first_name + "さん", mypage_path(current_end_user.id) %>
         </li>

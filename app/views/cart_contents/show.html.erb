@@ -1,29 +1,3 @@
-  <% total_price = 0 %>
-  <%= form_for @item,url: update_item_path(@item),method: :post do |f| %>
-    <% @cart_items.each do |cart_item| %>
-      <p class="cart_item_menu" data-price="<%= cart_item.item.price %>"><%= cart_item.item.title %>
-        <span class="price"><%= cart_item.item.price %>円</span>
-      </p>
-      <%= cart_item.quantity %>枚
-
-
-      <% total_price += cart_item.item.price * cart_item.quantity %>
-      <%= f.hidden_field :item_id, :value => "#{cart_item.item_id}" %>
-
-      <%= f.fields_for :arrivals do |b| %>
-        <%= b.select :arrivals_quantity, @current_stock_array, onchange: "price_calculation()"%>
-      <% end %>
-
-      <%= select_tag(:arrivals, Arrival.find_by(item_id: @item.item_id)) %>
-      <%= f.submit "削除" %>
-      <%= f.submit "更新", :name => 'update' %><br>
-    <% end %>
-      合計価格<%= total_price %>円<br>
-      <%= f.submit "レジに進む", :name => 'register' %>
-  <% end %>
-
-<input id="item_price_total" class="" name="小計" value="0円" readonly>
-
 <script>
   $("select").change(function(){
     var array = [];
@@ -45,3 +19,28 @@
   }
 
 </script>
+
+  <%= form_for @item,url: update_item_path(@item),method: :post do |f| %>
+
+    <% @cart_items.each do |cart_item| %>
+      <p class="cart_item_menu" data-price="<%= cart_item.item.price %>"><%= cart_item.item.title %>
+        <span class="price"><%= cart_item.item.price %>円</span>
+      </p>
+      <%= cart_item.quantity %>枚
+
+
+      <% total_price += cart_item.item.price * cart_item.quantity %>
+      <%= f.hidden_field :item_id, :value => "#{cart_item.item_id}" %>
+
+      <%#= f.fields_for :arrivals do |b| %>
+        <%= select_tag('count',options_for_select((1..10)))%><!--onchange: "price_calculation()":arrivals_quantity-->
+      <%# end %>
+
+      <%= f.submit "削除" %>
+      <%= f.submit "更新", :name => 'update' %><br>
+    <% end %>
+      合計価格<%= total_price %>円<br>
+      <%= f.submit "レジに進む", :name => 'register' %>
+  <% end %>
+
+<input id="item_price_total" class="" name="小計" value="0円" readonly>
