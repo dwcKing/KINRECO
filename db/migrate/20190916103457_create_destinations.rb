@@ -8,7 +8,7 @@ class CreateDestinations < ActiveRecord::Migration[5.2]
       t.string :first_kana
       t.text :address
       t.string :phone_number
-      t.references :end_user_id, foreign_key: true
+      t.references :end_user, foreign_key: true
 
       t.timestamps
     end

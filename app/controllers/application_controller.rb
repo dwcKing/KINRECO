@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :configure_update_parameters, only: [:update]
+  before_action :configure_update_parameters, if: :devise_controller?, only: [:update]
   protected
 
   def configure_permitted_parameters
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     if resource_or_scope == :end_user
      new_end_user_session_path
     else
-     items_top_path
+     root_path
     end
 
   end
