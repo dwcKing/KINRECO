@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_065447) do
 
   create_table "arrivals", force: :cascade do |t|
     t.integer "arrivals_quantity"
-    t.integer "item_id"
+    t.integer "item"
     t.date "arrivals_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -127,12 +127,10 @@ ActiveRecord::Schema.define(version: 2019_09_19_065447) do
   end
 
   create_table "items_images", force: :cascade do |t|
-    t.integer "image_id"
+    t.string "image_id"
     t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["image_id"], name: "index_items_images_on_image_id"
-    t.index ["item_id"], name: "index_items_images_on_item_id"
   end
 
   create_table "items_orders", force: :cascade do |t|
