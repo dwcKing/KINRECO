@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :configure_update_parameters, only: [:update]
+  before_action :configure_update_parameters, if: :devise_controller?, only: [:update]
   protected
 
   def configure_permitted_parameters
