@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :configure_update_parameters, if: :devise_controller?, only: [:update]
+  before_action :set_search
   protected
 
   def configure_permitted_parameters
@@ -30,6 +31,10 @@ class ApplicationController < ActionController::Base
     else
      root_path
     end
+  end
 
+  def set_search
+    @search = Item.ransack(params[:q])
+    @search_items = @search.result.page(params[:page]).per(5)
   end
 end
