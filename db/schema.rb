@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_065447) do
 
   create_table "arrivals", force: :cascade do |t|
     t.integer "arrivals_quantity"
-    t.integer "item_id"
+    t.integer "item"
     t.date "arrivals_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
