@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   end
 
   get 'admins' => 'admins/admins#top'
-  get 'items/top' => 'users/items#top'
+  root to: 'users/items#top'
   get '/admin/:id/edit/password' => 'admins/admins#edit_password'
   post '/add_item' => 'cart_contents#add_item'
   post '/update_item' => 'cart_contents#update_item'
@@ -54,11 +54,13 @@ Rails.application.routes.draw do
   # get 'end_users/:id/edit' => 'end_users#edit'
 
 
-  resources :orders
+  resources :orders, only: [:new,:create,:index]
   resources :users
 
   get '/arrivals_index' => 'admins/arrivals#arrivals_index'
 
   get 'orders/:id/confirmation' => 'orders#confirmation', as: 'confirmation'
+
+  post 'orders/complete' => 'orders#complete'
 
 end
