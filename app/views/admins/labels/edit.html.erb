@@ -2,7 +2,7 @@
 <!-- form_for部分 -->
 <%= form_for @label, url: admins_label_path(@label.id)do |f| %>
     <h4>レーベル</h4>
-    <%= f.text_field :labels_name %>
+    <%= f.text_field :label_name %>
      <td><%= link_to "戻る ", admins_path  %></td>
     <%= f.submit '送信' %>
 

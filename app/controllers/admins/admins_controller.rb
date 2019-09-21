@@ -1,5 +1,7 @@
 class Admins::AdminsController < ApplicationController
 	def top
+		  	@genre=Genre.new
+		  	@label=Label.new
 	end
 
 	def index
