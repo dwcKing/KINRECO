@@ -30,6 +30,5 @@ class ApplicationController < ActionController::Base
     else
      items_top_path
     end
-
   end
 end

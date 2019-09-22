@@ -9,4 +9,6 @@ class EndUser < ApplicationRecord
   has_many :items, through: :cart_contents
   has_many :destinations
   acts_as_paranoid
+
+
 end
