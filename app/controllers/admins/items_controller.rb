@@ -2,10 +2,10 @@ class Admins::ItemsController < ApplicationController
  def new
         @item = Item.new
         @images = @item.items_images.build
-        
+        @arrivals = Arrival.new
         @genres = Genre.all
         @labels = Label.all
-  
+
 
     end
 
