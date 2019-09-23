@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 
   def new
+    @review = Review.new
   end
 
   def confirmation
@@ -21,7 +22,7 @@ class OrdersController < ApplicationController
       destination.save
       @destination = destination
     end
-    @order = Order.find(params[:id])
+
     @cart_contents = CartContent.where(end_user_id: current_end_user.id)
   end
   def complete

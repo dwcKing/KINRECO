@@ -10,8 +10,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.css"/>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
 </head>
 <body>
 
@@ -22,13 +24,13 @@
         <span>KIN-RECO</span>
       </nav>
       <nav>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
           <li><a class="glyphicon glyphicon-home top" href="/admins"> TOPページへ戻る</a></li>
 
           <li><a class="glyphicon glyphicon-link " href="/admins/items/new"> 商品登録</a></li>
 
           <li><a class="glyphicon glyphicon-edit sign_up" href="top"> レーベル　ジャンル登録</a></li>
-          <li><%= link_to destroy_admin_session_path,method: :delete do%>
+          <li><%= link_to destroy_admin_session_path,method: :delete do %>
              <span class="glyphicon glyphicon-log-out logout"></span>  ログアウト
             <%end%>
           </li>
@@ -42,6 +44,15 @@
     <nav>
     <div id= "slidemenu">
      <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+
+
+       <%= search_form_for @search, url: users_items_path do |f| %>
+         <%= f.label :title, "商品名" %>
+         <%= f.text_field :title_cont,id: "autocomplete_search" %>
+         <input name="arrayJson" type="hidden" value=<%= @autocomplete_item %> class='arrayJson' >
+         <%= f.submit "検索" %>
+       <% end %>
+
         <li class="">
           <%= link_to current_end_user.last_name + current_end_user.first_name + "さん", mypage_path(current_end_user.id) %>
         </li>
@@ -103,3 +114,15 @@
     </footer>
   </body>
 </html>
+
+<script>
+  var arrayJson = $('.arrayJson').val();
+  var array = JSON.parse(arrayJson);
+
+console.log("a")
+  $('#autocomplete_search').autocomplete({
+    source: array,
+    autoFocus: true,
+    delay: 200
+  });
+</script>

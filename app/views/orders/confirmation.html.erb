@@ -1,6 +1,9 @@
 <p>ご注文内容の確認</p>
 
 <% @cart_contents.each do |cart_content| %>
+<% cart_content.item.items_images.each do |image| %>
+  <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+<% end %><br>
 <%= cart_content.item.title %>
 数量<%= cart_content.quantity%>枚
 <%= cart_content.item.price %>円<br>

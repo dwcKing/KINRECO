@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :configure_update_parameters, if: :devise_controller?, only: [:update]
+  before_action :set_search
+  before_action :autocomplete
   protected
 
   def configure_permitted_parameters
@@ -32,5 +34,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  
+  def set_search
+    @search = Item.ransack(params[:q])
+    @search_items = @search.result.page(params[:page]).per(5)
+  end
+
+  def autocomplete
+    @autocomplete_item = Item.pluck(:title).to_json.html_safe
+  end
+
 end
