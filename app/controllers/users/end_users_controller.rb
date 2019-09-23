@@ -37,7 +37,7 @@ class Users::EndUsersController < ApplicationController
     @destination = Destination.all
   end
 
-  def destinations_edit
+  def destinations_index
   end
 
   private
