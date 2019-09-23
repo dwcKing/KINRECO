@@ -10,6 +10,7 @@ class EndUser < ApplicationRecord
   has_many :destinations
   has_many :likes, dependent: :destroy
   has_many :liked_items, through: :likes, source: :items
+  has_many :orders
   def already_liked?(item)
     self.likes.exists?(item_id: item.id)
   end

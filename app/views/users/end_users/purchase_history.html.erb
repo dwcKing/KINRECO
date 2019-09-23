@@ -1,0 +1,8 @@
+
+
+	<h1>購入履歴</h1>
+<% @order.each do |order| %>
+	<% order.items_orders.each do |item_order| %>
+		<%= item_order.item.title %>
+	<% end %>
+<% end %>

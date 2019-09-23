@@ -55,7 +55,6 @@ Rails.application.routes.draw do
 
 
   resources :orders, only: [:new,:create,:index]
-  resources :users
 
   get '/arrivals_index' => 'admins/arrivals#arrivals_index'
 
@@ -70,6 +69,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
-  root 'posts#index'
+  get 'users' => 'users/end_users#purchase_history'
+  resources :users
 
 end
