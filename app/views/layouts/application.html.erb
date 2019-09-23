@@ -49,6 +49,7 @@
        <%= search_form_for @search, url: users_items_path do |f| %>
          <%= f.label :title, "商品名" %>
          <%= f.text_field :title_cont,id: "autocomplete_search" %>
+         <input name="arrayJson" type="hidden" value=<%= @items %> class='arrayJson' >
          <%= f.submit "検索" %>
        <% end %>
 
@@ -114,12 +115,16 @@
   </body>
 </html>
 
-<!--<script>
-  var dataList = <%#= @items %>;
+<script>
+  var arrayJson = $('.arrayJson').val();
+    console.log(arrayJson);
+  var array = JSON.parse(arrayJson);
+    console.log(array);
 
-  $('#autocomplete_search').autocomplete({
-    source: dataList,
-    autoFocus: true,
-    delay: 700
-  });
-</script>-->
+
+  //$('#autocomplete_search').autocomplete({
+    //source: dataList,
+    //autoFocus: true,
+    //delay: 700
+//  });
+</script>
