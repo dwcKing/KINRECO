@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
 
   namespace :users do
-    resources :end_users,:items
+    resources :end_users,:items,:distinations
   end
 
   get 'admins' => 'admins/admins#top'

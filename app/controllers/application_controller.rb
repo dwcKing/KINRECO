@@ -40,6 +40,6 @@ class ApplicationController < ActionController::Base
   end
 
   def autocomplete
-    @items = Item.pluck(:title).to_json.html_safe
+    @autocomplete_item = Item.pluck(:title).to_json.html_safe
   end
 end
