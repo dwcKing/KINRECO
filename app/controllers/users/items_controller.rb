@@ -10,9 +10,11 @@ class Users::ItemsController < ApplicationController
   end
 
   def top
+  	@new_item_image = Item.order('id').limit(10)
+    @items = Item.select(:title)
   end
 
- private
+ privates
     def item_params
         params.require(:item).permit(:title, :artist, :price, :disc_type, :genre_id, :label_id, :comment,:genres,items_images_images: [],
         discs_attributes: [:id, :disc, :_destroy,

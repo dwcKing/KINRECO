@@ -15,4 +15,6 @@ class EndUser < ApplicationRecord
   end
 
   acts_as_paranoid
+
+
 end
