@@ -99,6 +99,11 @@
   </tbody>
 </table>
 
+<% @likes.each.with_index(1) do |like,i| %>
+<h5>第 <%= i %> 位</h5>
+<%= like.title %>
+
+<% end %>
 
 
 

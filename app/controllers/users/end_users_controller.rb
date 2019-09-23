@@ -1,6 +1,8 @@
 class Users::EndUsersController < ApplicationController
  def top
   @user = EndUser.find(params[:id])
+  @likes=Item.find(Like.group(:item_id).order("count(item_id) desc").limit(5).pluck(:item_id))
+
  end
 
   def index
