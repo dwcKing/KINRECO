@@ -63,4 +63,13 @@ Rails.application.routes.draw do
 
   post 'orders/complete' => 'orders#complete'
 
+
+
+  resources :end_users, only: [:index, :show]
+  resources :items, only: [:index, :show, :create] do
+    resources :likes, only: [:create, :destroy]
+  end
+
+  root 'posts#index'
+
 end

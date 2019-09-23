@@ -32,7 +32,7 @@ Item.create!(
    artist: 'ぐっさん',
    disc_type: 'シングル',
    selling_status: 1,
-   label_id: 1,
+   label_id: 2,
    genre_id: 1,
    comment: 'みんな大好き泳げたいやきくん'
   },
@@ -42,7 +42,7 @@ Item.create!(
    artist: 'ぐー',
    disc_type: 'シングル',
    selling_status: 1,
-   label_id: 1,
+   label_id: 2,
    genre_id: 1,
    comment: 'みんな大嫌いだんご３兄弟'
   },

@@ -20,4 +20,7 @@ class Item < ApplicationRecord
   belongs_to :genre
   belongs_to :label
   enum selling_status:{販売中:1,販売停止中:0}
+  has_many :likes, dependent: :destroy
+  has_many :liked_end_users, through: :likes, source: :end_user
+ 
 end

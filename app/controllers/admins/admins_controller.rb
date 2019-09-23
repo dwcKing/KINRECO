@@ -2,6 +2,7 @@ class Admins::AdminsController < ApplicationController
 	def top
 		  	@genre=Genre.new
 		  	@label=Label.new
+		    @likes=Item.find(Like.group(:item_id).order("count(item_id) desc").limit(5).pluck(:item_id))
 	end
 
 	def index
@@ -10,6 +11,7 @@ class Admins::AdminsController < ApplicationController
 
   def show
 	  @enduser = EndUser.find(params[:id])
+
   end
 
 	def edit
