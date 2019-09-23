@@ -4,24 +4,6 @@ class CartContentsController < ApplicationController
   def show
     @item = Item.new
     @cart_items = current_end_user.cart_contents
-
-    @cart_items.each do |cart_item|
-      quantities = Arrival.where(item_id: cart_item.item_id).select("arrivals_quantity")
-      total_quantity = 0
-      quantities.each do |quantity|
-        total_quantity += quantity.arrivals_quantity
-      end
-      @current_stock_array = []
-
-      total_quantity.times do |num|
-        if num < 10
-          @current_stock_array.push(num + 1)
-        else
-          break
-        end
-      end
-
-    end
   end
 
   def add_item
@@ -36,15 +18,18 @@ class CartContentsController < ApplicationController
   end
 
   def update_item
-    if params[:update]
-      @cart_item.update(quantity:params[:item][:arrivals][:quantity].to_i)
-      render cart_content_path(current_end_user.id)
-    elsif params[:register]
+      params[:item][:item_id].split(" ").each do |item_id|
+      a = "cart_item_id" + item_id
+      cart_item = CartContent.find(item_id)
+      cart_item.update(quantity:params[a.to_sym].to_i)
+      end
       redirect_to destinations_path(current_end_user)
-    else
-      @cart_item.destroy
-      redirect_to cart_content_path(current_end_user.id)
     end
+
+  def destroy
+    cart_item = CartContent.find(params[:id])
+    cart_item.destroy
+    redirect_to cart_content_path(current_end_user.id)
   end
 
   private

@@ -1,9 +1,7 @@
 class Users::ItemsController < ApplicationController
 
   def index
-    @q = Item.ransack(params[:q])
-    @items = @q.result(distinct: true)
-    @items = Item.page(params[:page]).per(5)
+    @items = Item.all
   end
 
   def show
@@ -13,6 +11,7 @@ class Users::ItemsController < ApplicationController
   end
 
   def top
+    @items = Item.select(:title)
   end
 
  private
