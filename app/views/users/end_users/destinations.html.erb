@@ -8,7 +8,7 @@
   }
 </script> -->
 
-<%= form_for @order,url: new_order_path, method: :get do |f| %>
+<%= form_for @order,url: confirmation_path, method: :get do |f| %>
 
   <div>
   <%= f.radio_button :end_user_id, "new" ,required:'required'%>登録されている住所に送付する<br>
@@ -42,3 +42,5 @@
     <%= f.submit "次へ進む" %>
 
 <% end %>
+
+<%= link_to "お届け先変更",%>

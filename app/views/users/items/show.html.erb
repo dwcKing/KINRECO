@@ -1,8 +1,82 @@
 
-<%= @item.title %> 
+<div class="container-fluid">
+	<h1>商品詳細</h1>
 
-<%= form_for @item,url: add_item_path,method: :post do |f| %>
-<%= f.hidden_field :item_id, :value => "#{@item.id}" %>
-<%= f.hidden_field :quantity, :value => "1" %>
-<%= f.submit 'カートに入れる' %>
-<% end %>
+    <div class="row">
+	                           <div class="col-md-1"></div>
+		<div class="col-md-11">
+			<table class=table >
+				<tr>
+					<td width="50%">
+						<% @item.items_images.each do |image| %>
+						<%= attachment_image_tag image, :image, :fill, 350, 350 %>
+						<%end%>
+					</td>
+					<td width="30%">
+						<table>
+						   <tr>商品名<br>
+							<h3><%= @item.title %></h3></tr>
+						 <tr>
+						   アーティスト名<br>
+						    <h3><%= @item.artist %></h3>
+						 </tr>
+						</table>
+					</td>
+					<td width="20%">
+						<table>
+							<td><h5>商品価格</h5><%= @item.price %>円</td>
+							<%= form_for @item,url: add_item_path,method: :post do |f| %>
+							<%= f.hidden_field :item_id, :value => "#{@item.id}" %>
+							<%= f.hidden_field :quantity, :value => "1" %>
+							<tr>
+								<td><%= f.submit 'カートに入れる' %></td>
+								<% end %>
+						    </tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<table class=table >
+				<tr>
+					<h4>商品情報</h4>
+					<td>
+					</td>
+					<td width="70%">
+						<table>
+							<tr>
+								<% @item.discs.each do |disc| %>
+								<h4>Disc<%= disc.disc %></h4>
+								<% disc.songs.each do |song| %>
+								<%= song.song_order %>.
+								<%= song.song_title %>
+								<% end %>
+								<% end %>
+							</tr>
+							<tr>
+								<h4>商品説明</h4>
+								<tr>
+								<td><%=@item.comment %></td>
+							    </tr>
+							</tr>
+						</table>
+					</td>
+					<td width="30%">
+						<table class="table table-striped">
+							<tr>
+							<td>ジャンル　　　　　　|  <%=@genre.genre_name %></td>
+						    </tr>
+						    <tr>
+							<td>シングル・アルバム　|  <%=@item.disc_type %></td>
+						    </tr>
+						    <tr>
+							<td>レーベル　　　　　　|  <%=@label.label_name %></td>
+						    </tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+					<p><%= link_to "戻る ", users_items_path  %></p>
+		</div>
+	</div>
+</div>
+

@@ -2,10 +2,10 @@ class Admins::ItemsController < ApplicationController
  def new
         @item = Item.new
         @images = @item.items_images.build
+        
         @genres = Genre.all
         @labels = Label.all
-        @disc = @item.discs.build
-        @song = @disc.songs.build
+  
 
     end
 
@@ -16,7 +16,7 @@ class Admins::ItemsController < ApplicationController
     end
 
     def index
-    	@items = Item.page(params[:page]).per(2)
+        @items = Item.page(params[:page]).per(2)
     end
 
     def show
@@ -33,11 +33,13 @@ class Admins::ItemsController < ApplicationController
      def update
         item = Item.find(params[:id])
         item.update(item_params)
-        redirect_to admins_items_path(item.id)
+        redirect_to admins_item_path(item.id)
     end
 
     def destroy
-    	@item = Item.find(params[:id])
+        @item = Item.find(params[:id])
+       
+        
         @item.destroy
         redirect_to admins_items_path
     end

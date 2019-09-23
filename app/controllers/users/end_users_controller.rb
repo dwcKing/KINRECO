@@ -35,6 +35,9 @@ class Users::EndUsersController < ApplicationController
     @destination = Destination.all
   end
 
+  def destinations_edit
+  end
+
   private
   def enduser_params
     params.require(:end_user).permit(:last_name,:first_name,:last_kana,:first_kana,:phone_number,:email,:post_code,:address,:password)

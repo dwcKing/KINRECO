@@ -3,7 +3,7 @@
 </div>
 
 <div class="container text-center">
-  <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post">ジャンルを登録する</button>
+  <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="F#post">ジャンルを登録する</button>
   <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-content">
       <div class="modal-body">
@@ -27,6 +27,18 @@
 <td><%= link_to "戻る ", admins_genres_path  %></td>
 
 
+
+<h1>ジャンル登録</h1>
+<!-- form_for部分 -->
+<%= form_for @genre, url: admins_genres_path do |f| %>
+
+
+    <h4>ジャンル</h4>
+    <%= f.text_field :genre_name %>
+     <td><%= link_to "戻る ", admins_genres_path  %></td>
+    <%= f.submit '送信' %>
+
+<% end %>
 
 
 

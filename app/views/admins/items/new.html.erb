@@ -18,7 +18,6 @@
 
 
     <h4>曲名</h4>
-
     <div id="discs">
         <%= f.fields_for :discs do |disc| %>
             <%= render 'disc_fields', f: disc %>
@@ -29,7 +28,7 @@
     </div>
 
     <h4>レーベル</h4>
-    <%= f.collection_select :label_id, Label.all, :id, :labels_name %>
+    <%= f.collection_select :label_id, Label.all, :id, :label_name %>
      <h4>商品数量</h4>
 
     <%#= f.select :arrivals_quantity,[[1,1],[2,2]]  %>
@@ -41,9 +40,11 @@
 
     <h4>商品価格</h4>
     <%= f.text_field :price %>
-
     <h4>商品画像</h4>
     <%= f.attachment_field :items_images_images, multiple: true %>
+    <h4>販売ステータス</h4>
+    <%= select :selling_status,:name,Item.selling_statuses.keys.to_a %>
+    <%= select :selling_status,:name,Item.selling_statuses.values.to_a %>
 
      <td><%= link_to "戻る ", admins_path  %></td>
     <%= f.submit '送信' %>

@@ -9,27 +9,51 @@
 </h1>検索結果</h>
 <div class="container-fluid">
     <div class="row">
-	<div class="col-md-2"></div>
-		<div class="col-md-8">
+	<div class="col-md-1"></div>
+		<div class="col-md-10">
 			<table class=table >
-				<tr>
 			     <% @items.each do |item| %>
-			     <tr>
-					<td><% @item.items_images.each do |image| %>
-					<%= attachment_image_tag image, :image, :fill, 200, 200 %></td>
-					<td>商品名<td>
-					<td><%= item.title %></td>
-					<td>アーティスト名</td>
-					<td><%= item.artist %></td>
-					<td>商品価格</td>
-					<td><%= item.price %></td>
-					<td><%= link_to "詳細",users_item_path(item.id) %></td>
-				</tr>
+					<tr>
+						<td>
+						    <% item.items_images.each do |image| %>
+							 <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+							<% end %>
+						</td>
+						<td>
+							<table>
+							<tr>
+								<td>商品名<br>
+									<h3><%= link_to  item.title ,users_item_path(item.id) %></h3>
+								</td>
+							</tr>
+							<tr>
+									<td><h5>アーティスト</h5><%= item.artist %></td>
+							</tr>
+							</table>
+						</td>
+						<td>
+				   			 <table class="table table-striped">
+								<tr>
+									<td>ジャンル　| <%= item.genre.genre_name %></td>
+								</tr>
+								<tr>
+									<td>レーベル　| <%= item.label.label_name %></td>
+								</tr>
+								<tr>
+								    <td>価格　　　| <%= item.price %>円</td>
+								</tr>
+								<tr>
+									<td>販売状況　| <%= item.selling_status %></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
 				 <% end %>
-				</tr>
 			</table>
 			<%= paginate @items %>
 		</div>
+	<div class="col-md-1"></div>
 	<div class="row">
 	</div>
 </div>
+
