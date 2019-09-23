@@ -11,6 +11,7 @@ class Users::ItemsController < ApplicationController
   end
 
   def top
+    @items = Item.select(:title)
   end
 
  private

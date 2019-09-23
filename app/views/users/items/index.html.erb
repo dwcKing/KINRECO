@@ -5,9 +5,7 @@
 	<div class="col-md-1"></div>
 		<div class="col-md-10">
 			<table class=table >
-				<tr>
-					<tr>
-			     <% @search_items.each do |item| %>
+          <% @items.each do |item| %>
 					<tr>
 						<td>
 						    <% item.items_images.each do |image| %>
@@ -22,7 +20,7 @@
 								</td>
 							</tr>
 							<tr>
-									<td><h4>Artist</h4><%= item.artist %></td>
+									<td><h5>アーティスト</h5><%= item.artist %></td>
 							</tr>
 							</table>
 						</td>
@@ -39,6 +37,9 @@
 								</tr>
 								<tr>
 								    <td>価格　　　| <%= item.price %>円</td>
+                </tr>
+                <tr>
+                    <td>販売状況　| <%= item.selling_status %></td>
 								</tr>
 							</table>
 						</td>

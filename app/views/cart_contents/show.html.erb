@@ -1,43 +1,61 @@
+
+  <% subtotal_price = 0 %>
+  <% total_price = 0 %>
+  <%= form_for @item,url: update_item_path(@item),method: :post do |f| %>
+  <% cart_item_ids = [] %>
+
+
+    <% @cart_items.each_with_index do |cart_item, i| %>
+    <% total_quantity_i = 0 %>
+      <% cart_item.item.arrivals.each do |item_arrival| %>
+        <% total_quantity_i  += item_arrival.arrivals_quantity %>
+      <% end %>
+
+
+
+      <!--在庫<%#= total_quantity_i %>-->
+
+      <% cart_item_ids.push(cart_item.id) %>
+      <div class="form-box">
+      <p class="cart_item_menu" data-price="<%= cart_item.item.price %>">
+
+      <% cart_item.item.items_images.each do |image| %>
+        <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+      <% end %><br>
+
+      <%= cart_item.item.title %>
+        <span class="price"><%= cart_item.item.price %>円</span>
+      </p>
+      <%#= cart_item.quantity %>枚
+      <%# subtotal_price += cart_item.item.price * cart_item.quantity %>
+      <%#= total_price += subtotal_price %>
+
+</div>
+      <%= select_tag("cart_item_id" + cart_item.id.to_s, options_for_select((1..total_quantity_i), selected: cart_item.quantity.to_i) {}, id:"cart-quo-" + i.to_s, class: cart_item.item.price) %>
+      <%= f.hidden_field :item_id, :value => cart_item_ids %>
+      <%= link_to "削除",cart_content_path(cart_item),method: :delete %>
+
+    <% end %>
+      <%= f.submit "レジに進む" %>
+  <% end %>
+
+<input id="item_price_total" class="" name="小計" value= "0円" readonly>
+
+
 <script>
-  $("select").change(function(){
+  $('select').change(function(){
     var array = [];
     for(var i = 0; i < $(".cart_item_menu").length; i++){
-
-      var item_price = $(".cart_item_menu").eq(i).data("price");
-      var item_select = $(".cart_item_menu").eq(i).next("select").find("option:selected").data("num");
-
-      array.push(item_price * item_select);
-    }
-
+      item_price = $(".cart_item_menu").eq(i).data("price");
+      item_select = $(`#cart-quo-${i} option:selected`).val()
+        array.push(item_price * item_select)
+     }
     var total = 0;
     for(var j = 0; j < array.length; j++){
       total += array[j];
     }
-
     $("#item_price_total").val(total + "円");
 
-  }
+  })
 
 </script>
-  <% total_price = 0 %>
-  <%= form_for @item,url: update_item_path(@item),method: :post do |f| %>
-
-    <% @cart_items.each do |cart_item| %>
-      <p class="cart_item_menu" data-price="<%= cart_item.item.price %>"><%= cart_item.item.title %>
-        <span class="price"><%= cart_item.item.price %>円</span>
-      </p>
-      <%= cart_item.quantity %>枚
-      <% total_price += cart_item.item.price * cart_item.quantity %>
-
-
-      <%#= f.fields_for :arrivals do |b| %>
-        <%= select_tag(cart_item.item_id, options_for_select((1..10)))%><!--onchange: "price_calculation()":arrivals_quantity-->
-      <%# end %>
-
-    <% end %>
-      合計価格<%= total_price %>円<br>
-      <%= f.submit "削除" %><%= f.submit "更新", :name => 'update' %><br>
-      <%= f.submit "レジに進む", :name => 'register' %>
-  <% end %>
-
-<input id="item_price_total" class="" name="小計" value="0円" readonly>

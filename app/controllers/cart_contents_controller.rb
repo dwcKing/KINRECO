@@ -18,16 +18,18 @@ class CartContentsController < ApplicationController
   end
 
   def update_item
-    if params[:update]
-      byebug
-      @cart_item.update(quantity:params[:name].to_i)
-      redirect_to cart_content_path(current_end_user.id)
-    elsif params[:register]
+      params[:item][:item_id].split(" ").each do |item_id|
+      a = "cart_item_id" + item_id
+      cart_item = CartContent.find(item_id)
+      cart_item.update(quantity:params[a.to_sym].to_i)
+      end
       redirect_to destinations_path(current_end_user)
-    else
-      @cart_item.destroy
-      redirect_to cart_content_path(current_end_user.id)
     end
+
+  def destroy
+    cart_item = CartContent.find(params[:id])
+    cart_item.destroy
+    redirect_to cart_content_path(current_end_user.id)
   end
 
   private

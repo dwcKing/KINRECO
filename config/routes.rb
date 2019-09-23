@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   post '/add_item' => 'cart_contents#add_item'
   post '/update_item' => 'cart_contents#update_item'
   delete '/delete_item' => 'cart_contents#delete_item'
-  resources :cart_contents, only: [:show]
+  resources :cart_contents, only: [:show,:destroy]
   get '/users/:id/destinations' => 'users/end_users#destinations', as: 'destinations'
   get '/item' => 'users/items#index'
 
