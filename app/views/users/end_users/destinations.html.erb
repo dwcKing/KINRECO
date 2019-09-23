@@ -1,25 +1,16 @@
-<!-- <script>
-  function AutoCheck(str,checkname) {
-    if(str.length > 0) { //入力文字1文字以上の時
-      document.getElementById(checkname).checked = true; //checknameが入った部分にチェックを入れる
-    } else {
-      document.getElementbyId(checkname).checked = false; // 文字が入っていない時チェックを外す
-    }
-  }
-</script> -->
 
 <%= form_for @order,url: confirmation_path, method: :get do |f| %>
 
   <div>
-  <%= f.radio_button :end_user_id, "new" ,required:'required'%>登録されている住所に送付する<br>
+  <%= f.radio_button :end_user_id, "new" ,required:'required', id: "widthtext1" %>登録されている住所に送付する<br>
   <%= f.collection_select :delivery_charge, @destination, :id, :view_name_and_address %><br>
   </div>
 
   <div>
-  <%= f.radio_button :end_user_id, "exist", required:'required' %>別のお届け先を入力する<br>
+  <%= f.radio_button :end_user_id, "exist", required:'required', id: "widthtext2" %>別のお届け先を入力する<br>
 
   <%= f.label :last_name, "名前(姓)"%>
-  <%= f.text_field :last_name %><br>
+  <%= f.text_field :last_name, oninput: "AutoCheck(this.value ,'widthtext2')" %><br>
   <%= f.label :first_name, "名前(名)" %>
   <%= f.text_field :first_name %><br>
   <%= f.label :last_kana, "フリガナ(姓)" %>
@@ -43,4 +34,21 @@
 
 <% end %>
 
-<%= link_to "お届け先変更",%>
+<script>
+  function AutoCheck(str,checkname) {
+    // 入力文字数が1文字以上あるかどうかを確認
+    if( str.length > 0 ) {
+        // あればチェックを入れる
+        document.getElementById(checkname).checked = true;
+    }
+    else {
+        // なければチェックを外す
+        document.getElementById(checkname).checked = false;
+    }
+}
+
+$('select').change(function(){
+    document.getElementById('widthtext1').checked = true;
+})
+
+</script>

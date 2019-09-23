@@ -1,5 +1,4 @@
-
-</h1>検索結果</h>
+</h1>購入履歴</h>
 <div class="container-fluid">
     <div class="row">
 	<div class="col-md-1"></div>
@@ -20,7 +19,7 @@
 								</td>
 							</tr>
 							<tr>
-									<td><h5>アーティスト</h5><%= item.artist %></td>
+									<td><h4>Artist</h4><%= item.artist %></td>
 							</tr>
 							</table>
 						</td>
@@ -29,25 +28,21 @@
 								<tr>
 									<td>ジャンル　| <%= item.genre.genre_name %></td>
 								</tr>
-
 								<tr>
 									<td>レーベル　| <%= item.label.label_name %></td>
 								</tr>
 								<tr>
-									<td>数量　| <%= item.genre.genre_name %></td>
+									<td>レーベル　| <%= item.label.label_name %></td>
 								</tr>
 								<tr>
 								    <td>価格　　　| <%= item.price %>円</td>
-								</tr>
-								<tr>
-									<td>販売状況　| <%= item.selling_status %></td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 				 <% end %>
 			</table>
-			<%= paginate @search_items %>
+			<%= paginate @items %>
 		</div>
 	<div class="col-md-1"></div>
 	<div class="row">

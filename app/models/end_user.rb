@@ -8,6 +8,12 @@ class EndUser < ApplicationRecord
   has_many :cart_contents
   has_many :items, through: :cart_contents
   has_many :destinations
+  has_many :likes, dependent: :destroy
+  has_many :liked_items, through: :likes, source: :items
+  def already_liked?(item)
+    self.likes.exists?(item_id: item.id)
+  end
+
   acts_as_paranoid
 
 

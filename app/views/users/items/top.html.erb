@@ -8,7 +8,7 @@
 
 <div id="Carousel" class="glide">
   <ul class="gride__wrapper">
-    <% @items.each do |item| %>
+    <% @new_item_image.each do |item| %>
       <% item.items_images.each do |image| %>
         <li class="glide__slide">
           <%= link_to users_item_path(item) do %>
@@ -37,6 +37,8 @@
 
     </ul>
   </div>
+
+
 
 <script>
 
@@ -69,6 +71,9 @@ $(function(){
   });
 });
    
+
+
+
 
 
 </script>
