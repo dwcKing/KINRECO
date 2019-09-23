@@ -15,3 +15,18 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+ul {
+	padding-right: 40px;
+}
+
+.slick-next {
+	right: 5px !important;
+}
+
+.slick-prev {
+  left: 10px !important;
+}
+.slick-next:before, .slick-prev:before{
+	color: #000 !important;
+}

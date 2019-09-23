@@ -11,6 +11,7 @@ class Users::ItemsController < ApplicationController
   end
 
   def top
+  	@new_item_image = Item.order('id').limit(10)
     @items = Item.select(:title)
   end
 

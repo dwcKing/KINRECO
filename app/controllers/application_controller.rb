@@ -31,7 +31,6 @@ class ApplicationController < ActionController::Base
     else
      root_path
     end
-  end
 
   def set_search
     @search = Item.ransack(params[:q])
