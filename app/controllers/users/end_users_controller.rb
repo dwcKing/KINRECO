@@ -1,4 +1,5 @@
 class Users::EndUsersController < ApplicationController
+  before_action :autocomplete
  def top
   @user = EndUser.find(params[:id])
  end

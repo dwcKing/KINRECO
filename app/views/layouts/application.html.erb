@@ -30,7 +30,7 @@
           <li><a class="glyphicon glyphicon-link " href="/admins/items/new"> 商品登録</a></li>
 
           <li><a class="glyphicon glyphicon-edit sign_up" href="top"> レーベル　ジャンル登録</a></li>
-          <li><%= link_to destroy_admin_session_path,method: :delete do%>
+          <li><%= link_to destroy_admin_session_path,method: :delete do %>
              <span class="glyphicon glyphicon-log-out logout"></span>  ログアウト
             <%end%>
           </li>
@@ -117,14 +117,12 @@
 
 <script>
   var arrayJson = $('.arrayJson').val();
-    console.log(arrayJson);
   var array = JSON.parse(arrayJson);
-    console.log(array);
 
 
-  //$('#autocomplete_search').autocomplete({
-    //source: dataList,
-    //autoFocus: true,
-    //delay: 700
-//  });
+  $('#autocomplete_search').autocomplete({
+    source: array,
+    autoFocus: true,
+    delay: 200
+  });
 </script>
