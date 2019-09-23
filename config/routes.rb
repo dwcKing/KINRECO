@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get 'top' => 'admins#top'
-
-
   devise_for :admins, controllers: {
   unlocks: 'admins/unlocks',
   omniauth: 'admins/omniauth',
@@ -69,7 +66,5 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :create] do
     resources :likes, only: [:create, :destroy]
   end
-
-  root 'posts#index'
 
 end

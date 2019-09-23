@@ -11,7 +11,7 @@
     <% @new_item_image.each do |item| %>
       <% item.items_images.each do |image| %>
         <li class="glide__slide">
-          <%= link_to users_item_path(item) do %>
+          <%= link_to users_item_path(item), data: {"turbolinks" => false} do %>
             <%= attachment_image_tag image, :image, :fill, 300, 300 %>
           <% end %>
         </li>
