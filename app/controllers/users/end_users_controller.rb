@@ -1,4 +1,5 @@
 class Users::EndUsersController < ApplicationController
+  before_action :autocomplete
  def top
   @user = EndUser.find(params[:id])
   @likes=Item.find(Like.group(:item_id).order("count(item_id) desc").limit(5).pluck(:item_id))

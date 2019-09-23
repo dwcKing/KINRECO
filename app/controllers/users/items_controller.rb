@@ -1,5 +1,4 @@
 class Users::ItemsController < ApplicationController
-
   def index
     @items = Item.all
   end
@@ -15,7 +14,7 @@ class Users::ItemsController < ApplicationController
     @items = Item.select(:title)
   end
 
- private
+ privates
     def item_params
         params.require(:item).permit(:title, :artist, :price, :disc_type, :genre_id, :label_id, :comment,:genres,items_images_images: [],
         discs_attributes: [:id, :disc, :_destroy,
