@@ -1,0 +1,2 @@
+module Users::DistinationsHelper
+end
