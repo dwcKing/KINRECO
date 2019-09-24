@@ -1,0 +1,65 @@
+
+<h1>送り先登録</h1>
+
+<%= form_for @destination,url: users_destinations_path(@destination.id) do |f| %>
+
+    <%= f.label :last_name,"名前(姓)" %>
+    <%= f.text_field :last_name %>
+    <% if @destination.errors.any? %>
+      <% @destination.errors.full_messages_for(:last_name).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
+
+    <%= f.label :first_name,"名前(名)" %>
+    <%= f.text_field :first_name %>
+    <% if @destination.errors.any? %>
+      <% @destination.errors.full_messages_for(:first_name).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
+
+    <%= f.label :last_kana,"フリガナ(姓)" %>
+    <%= f.text_field :last_kana %>
+    <% if @destination.errors.any? %>
+      <% @destination.errors.full_messages_for(:last_kana).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
+
+    <%= f.label :first_kana,"フリガナ(名)" %>
+    <%= f.text_field :first_kana %>
+    <% if @destination.errors.any? %>
+      <% @destination.errors.full_messages_for(:first_kana).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
+
+    <%= f.label :phone_number,"電話番号" %>
+    <%= f.text_field :phone_number %>
+    <% if @destination.errors.any? %>
+      <% @destination.errors.full_messages_for(:phone_number).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
+
+    <%= f.label :post_code,"郵便番号" %>
+    <%= f.text_field :post_code %>
+    <% if @destination.errors.any? %>
+      <% @destination.errors.full_messages_for(:post_code).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
+
+    <%= f.label :address,"住所" %>
+    <%= f.text_field :address %>
+    <% if @destination.errors.any? %>
+      <% @destination.errors.full_messages_for(:address).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
+
+     <td><%= link_to "戻る ", admins_path  %></td>
+    <%= f.submit '送信' %>
+
+<% end %>
