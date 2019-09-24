@@ -30,3 +30,49 @@ ul {
 .slick-next:before, .slick-prev:before{
 	color: #000 !important;
 }
+
+header {
+	width: 100%;
+    height: 80px;
+	background-color: #DDDDDD ;
+    float: left;
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+    color: #222222;
+    font-size:16px;
+
+}
+
+headtext {
+    color: #222222;
+}
+
+.navbar-inverse {
+	float: left;
+}
+
+.containerhead {
+      width: 100%;
+      height: 100%;
+	  background-color: #DDDDDD ;
+	  float: left;
+}
+
+.navbar-left {
+		  float: left;
+}
+
+footer {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 50px 0;
+  background-color: #DDDDDD ;
+  float: left;
+}
+
+.site_logo {
+	max-width: 80px;
+	height : 80px;
+	backgraound-size: 80px 80px;
+	background-position: center;
+}
