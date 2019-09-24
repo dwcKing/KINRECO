@@ -28,6 +28,15 @@
 
         <li><a class="glyphicon glyphicon-link " href="/admins/items/new"> 商品登録</a></li>
 
+       <%= search_form_for @search, url: users_items_path do |f| %>
+         <%= f.label :title, "商品名" %>
+         <%= f.search_field :title_cont, id: "autocomplete_search" %>
+         <input name="arrayJson" type="hidden" value=<%= @autocomplete_item %> class='arrayJson' >
+         <%= f.submit "検索" %>
+       <% end %>
+
+        <li class="">
+          <%= link_to current_end_user.last_name + current_end_user.first_name + "さん", mypage_path(current_end_user.id) %>
         <li><a class="glyphicon glyphicon-edit sign_up" href="top"> レーベル　ジャンル登録</a></li>
         <li><%= link_to destroy_admin_session_path,method: :delete do %>
         <span class="glyphicon glyphicon-log-out logout"></span>  ログアウト
@@ -114,7 +123,6 @@
   var arrayJson = $('.arrayJson').val();
   var array = JSON.parse(arrayJson);
 
-console.log("a")
   $('#autocomplete_search').autocomplete({
     source: array,
     autoFocus: true,

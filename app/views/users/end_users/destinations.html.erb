@@ -1,16 +1,18 @@
 
+
 <%= form_for @order,url: confirmation_path, method: :get do |f| %>
 
   <div>
-  <%= f.radio_button :end_user_id, "new" ,required:'required', id: "widthtext1" %>登録されている住所に送付する<br>
-  <%= f.collection_select :delivery_charge, @destination, :id, :view_name_and_address %><br>
+  <%= radio_button :end_user_id, "exist" ,required:'required', id: "widthtext1" %>登録されている住所に送付する<br>
+  <%= f.collection_select :delivery_charge, @address, :id, :view_name_and_address, {class: "address"} %><br>
   </div>
 
   <div>
-  <%= f.radio_button :end_user_id, "exist", required:'required', id: "widthtext2" %>別のお届け先を入力する<br>
+  <%= f.radio_button :end_user_id, "new", required:'required', id: "widthtext2" %>別のお届け先を入力する<br>
 
   <%= f.label :last_name, "名前(姓)"%>
   <%= f.text_field :last_name, oninput: "AutoCheck(this.value ,'widthtext2')" %><br>
+
   <%= f.label :first_name, "名前(名)" %>
   <%= f.text_field :first_name %><br>
   <%= f.label :last_kana, "フリガナ(姓)" %>
@@ -27,7 +29,7 @@
 
   <div>
     <%= label :payment, "決済方法の選択" %>
-    <%= f.select :payment, Order.payments.keys %>
+    <%= f.select :payment, Order.payments.keys%>
     </div>
 
     <%= f.submit "次へ進む" %>
@@ -47,7 +49,7 @@
     }
 }
 
-$('select').change(function(){
+$('.address').change(function(){
     document.getElementById('widthtext1').checked = true;
 })
 

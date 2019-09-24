@@ -4,6 +4,15 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
 
          :recoverable, :rememberable, :validatable
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_kana, presence: true
+  validates :first_kana, presence: true
+  validates :phone_number, presence: true
+  validates :email, presence: true
+  validates :post_code, presence: true
+  validates :address, presence: true
+  validates :password, presence: true
 
   has_many :cart_contents
   has_many :items, through: :cart_contents

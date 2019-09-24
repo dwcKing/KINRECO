@@ -22,7 +22,6 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :admins
-
     resources :items do
         resources :arrivals
     end
@@ -31,7 +30,7 @@ Rails.application.routes.draw do
 
 
   namespace :users do
-    resources :end_users,:items,:distinations
+    resources :end_users,:items,:destinations
   end
 
   get 'admins' => 'admins/admins#top'
@@ -55,16 +54,18 @@ Rails.application.routes.draw do
   resources :users
 
   get '/arrivals_index' => 'admins/arrivals#arrivals_index'
-
   get 'orders/:id/confirmation' => 'orders#confirmation', as: 'confirmation'
-
   post 'orders/complete' => 'orders#complete'
 
 
-
   resources :end_users, only: [:index, :show]
+
   resources :items, only: [:index, :show, :create] do
     resources :likes, only: [:create, :destroy]
   end
 
+<<<<<<< HEAD
+=======
+  get '/review' => 'admins/items#review'
+>>>>>>> 79ddaed938c571516d736ccdda39bb77aa72f89e
 end
