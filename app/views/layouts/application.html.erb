@@ -15,36 +15,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
 </head>
-<body>
 
-  <!-- <header class="navbar navbar-fixed-top navbar-inverse"> -->
-    <div class="container">
-<%if admin_signed_in? %>
-      <nav class="nav navbar-nav navbar-left">
-        <span>KIN-RECO</span>
-      </nav>
-      <nav>
-        <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-          <li><a class="glyphicon glyphicon-home top" href="/admins"> TOPページへ戻る</a></li>
-
-          <li><a class="glyphicon glyphicon-link " href="/admins/items/new"> 商品登録</a></li>
-
-          <li><a class="glyphicon glyphicon-edit sign_up" href="top"> レーベル　ジャンル登録</a></li>
-          <li><%= link_to destroy_admin_session_path,method: :delete do %>
-             <span class="glyphicon glyphicon-log-out logout"></span>  ログアウト
-            <%end%>
-          </li>
-        </ul>
-      </nav>
-
-<% elsif end_user_signed_in? %>
-    <nav class="nav navbar-nav navbar-left">
-      <%= link_to "サイトロゴ", root_path %>
+<header class="navbar-inverse">
+  <%if admin_signed_in? %>
+  <div class="containerhead">
+    <nav class="navbar-left">
+      <span>KIN-RECO</span>
     </nav>
     <nav>
-    <div id= "slidemenu">
-     <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+      <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+        <li><a class="glyphicon glyphicon-home top" href="/admins"> <p>TOPページへ戻る</a></li>
 
+        <li><a class="glyphicon glyphicon-link " href="/admins/items/new"> 商品登録</a></li>
 
        <%= search_form_for @search, url: users_items_path do |f| %>
          <%= f.label :title, "商品名" %>
@@ -55,64 +37,86 @@
 
         <li class="">
           <%= link_to current_end_user.last_name + current_end_user.first_name + "さん", mypage_path(current_end_user.id) %>
-        </li>
-
-         <li class="">
-          <%= link_to "購入履歴"  %>
-        </li>
-
-        <li class="">
-          <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
-        </li>
-         <li class="">
-          <%= link_to "ショッピングカート"  %>
+        <li><a class="glyphicon glyphicon-edit sign_up" href="top"> レーベル　ジャンル登録</a></li>
+        <li><%= link_to destroy_admin_session_path,method: :delete do %>
+        <span class="glyphicon glyphicon-log-out logout"></span>  ログアウト
+          <%end%>
         </li>
       </ul>
-      </div>
+    </nav>
+  </div>
+  <% elsif end_user_signed_in? %>
+  <div class="containerhead">
+      <nav class="navbar-left">
+        <%= link_to root_path do %>
+        <%= image_tag "KINRECO2.png" %>
+        <% end %>
       </nav>
-<% else %>
-        <nav class="nav navbar-nav navbar-left">
+    <nav>
+      <div id= "slidemenu">
+       <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+         <%= search_form_for @search, url: users_items_path do |f| %>
+           <%= f.label :title, "商品名" %>
+           <%= f.text_field :title_cont,id: "autocomplete_search" %>
+           <input name="arrayJson" type="hidden" value=<%= @autocomplete_item %> class='arrayJson' >
+           <%= f.submit "検索" %>
+         <% end %>
+         <li class="headtext">
+          <%= link_to current_end_user.last_name + current_end_user.first_name + "さん", mypage_path(current_end_user.id) %>
+          </li>
+         <li class="headtext">
+          <%= link_to "購入履歴"  %>
+         </li>
+         <li class="headtext">
+          <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+         </li>
+         <li class="headtext">
+          <%= link_to "ショッピングカート"  %>
+         </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <% else %>
+        <nav class="navbar-left">
           <%= link_to "サイトロゴ", root_path %>
         </nav>
         <nav>
         <div id= "slidemenu">
         <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-        <li class="">
+        <li class="headtext">
            <%= link_to ' こんにちは、ゲストさん '%>
         </li>
 
-         <li class="">
+         <li class="headtext">
           <%= link_to '新規会員登録', new_end_user_registration_path %>
         </li>
 
-         <li class="">
+         <li class="headtext">
           <%= link_to "ログイン", new_end_user_session_path  %>
         </li>
 
-         <li class="">
-          <%= link_to "ショッピングカート"  %>
+         <li class="headtext">
+          <%= link_to "🛒ショッピングカート"  %>
         </li>
         </ul>
         </div>
         </nav>
-
-<% end %>
+    <% end %>
 </div>
 </header>
-
-
-    <%= yield %>
-
-    <footer>
+<body>
+  <%= yield %>
+</body>
+   <footer>
       <ul>
         <div>CDの良さを体験してもらう</div>
-        <div>ヤングジェネレーション(10代,20代)向けの</div>
+        <div>ヤングジェネレーション向けの</div>
         <div>KINRECOという</div>
-        <div>CDショプのECサイトです!!</div>
+        <div>CDショップです</div>
       </ul>
-
     </footer>
-  </body>
 </html>
 
 <script>
