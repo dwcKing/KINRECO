@@ -2,26 +2,40 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
 .main-visual {
 	width: 100%;
-	height: 690px;
-	background-image: url(guitar-832890_1280.jpg);
+	height: 680px;
+	background-image: url(headphone.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.main-visual-content{
+  width: 40%;
+  height: 300px;
+  text-align: center; /* 文字を真ん中に寄せる */
+  padding-top: 105px; /* 上側の内側の余白で垂直方向の位置を調整 */
+  float: right;
+  font-size: 100px;
+  text-shadow: 2px 4px 6px #808080;
 }
 
 
 h3 {
 	padding: 0.5em 1em;
-    margin: 2em 0;
-    color: #00BCD4;
-    background: #e4fcff;
-    border-top: solid 6px #1dc1d6;
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+    background-color: #DDDDDD ;
+    border-top: solid 6px #EEEEEE  ;
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+
 }
 
 .glide__slide img {
-  width: 100%;
-  height: 80%;
+  width: 94%;
+  height: 380px;
   padding: 50px 20px;
+  background-size: cover;
 }
 
 
