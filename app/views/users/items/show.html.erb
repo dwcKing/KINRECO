@@ -21,17 +21,25 @@
 						   アーティスト名<br>
 						    <h3><%= @item.artist %></h3>
 						 </tr>
+						 <tr>
+							<% if @total_stock <= 0 %>
+							   <h3>売り切れ中</h3>
+							<% end %>
+						</tr>
 						</table>
 					</td>
 					<td width="20%">
 						<table>
-							<td><h5>商品価格</h5><%= @item.price %>円</td>
+							<td><h5>商品価格</h5><%= (@item.price * 1.08).floor %>円(税込み)</td>
 							<%= form_for @item,url: add_item_path,method: :post do |f| %>
-							<%= f.hidden_field :item_id, :value => "#{@item.id}" %>
-							<%= f.hidden_field :quantity, :value => "1" %>
-							<tr>
-								<td><%= f.submit 'カートに入れる' %></td>
-								<% end %>
+							  <%= f.hidden_field :item_id, :value => "#{@item.id}" %>
+							  <%= f.hidden_field :quantity, :value => "1" %>
+							  <tr>
+							  <%#	if @total_stock <=0 %><!--販売ステータスが販売停止中-->
+							  <%# else %>
+								  <td><%= f.submit 'カートに入れる' %></td>
+							  <%# end %>
+							<% end %>
 						    </tr>
 						</table>
 					</td>
@@ -89,4 +97,3 @@
 		</div>
 	</div>
 </div>
-
