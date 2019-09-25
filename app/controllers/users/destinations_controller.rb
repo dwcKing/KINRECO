@@ -1,4 +1,6 @@
 class Users::DestinationsController < ApplicationController
+  before_action :authenticate_end_user!
+
   def new
     @destination = Destination.new
   end
@@ -14,10 +16,7 @@ class Users::DestinationsController < ApplicationController
   end
 
   def index
-     @destinations = Destination.where(end_user_id: current_end_user.id)
-  end
-
-  def show
+    @destinations = Destination.where(end_user_id: current_end_user.id)
   end
 
   def edit
