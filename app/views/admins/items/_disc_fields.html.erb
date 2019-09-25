@@ -2,7 +2,7 @@
 <div class="nested-fields well well-compact">
   <div class="form-group">
     <%= f.label :disc %>
-    <%= f.number_field :disc %><br>
+    <%= f.number_field :disc,min:1 %><br>
     <%= link_to_remove_association "ディスクの削除", f %>
   </div>
 

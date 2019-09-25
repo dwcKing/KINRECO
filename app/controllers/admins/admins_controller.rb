@@ -6,11 +6,11 @@ class Admins::AdminsController < ApplicationController
 	end
 
 	def index
-	  @endusers = EndUser.page(params[:page]).per(1)
+	  @endusers = EndUser.with_deleted.page(params[:page]).per(1)
   end
 
   def show
-	  @enduser = EndUser.find(params[:id])
+	  @enduser = EndUser.with_deleted.find(params[:id])
 
   end
 
@@ -18,7 +18,30 @@ class Admins::AdminsController < ApplicationController
 	  @enduser = EndUser.find(params[:id])
   end
 
+	def update
+
+	  enduser = EndUser.find(params[:id])
+  	enduser.update(update_params)
+	  redirect_to admins_admin_path(enduser.id)
+	end
+
 	def edit_password
-		@enduser = EndUser.find(params[:id])
+		@password = EndUser.find(params[:id])
+	end
+
+	def password_update
+		byebug
+		password = EndUser.find(params[:id])
+		password.update(password_params)
+		redirect_to admins_admin_path(enduser.id)
+	end
+
+	private
+	def update_params
+		params.require(:end_user).permit(:last_name,:first_name,:last_kana,:first_kana,:phone_number,:email,:post_code,:address)
+	end
+
+	def password_params
+		params.require(:end_user).permit(:password)
 	end
 end

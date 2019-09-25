@@ -66,8 +66,7 @@ gem 'paranoia'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'pry-rails'
-
-gem 'kaminari', '~> 0.17.0'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'ransack'
 
 

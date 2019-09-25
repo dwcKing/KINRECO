@@ -22,9 +22,9 @@
 						    <h3><%= @item.artist %></h3>
 						 </tr>
 						 <tr>
-							<% if @total_stock <= 0 %>
-							   <h3>売り切れ中</h3>
-							<% end %>
+						     販売状況<br>
+							   <h3><%= @item.selling_status %></h3>
+
 						</tr>
 						</table>
 					</td>
@@ -35,10 +35,10 @@
 							  <%= f.hidden_field :item_id, :value => "#{@item.id}" %>
 							  <%= f.hidden_field :quantity, :value => "1" %>
 							  <tr>
-							  <%#	if @total_stock <=0 %><!--販売ステータスが販売停止中-->
-							  <%# else %>
+							  <%	if @total_stock <= 0 || @item.selling_status == "販売停止中"%><!--または販売ステータスが販売停止中-->
+							  <% else %>
 								  <td><%= f.submit 'カートに入れる' %></td>
-							  <%# end %>
+							  <% end %>
 							<% end %>
 						    </tr>
 						</table>
@@ -82,9 +82,9 @@
 						    </tr>
 						      <tr>
                   <h3>いいね件数: <%= @item.likes.count %></h3>
-                  <% if current_end_user.already_liked?(@item) %>
+                  <% if end_user_signed_in? && current_end_user.already_liked?(@item) %>
                     <%= button_to 'いいねを取り消す', item_like_path(@item), method: :delete %>
-                  <% else %>
+                  <% elsif end_user_signed_in? %>
                     <%= button_to 'いいね', item_likes_path(@item) %>
                   <% end %>
                 </tr>

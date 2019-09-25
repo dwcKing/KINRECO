@@ -69,32 +69,18 @@ footer {
 }
 
 
-span.page{
-	width: 100%;
-	border: 1px solid black;
-	padding: 5px;
-	background-color: #EEEEEE;
-	margin: 2px;
-	justify-content: center;
-
+.pagination>li>a { 
+    /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
 }
 
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
 
-span.page a{
-}
-span.last{
-	float: left;
-}
-span.next {
-	margin: 5px;
-	position: relative;
-}
-span.first{
-
-}
-span.prev {
-	float: right;
-}
-.pagination {
-  justify-content: center;
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
 }

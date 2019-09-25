@@ -1,13 +1,13 @@
 class Users::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    #@items = Item.all.page(params[:page]).per(10)
   end
 
   def show
         @item = Item.find(params[:id])
         @genre = @item.genre
         @label = @item.label
-
+        @items = Item.all.page(params[:page]).per(10)
 
         total_quantity_i = 0
         @item.arrivals.each do |item_arrival|

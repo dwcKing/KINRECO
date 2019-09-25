@@ -13,8 +13,6 @@ class Item < ApplicationRecord
   validates :artist, presence: true
   validates :disc_type, presence: true
   validates :selling_status, presence: true
-  validates :label_id, presence: true
-  validates :genre_id, presence: true
   validates :comment, presence: true
 
   has_many :items_images, dependent: :destroy
