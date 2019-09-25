@@ -1,10 +1,9 @@
 
-
 <%= form_for @order,url: confirmation_path, method: :get do |f| %>
 
   <div>
   <%= radio_button :end_user_id, "exist" ,required:'required', id: "widthtext1" %>登録されている住所に送付する<br>
-  <%= f.collection_select :delivery_charge, @address, :id, :view_name_and_address, {class: "address"} %><br>
+  <%= f.collection_select :delivery_charge, @address, :id, :view_name_and_address, {prompt: ""},class: "address"%><br>
   </div>
 
   <div>
@@ -12,19 +11,60 @@
 
   <%= f.label :last_name, "名前(姓)"%>
   <%= f.text_field :last_name, oninput: "AutoCheck(this.value ,'widthtext2')" %><br>
+  <% if @destination.errors.any? %>
+    <% @destination.errors.full_messages_for(:last_name).each do |message| %>
+      ※<%= message %><br>
+    <% end %>
+  <% end %>
 
   <%= f.label :first_name, "名前(名)" %>
   <%= f.text_field :first_name %><br>
+  <%# byebug %>
+  <% if @destination.errors.any? %>
+    <% @destination.errors.full_messages_for(:first_name).each do |message| %>
+      ※<%= message %><br>
+    <% end %>
+  <% end %>
+
   <%= f.label :last_kana, "フリガナ(姓)" %>
   <%= f.text_field :last_kana %><br>
+  <% if @destination.errors.any? %>
+    <% @destination.errors.full_messages_for(:last_kana).each do |message| %>
+      ※<%= message %><br>
+    <% end %>
+  <% end %>
+
   <%= f.label :first_kana, "フリガナ(名)" %>
   <%= f.text_field :first_kana %><br>
+  <% if @destination.errors.any? %>
+    <% @destination.errors.full_messages_for(:first_kana).each do |message| %>
+      ※<%= message %><br>
+    <% end %>
+  <% end %>
+
   <%= f.label :phone_number, "電話番号" %>
   <%= f.text_field :phone_number %><br>
+  <% if @destination.errors.any? %>
+    <% @destination.errors.full_messages_for(:phone_number).each do |message| %>
+      ※<%= message %><br>
+    <% end %>
+  <% end %>
+
   <%= f.label :post_code, "郵便番号" %>〒
   <%= f.text_field :post_code %><br>
+  <% if @destination.errors.any? %>
+    <% @destination.errors.full_messages_for(:post_code).each do |message| %>
+      ※<%= message %><br>
+    <% end %>
+  <% end %>
+
   <%= f.label :address, "住所" %>
   <%= f.text_field :address %><br>
+  <% if @destination.errors.any? %>
+    <% @destination.errors.full_messages_for(:address).each do |message| %>
+      ※<%= message %><br>
+    <% end %>
+  <% end %>
   </div>
 
   <div>

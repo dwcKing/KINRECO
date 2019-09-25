@@ -5,6 +5,4 @@ class ItemsOrder < ApplicationRecord
   validates :tax_add_price, presence: true
   validates :price, presence: true
   validates :quantity, presence: true
-  validates :item_id, presence: true
-  validates :order_id, presence: true
 end

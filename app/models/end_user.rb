@@ -12,7 +12,6 @@ class EndUser < ApplicationRecord
   validates :email, presence: true
   validates :post_code, presence: true
   validates :address, presence: true
-  validates :password, presence: true
 
   has_many :cart_contents
   has_many :items, through: :cart_contents
