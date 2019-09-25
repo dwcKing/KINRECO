@@ -1,42 +1,34 @@
 class Admins::GenresController < ApplicationController
-
-  def new
-  	@genre=Genre.new
-  end
-
-
-
-
-    def create
+  before_action :authenticate_admin!
+  
+    def create #ジャンル登録処理
          genre = Genre.new(genre_params)
          genre.save
          redirect_to admins_genres_path
     end
 
-    def index
+    def index #一覧
     	@genres = Genre.page(params[:page]).per(10)
     end
 
-
-    def edit
-        @genre = Genre.find(params[:id])
+    def edit #編集
+      @genre = Genre.find(params[:id])
     end
 
-     def update
-        genre= Genre.find(params[:id])
-        genre.update(genre_params)
-        redirect_to admins_genres_path(genre.id)
+    def update #編集(処理)
+      genre= Genre.find(params[:id])
+      genre.update(genre_params)
+      redirect_to admins_genres_path(genre.id)
     end
 
-    def destroy
-    	  @genre= Genre.find(params[:id])
-        @genre.destroy
-        redirect_to admins_genres_path
+    def destroy #削除
+    	@genre= Genre.find(params[:id])
+      @genre.destroy
+      redirect_to admins_genres_path
     end
-
 
  private
     def genre_params
-        params.require(:genre).permit(:genre_name)
+      params.require(:genre).permit(:genre_name)
     end
 end
