@@ -1,30 +1,35 @@
 class OrdersController < ApplicationController
+    before_action :authenticate_end_user!
 
   def new
     @review = Review.new
   end
 
   def confirmation
-    if params[:order][:end_user_id] == "new" #カートの中に入れた商品が初めての場合
+    if params[:order][:end_user_id] == "exist" #既に登録してあるお届け先を選択した場合
       @destination = Destination.find(params[:order][:delivery_charge])
       @payment = params[:order][:payment]
-    elsif params[:order][:end_user_id] == "exist" #既に同じ商品が入っている場合
-      destination = Destination.new
-      destination.post_code = params[:order][:post_code]
-      destination.last_name = params[:order][:last_name]
-      destination.first_name = params[:order][:first_name]
-      destination.last_kana = params[:order][:last_kana]
-      destination.first_kana = params[:order][:first_kana]
-      destination.address = params[:order][:address]
-      destination.phone_number = params[:order][:phone_number]
-      destination.end_user_id = current_end_user.id
+    elsif params[:order][:end_user_id] == "new" #新しくお届け先を入力した場合
+      @destination = Destination.new
+      @destination.post_code = params[:order][:post_code]
+      @destination.last_name = params[:order][:last_name]
+      @destination.first_name = params[:order][:first_name]
+      @destination.last_kana = params[:order][:last_kana]
+      @destination.first_kana = params[:order][:first_kana]
+      @destination.address = params[:order][:address]
+      @destination.phone_number = params[:order][:phone_number]
+      @destination.end_user_id = current_end_user.id
       @payment = params[:order][:payment]
-      destination.save
-      @destination = destination
+      if @destination.save == false
+        @address = Destination.all
+        @order = Order.new(post_code: params[:order][:post_code], last_name: params[:order][:last_name], first_name: params[:order][:first_name], last_kana: params[:order][:last_kana], first_kana: params[:order][:first_kana], address: params[:order][:address], phone_number: params[:order][:phone_number], delivery_charge: params[:order][:delivery_charge], payment: params[:order][:payment], end_user_id: current_end_user.id)
+        render template: "users/end_users/destinations"
+      end
     end
-
+    # @destination = destination
     @cart_contents = CartContent.where(end_user_id: current_end_user.id)
   end
+
   def complete
     order = Order.new #購入確認画面の情報をOrderテーブルに保存
     order.post_code = params[:post_code]
@@ -50,6 +55,7 @@ class OrdersController < ApplicationController
       items_order.item_id = mycart_item.item_id
       items_order.order_id = order.id
       items_order.save
+
     end
 
     mycart_items.destroy_all #カート内商品の削除

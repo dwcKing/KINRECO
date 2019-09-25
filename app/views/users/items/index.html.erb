@@ -5,7 +5,7 @@
 	<div class="col-md-1"></div>
 		<div class="col-md-10">
 			<table class=table >
-			     <% @items.each do |item| %>
+			     <% @search_items.each do |item| %>
 					<tr>
 						<td>
 						    <% item.items_images.each do |image| %>
@@ -15,12 +15,12 @@
 						<td>
 							<table>
 							<tr>
-								<td>商品名<br>
-									<h3><%= link_to  item.title ,users_item_path(item.id) %></h3>
+								<td><h4>商品名</h4>
+									<h3><%= link_to  item.title ,users_item_path(item.id), data: {"turbolinks" => false}  %></h3>
 								</td>
 							</tr>
 							<tr>
-									<td><h5>アーティスト</h5><%= item.artist %></td>
+									<td><h4>アーティスト</h4><h3><%= item.artist %></h3></td>
 							</tr>
 							</table>
 						</td>
@@ -37,7 +37,7 @@
 									<td>数量　| <%= item.genre.genre_name %></td>
 								</tr>
 								<tr>
-								    <td>価格　　　| <%= item.price %>円</td>
+								    <td>価格　　　| <%= (item.price * 1.08).floor %>円(税込み)</td>
 								</tr>
 								<tr>
 									<td>販売状況　| <%= item.selling_status %></td>

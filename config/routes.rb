@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get 'top' => 'admins#top'
-
-
   devise_for :admins, controllers: {
   unlocks: 'admins/unlocks',
   omniauth: 'admins/omniauth',
@@ -25,7 +22,9 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :admins
+
     resources :orders 
+
     resources :items do
         resources :arrivals
     end
@@ -34,12 +33,13 @@ Rails.application.routes.draw do
 
 
   namespace :users do
-    resources :end_users,:items,:distinations
+    resources :end_users,:items,:destinations
   end
 
   get 'admins' => 'admins/admins#top'
   root to: 'users/items#top'
   get '/admin/:id/edit/password' => 'admins/admins#edit_password'
+  patch 'admin/password/:id' => 'admins/admins#password_update', as: 'password_update'
   post '/add_item' => 'cart_contents#add_item'
   post '/update_item' => 'cart_contents#update_item'
   delete '/delete_item' => 'cart_contents#delete_item'
@@ -51,25 +51,26 @@ Rails.application.routes.draw do
   get 'users/:id/quit' => 'users/end_users#quit'
   get 'mypage' => 'end_users#mypage'
   get 'quit' => 'end_users#quit'
-  # get 'end_users/:id/edit' => 'end_users#edit'
+
 
 
   resources :orders, only: [:new,:create,]
 
   get '/arrivals_index' => 'admins/arrivals#arrivals_index'
-
   get 'orders/:id/confirmation' => 'orders#confirmation', as: 'confirmation'
-
   post 'orders/complete' => 'orders#complete'
 
 
-
   resources :end_users, only: [:index, :show]
+
   resources :items, only: [:index, :show, :create] do
     resources :likes, only: [:create, :destroy]
   end
 
+
   get 'users' => 'users/end_users#purchase_history'
   resources :users
+
+  get '/review' => 'admins/items#review'
 
 end

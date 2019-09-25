@@ -7,13 +7,22 @@
     <tr>
     <td>名前</td>
     <td>住所</td>
+    <td>退会状況</td>
     </tr>
     <% @endusers.each do |enduser| %>
     <tr>
       <td>
-        <%= enduser.last_name %>
+        <%= enduser.last_name %><%= enduser.first_name %>
       </td>
       <td>
+        <%= enduser.address %>
+      </td>
+      <td>
+        <% if enduser.deleted_at.nil? %>
+          会員
+        <% else %>
+          退会済みユーザ
+        <% end %>
         <%= enduser.address %>
       </td>
       <td>

@@ -1,0 +1,18 @@
+<% @destinations.each do |destination| %>
+  名前(姓)<%= link_to destination.last_name,edit_users_destination_path(destination.id) %><br>
+
+  名前(名)<%= destination.first_name %><br>
+
+  フリガナ(姓)<%= destination.last_kana %><br>
+
+  フリガナ(名)<%= destination.first_kana %><br>
+
+  電話番号<%= destination.phone_number %><br>
+
+  郵便番号 〒<%= destination.post_code %><br>
+
+  住所<%= destination.address %><br>
+<% end %>
+
+<%= link_to "新規登録",new_users_destination_path %>
+<%= link_to "戻る", mypage_path(current_end_user) %>

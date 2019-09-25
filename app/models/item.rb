@@ -8,10 +8,12 @@ class Item < ApplicationRecord
   has_many :items_orders, dependent: :destroy
   has_many :orders, through: :items_orders, dependent: :destroy
 
-
-
-
-
+  validates :title, presence: true
+  validates :price, presence: true
+  validates :artist, presence: true
+  validates :disc_type, presence: true
+  validates :selling_status, presence: true
+  validates :comment, presence: true
 
   has_many :items_images, dependent: :destroy
   accepts_attachments_for :items_images, attachment: :image
@@ -23,5 +25,5 @@ class Item < ApplicationRecord
   enum selling_status:{販売中:1,販売停止中:0}
   has_many :likes, dependent: :destroy
   has_many :liked_end_users, through: :likes, source: :end_user
- 
+
 end

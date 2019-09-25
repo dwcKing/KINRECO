@@ -17,8 +17,7 @@
 商品名<%= order_item.item.title%>
 数量<%= order_item.quantity%>
 総計<%= order_item.price%><br>
- <%= link_to "編集", edit_admins_order_path(@order.id) %>
- <%= link_to "削除",admins_order_path(@order.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
 <%end%>
 
 

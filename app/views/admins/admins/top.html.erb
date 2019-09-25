@@ -1,10 +1,4 @@
 
-<!-- <if admin> -->
-<!-- <h1>おっす！オラ悟空</h1> -->
-<!-- <h1>オラ、つえーやつみるとワクワクすっぞ!!</h1> -->
-
-
-
 <table>
 	<p>管理者ページ</p>
   <thead>
@@ -22,9 +16,6 @@
         <td><%= link_to "受注一覧 ", admins_path  %></td>
 
         <td><%= link_to "入荷予定 ", arrivals_index_path %></td>
-
-
-
       </tr>
 
       </tr>
@@ -73,8 +64,6 @@
 
   <tbody>
       <tr>
-
-        <td><%= link_to "レーベル　登録 ", new_admins_label_path, data: {"turbolinks" => false} %></td>
         <td><%= link_to "レーベル　一覧 ", admins_labels_path  %></td>
       </tr>
 
@@ -91,7 +80,6 @@
 
   <tbody>
       <tr>
-        <td><%= link_to "ジャンル　登録 ", new_admins_genre_path, data: {"turbolinks" => false}  %></td>
         <td><%= link_to "ジャンル　一覧 ", admins_genres_path  %></td>
       </tr>
 
@@ -108,10 +96,12 @@
 
 
 <td><div class="container text-center">
-  <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post">レーベルを登録する</button>
-  <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
+  <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post1">レーベルを登録する</button>
+  <div class="modal fade" id="post1" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-content">
       <div class="modal-body">
+
+
         <%= form_for @label, url: admins_labels_path do |f| %>
       </div>
         <div class="modal-footer">
@@ -122,6 +112,8 @@
              <%= f.submit '送信' , class: "btn btn-primary"%>
            </div>
          <% end %>
+
+
         </div>
       </div>
     </div>
@@ -131,20 +123,24 @@
 
 
 <div class="container text-center">
-  <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post">ジャンルを登録する</button>
-  <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
+  <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post2">ジャンルを登録する</button>
+  <div class="modal fade" id="post2" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-content">
       <div class="modal-body">
+
+
         <%= form_for @genre, url: admins_genres_path do |f| %>
       </div>
         <div class="modal-footer">
-          <h4>レーベル</h4>
+          <h4>ジャンル</h4></h4>
            <%= f.text_field :genre_name,class: "form-control", placeholder:"ジャンル内容を入力" %>
            <div class="modal-footer">
              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
              <%= f.submit '送信' , class: "btn btn-primary"%>
            </div>
          <% end %>
+
+
         </div>
       </div>
     </div>
@@ -154,6 +150,3 @@
 
 </body>
 </html>
-
-
-

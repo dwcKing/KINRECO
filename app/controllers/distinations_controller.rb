@@ -1,2 +1,0 @@
-class DistinationsController < ApplicationController
-end
