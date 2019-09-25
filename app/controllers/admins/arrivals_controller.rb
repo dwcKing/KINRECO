@@ -28,8 +28,8 @@ class Admins::ArrivalsController < ApplicationController
 
     def update
         arrival = Arrival.find(params[:id])
-        arrival.update(item_params)
-        redirect_to admins_items_path(arrival.id)
+        arrival.update(arrival_params)
+        redirect_to arrivals_index_path
     end
 
 	def index
