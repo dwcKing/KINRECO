@@ -64,8 +64,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
-<<<<<<< HEAD
-=======
+
   get '/review' => 'admins/items#review'
->>>>>>> 79ddaed938c571516d736ccdda39bb77aa72f89e
 end
+

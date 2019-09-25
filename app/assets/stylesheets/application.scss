@@ -38,7 +38,7 @@ header {
    color: #222222;
    font-size:16px;
 }
-headtext {
+.headtext {
    color: #222222;
 }
 .navbar-inverse {
@@ -64,6 +64,37 @@ footer {
 .site_logo {
     max-width: 80px;
     height : 80px;
-    backgraound-size: 80px 80px;
+    background-size: 80px 80px;
     background-position: center;
+}
+
+
+span.page{
+	width: 100%;
+	border: 1px solid black;
+	padding: 5px;
+	background-color: #EEEEEE;
+	margin: 2px;
+	justify-content: center;
+
+}
+
+
+span.page a{
+}
+span.last{
+	float: left;
+}
+span.next {
+	margin: 5px;
+	position: relative;
+}
+span.first{
+
+}
+span.prev {
+	float: right;
+}
+.pagination {
+  justify-content: center;
 }
