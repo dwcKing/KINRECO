@@ -18,10 +18,10 @@
         <%= enduser.address %>
       </td>
       <td>
-        <% if enduser.deleted_at == false %>
-          退会済みユーザ
-        <% else %>
+        <% if enduser.deleted_at.nil? %>
           会員
+        <% else %>
+          退会済みユーザ
         <% end %>
         <%= enduser.address %>
       </td>

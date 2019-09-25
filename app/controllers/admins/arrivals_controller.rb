@@ -33,7 +33,7 @@ class Admins::ArrivalsController < ApplicationController
     end
 
 	def index
-    	@arrivals = Arrival.page(params[:page]).per(4)
+    	@arrivals = Arrival.page(params[:page]).per(10)
 	end
 
 
@@ -44,7 +44,7 @@ class Admins::ArrivalsController < ApplicationController
 	end
 
 	def arrivals_index
-    	@arrivals = Arrival.page(params[:page]).per(4)
+    	@arrivals = Arrival.page(params[:page]).per(10)
 	end
 
 	private

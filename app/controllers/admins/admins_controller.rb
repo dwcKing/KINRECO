@@ -6,7 +6,7 @@ class Admins::AdminsController < ApplicationController
 	end
 
 	def index
-	  @endusers = EndUser.with_deleted.page(params[:page]).per(1)
+	  @endusers = EndUser.with_deleted.page(params[:page]).per(10)
   end
 
   def show
