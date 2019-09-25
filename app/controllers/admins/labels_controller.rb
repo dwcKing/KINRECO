@@ -11,7 +11,7 @@ class Admins::LabelsController < ApplicationController
     end
 
     def index
-    	@labels = Label.page(params[:page]).per(2)
+    	@labels = Label.page(params[:page]).per(10)
     end
 
 
@@ -25,7 +25,7 @@ class Admins::LabelsController < ApplicationController
         redirect_to admins_labels_path(label.id)
     end
 
-  
+
     def destroy
     	  @label = Label.find(params[:id])
         @label.destroy
