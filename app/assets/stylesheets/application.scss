@@ -39,10 +39,11 @@ header {
     font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
     color: #222222;
     font-size:16px;
+    margin-bottom: 30px;
 
 }
 
-headtext {
+.headtext {
     color: #222222;
 }
 
@@ -75,4 +76,12 @@ footer {
 	height : 80px;
 	background-size: 80px 80px;
 	background-position: center;
+}
+
+.king_icon {
+  width:200px;
+  height:80px;
+  float: left;
+  background-size: cover;
+  background-position: center;
 }

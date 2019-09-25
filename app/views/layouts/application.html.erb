@@ -19,11 +19,13 @@
 <header class="navbar-inverse">
   <%if admin_signed_in? %>
   <div class="containerhead">
-    <nav class="navbar-left">
+    <div class="king_icon">
+     <nav class="navbar-left">
         <%= link_to root_path do %>
-        <%= image_tag "KINRECO2.png" %>
+          <%= image_tag "king.png", size: "190x90" %>
         <% end %>
-    </nav>
+     </nav>
+   </div>
     <nav>
       <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
         <li><a class="glyphicon glyphicon-home top" href="/admins"> <p>TOPページへ戻る</a></li>
@@ -45,11 +47,13 @@
   </div>
   <% elsif end_user_signed_in? %>
   <div class="containerhead">
-      <nav class="navbar-left">
-        <%= link_to root_path do %>
-        <%= image_tag "KINRECO2.png" %>
-        <% end %>
-      </nav>
+      <div class="king_icon">
+       <nav class="navbar-left">
+          <%= link_to root_path do %>
+          <%= image_tag "king.png", size: "190x90" %>
+          <% end %>
+       </nav>
+     </div>
     <nav>
       <div id= "slidemenu">
        <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
@@ -77,9 +81,13 @@
   </div>
 
   <% else %>
-        <nav class="navbar-left">
-          <%= link_to "サイトロゴ", root_path %>
-        </nav>
+    <div class="king_icon">
+     <nav class="navbar-left">
+        <%= link_to root_path do %>
+          <%= image_tag "king.png", size: "190x90" %>
+        <% end %>
+     </nav>
+   </div>
         <nav>
         <div id= "slidemenu">
         <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
