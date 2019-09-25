@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :admins
-
+    resources :orders 
     resources :items do
         resources :arrivals
     end
@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   # get 'end_users/:id/edit' => 'end_users#edit'
 
 
-  resources :orders, only: [:new,:create,:index]
+  resources :orders, only: [:new,:create,]
 
   get '/arrivals_index' => 'admins/arrivals#arrivals_index'
 

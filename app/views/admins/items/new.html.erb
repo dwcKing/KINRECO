@@ -30,9 +30,9 @@
     <h4>レーベル</h4>
     <%= f.collection_select :label_id, Label.all, :id, :label_name %>
      <h4>商品数量</h4>
-    
-    <%= fields_for :arrivals do |b| %>
-      <%= b.number_field :arrivals_quantity,min:1 %>
+    <%= f.fields_for :arrivals do |b| %>
+      <%= b.number_field :arrivals_quantity, min:1 %>
+      <%= b.hidden_field :arrivals_date, value: Date.today.to_time %>
     <%end%>
 
 

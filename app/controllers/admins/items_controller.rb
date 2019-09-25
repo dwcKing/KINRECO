@@ -2,7 +2,7 @@ class Admins::ItemsController < ApplicationController
  def new
         @item = Item.new
         @images = @item.items_images.build
-        @arrivals = Arrival.new
+        @arrivals = @item.arrivals.build
         @genres = Genre.all
         @labels = Label.all
 
@@ -39,8 +39,6 @@ class Admins::ItemsController < ApplicationController
 
     def destroy
         @item = Item.find(params[:id])
-       
-        
         @item.destroy
         redirect_to admins_items_path
     end
@@ -49,7 +47,7 @@ class Admins::ItemsController < ApplicationController
 
  private
     def item_params
-        params.require(:item).permit(:title, :artist, :price, :disc_type, :genre_id,:arrivals_quantity, :label_id, :comment,:genres,items_images_images: [],
+        params.require(:item).permit(:title, :artist, :price, :disc_type, :genre_id,:label_id, :selling_status, :comment,:genres,items_images_images: [],
         discs_attributes: [:id, :disc, :_destroy,
         songs_attributes: [:id, :song_title,:song_order, :_destroy]])
     end

@@ -1,7 +1,8 @@
 class Item < ApplicationRecord
   enum disc_type: %i[シングル アルバム]
 
-  has_many :arrivals , dependent: :destroy
+  has_many :arrivals , dependent: :destroy, inverse_of: :item
+  accepts_nested_attributes_for :arrivals, reject_if: :all_blank, allow_destroy: true
   has_many :cart_contents, dependent: :destroy
   has_many :end_users, through: :cart_contents, dependent: :destroy
   has_many :items_orders, dependent: :destroy
