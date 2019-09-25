@@ -36,6 +36,7 @@ class Users::EndUsersController < ApplicationController
   def destinations
     @order = Order.new
     @address = Destination.all
+    @destination = Destination.new
   end
 
   def destinations_index

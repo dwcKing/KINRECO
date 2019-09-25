@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get 'admins' => 'admins/admins#top'
   root to: 'users/items#top'
   get '/admin/:id/edit/password' => 'admins/admins#edit_password'
+  post 'admin/password/:id' => 'admins/admins#password_update', as: 'password_update'
   post '/add_item' => 'cart_contents#add_item'
   post '/update_item' => 'cart_contents#update_item'
   delete '/delete_item' => 'cart_contents#delete_item'
@@ -47,7 +48,7 @@ Rails.application.routes.draw do
   get 'users/:id/quit' => 'users/end_users#quit'
   get 'mypage' => 'end_users#mypage'
   get 'quit' => 'end_users#quit'
-  # get 'end_users/:id/edit' => 'end_users#edit'
+
 
 
   resources :orders, only: [:new,:create,:index]
