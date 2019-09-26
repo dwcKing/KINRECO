@@ -14,21 +14,22 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
       <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
   </head>
-
   <header class="navbar-inverse">
     <%if admin_signed_in? %>
       <div class="containerhead">
+       <div class="king_icon">
         <nav class="navbar-left">
-          <%= link_to root_path do %>
-            <%= image_tag "KINRECO2.png" %>
+          <%= link_to root_path, data: {"turbolinks" => false} do %>
+            <%= image_tag "king.png", size: "190x90" %>
           <% end %>
         </nav>
+       </div>
         <nav>
           <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
             <li><a class="glyphicon glyphicon-home top" href="/admins"> TOPページへ戻る</a></li>
             <li><a class="glyphicon glyphicon-link " href="/admins/items/new"> 商品登録</a></li>
             <li><%= link_to destroy_admin_session_path,method: :delete do %>
-              <span class="glyphicon glyphicon-log-out logout">ログアウト</span><%end%></li>
+              <span class="glyphicon glyphicon-log-out logout">ログアウト</span><% end %></li>
           </ul>
           <%= search_form_for @search, url: admins_items_path do |f| %>
             <%= f.search_field :title_cont, id: "autocomplete_search" %>
@@ -39,25 +40,26 @@
       </div>
     <% elsif end_user_signed_in? %>
       <div class="containerhead">
+       <div class="king_icon">
         <nav class="navbar-left">
           <%= link_to root_path do %>
-            <%= image_tag "KINRECO2.png" %>
+             <%= image_tag "king.png", size: "190x90" %>
           <% end %>
         </nav>
         <nav>
           <div id= "slidemenu">
             <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
               <li class="headtext">
-                <%= link_to current_end_user.last_name + current_end_user.first_name + "さん", mypage_path(current_end_user.id) %>
+                <%= link_to current_end_user.last_name + current_end_user.first_name + "さん", mypage_path(current_end_user.id) , :style=>"color:black;"%>
               </li>
               <li class="headtext">
-                <%= link_to "購入履歴"  %>
+                <%= link_to "購入履歴",:style=>"color:black;"%>
               </li>
               <li class="headtext">
-                <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+                <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete , :style=>"color:black;"%>
               </li>
               <li class="headtext">
-                <%= link_to "🛒ショッピングカート",cart_content_path(current_end_user.id)  %>
+                <%= link_to "🛒ショッピングカート",cart_content_path(current_end_user.id) , :style=>"color:black;" %>
               </li>
               <%= search_form_for @search, url: users_items_path do |f| %>
                 <%= f.text_field :title_cont,id: "autocomplete_search" %>
@@ -68,10 +70,17 @@
           </div>
         </nav>
       </div>
-    <% else %>
-      <nav class="navbar-left">
-        <%= link_to "サイトロゴ", root_path %>
-      </nav>
+    </nav>
+  </div>
+
+  <% else %>
+    <div class="king_icon">
+     <nav class="navbar-left">
+        <%= link_to root_path do %>
+          <%= image_tag "king.png", size: "190x90" %>
+        <% end %>
+     </nav>
+   </div>
       <nav>
         <div id= "slidemenu">
           <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
@@ -79,10 +88,10 @@
               こんにちは、ゲストさん
             </li>
             <li class="headtext">
-              <%= link_to '新規会員登録', new_end_user_registration_path %>
+              <%= link_to '新規会員登録', new_end_user_registration_path , :style=>"color:black;"%>
             </li>
             <li class="headtext">
-              <%= link_to "ログイン", new_end_user_session_path  %>
+              <%= link_to "ログイン", new_end_user_session_path  , :style=>"color:black;"%>
             </li>
           </ul>
           <%= search_form_for @search, url: users_items_path do |f| %>
@@ -97,8 +106,16 @@
   <body>
     <%= yield %>
   </body>
+
   <footer>
-    <div>
+       <div class = "return">
+    <% if end_user_signed_in? %>
+      <%= link_to "TOPへ戻る ", root_path , :style=>"color:black;", data: {"turbolinks" => false}%>
+    <% elsif admin_signed_in? %>
+      <%= link_to "TOPへ戻る ", admins_path , :style=>"color:black;", data: {"turbolinks" => false}%>
+    <% end %>
+    </div>
+    <div class="footer_text">
       CDの良さを体験してもらう<br>
       ヤングジェネレーション向けの<br>
       KINRECOという<br>
