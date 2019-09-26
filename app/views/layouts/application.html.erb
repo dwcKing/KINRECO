@@ -25,7 +25,7 @@
         </nav>
         <nav>
           <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-            <li><a class="glyphicon glyphicon-home top" href="/admins"> <p>TOPページへ戻る</a></li>
+            <li><%=link_to"TOPページへ戻る" ,admins_path, data: {"turbolinks" => false}%></li>
             <li><a class="glyphicon glyphicon-link " href="/admins/items/new"> 商品登録</a></li>
             <li><%= link_to destroy_admin_session_path,method: :delete do %>
               <span class="glyphicon glyphicon-log-out logout">ログアウト</span><%end%></li>
@@ -51,7 +51,7 @@
                 <%= link_to current_end_user.last_name + current_end_user.first_name + "さん", mypage_path(current_end_user.id) %>
               </li>
               <li class="headtext">
-                <%= link_to "購入履歴"  %>
+                <%= link_to  "購入履歴",users_path  %>
               </li>
               <li class="headtext">
                 <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
