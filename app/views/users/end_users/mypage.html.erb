@@ -1,46 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-<body>
-
-<table>
-	<h3>マイページ</h3>
-  <thead>
-    <tr>
-      <th>ご注文について(テキスト)</th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <th>注文購入履歴</th>
-        <td><%= link_to "購入履歴" users_path  %></td>
-      </tr>
-
-  </tbody>
-</table><br>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>登録情報について(テキスト)</th>
-			<td><%= link_to "送り先情報一覧", users_destinations_path %></td>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <th>登録情報について</th>
-        <td><%= link_to "ユーザー情報編集 " ,edit_end_user_registration_path %></td>
-        <td><%= link_to "退会ページ", "#{@user.id}/quit"%></td>
-      </tr>
-  </tbody>
-</table><br>
-
-</body>
-</html>
-=======
 <div class="main-contents">
   <div class="container-fluid">
     <div class="row">
@@ -61,8 +18,7 @@
               <th><h2>注文購入履歴</h2></th><th></th>
   					</tr>
   					<tr>
-              <td class="height"><%= link_to "商品注文状況 ","#",class: "btn btn-default fontsize" %></td>
-              <td><%= link_to "購入履歴","#",class: "btn btn-default fontsize"  %></td>
+              <td><%= link_to "購入履歴",users_path,class: "btn btn-default fontsize"  %></td>
             </tr>
   					<tr>
               <th><h2>送り先登録</h2></th><th></th>
@@ -83,4 +39,3 @@
     </div>
   </div>
 </div>
->>>>>>> master
