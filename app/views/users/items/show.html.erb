@@ -1,21 +1,14 @@
 
-
-<html>
-<head>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 <div class="container-fluid">
-    <div class="row">
-		 <div class="col-md-offset-1 col-md-10">
-		 		     <p class=item_show>商品詳細</p>
+  <div class="row">
+	  <div class="col-md-offset-1 col-md-10">
+		  <p class=item_show>商品詳細</p>
 			<table class=table >
-				<tr>
-					<td width="50%">
+			  <tr>
+				  <td width="50%">
 						<% @item.items_images.each do |image| %>
-						<%= attachment_image_tag image, :image, :fill, 350, 350 %>
-						<%end%>
+						  <%= attachment_image_tag image, :image, :fill, 350, 350 %>
+						<% end %>
 					</td>
 					<td width="30%">
 						<table>
@@ -108,5 +101,3 @@
 		</div>
 	</div>
 </div>
-</body>
-</html>
