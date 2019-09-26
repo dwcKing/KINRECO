@@ -16,7 +16,6 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
       <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
   </head>
-
 <header class="navbar-inverse">
   <%if admin_signed_in? %>
   <div class="containerhead">
@@ -40,8 +39,8 @@
        <% end %>
 
         <li><%= link_to destroy_admin_session_path,method: :delete do %>
-        <span class="glyphicon glyphicon-log-out logout"></span>  ログアウト
-          <%end%>
+          <span class="glyphicon glyphicon-log-out logout"></span>  ログアウト
+        <%end%>
         </li>
       </ul>
     </nav>
