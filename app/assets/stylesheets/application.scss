@@ -17,9 +17,7 @@
 @import "bootstrap";
 
 
-ul {
-    padding-right: 40px;
-}
+
 .slick-next {
     right: 5px !important;
 }
@@ -58,8 +56,12 @@ footer {
  height: 100%;
  text-align: center;
  padding: 50px 0;
- background-color: #DDDDDD ;
  float: left;
+}
+.footer_text{
+	background-color: #CCCCCC;
+	width: 100%;
+	height: 150px;
 }
 .site_logo {
     max-width: 80px;
@@ -68,19 +70,40 @@ footer {
     background-position: center;
 }
 
-
 .pagination>li>a { 
     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
+  color: black;   /*文字の色を変える*/
+  justify-content: center;
+  background-color: #EEEEEE;
 }
 
 /* 表示しているページ番号のデザイン */
-.pagination>.active>a {     
-  background: #93c9ff;     /*背景の色を変える*/
+.pagination>.active>a {
+  background: #D7EEFF;     /*背景の色を変える*/
   border-radius: 15px;     /*角を丸くする*/
+  color: black;
+}
+.paginate_block{
+	width: 100%;
+	text-align: center;
+	padding-top: 40px;
 }
 
 /*ホバー時のデザイン*/
-.pagination>li>a:hover {        
+.pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
+  justify-content: center;
+}
+
+.return {
+	background-color: gray;
+    font-size: 15px;
+    text-align: center;
+    height: 50px;
+    margin-top: 0;
+    padding-top: 15px;
+    width: 100%;
+}
+.return:hover {
+	opacity: 0.6;
 }
