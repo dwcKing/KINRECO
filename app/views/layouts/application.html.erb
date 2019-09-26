@@ -45,13 +45,12 @@
     </nav>
   </div>
   <% elsif end_user_signed_in? %>
-  <div class="containerhead">
+    <div class="containerhead">
       <div class="king_icon">
-       <nav class="navbar-left">
          <%= link_to root_path do %>
            <%= image_tag "king.png", size: "190x90" %>
          <% end %>
-       </nav>
+      </div>
        <nav>
           <div id= "slidemenu">
             <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
@@ -76,27 +75,24 @@
           </div>
         </nav>
       </div>
-    <% elsif end_user_signed_in? %>
+   <% else %>
       <div class="containerhead">
-        <nav class="navbar-left">
-          <%= link_to root_path do %>
-            <%= image_tag "KINRECO2.png" %>
-          <% end %>
-        </nav>
+          <div class="king_icon">
+             <%= link_to root_path do %>
+               <%= image_tag "king.png", size: "190x90" %>
+             <% end %>
+          </div>
         <nav>
           <div id= "slidemenu">
             <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
               <li class="headtext">
-                <%= link_to current_end_user.last_name + current_end_user.first_name + "さん", mypage_path(current_end_user.id) %>
+                こんにちは、ゲストさん
               </li>
               <li class="headtext">
-                <%= link_to  "購入履歴",users_path  %>
+                <%= link_to '新規会員登録', new_end_user_registration_path , :style=>"color:black;"%>
               </li>
               <li class="headtext">
-                <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
-              </li>
-              <li class="headtext">
-                <%= link_to "🛒ショッピングカート",cart_content_path(current_end_user.id)  %>
+                <%= link_to "ログイン", new_end_user_session_path  , :style=>"color:black;"%>
               </li>
               <%= search_form_for @search, url: users_items_path do |f| %>
                 <%= f.text_field :title_cont,id: "autocomplete_search" %>
@@ -107,32 +103,9 @@
           </div>
         </nav>
       </div>
-    <% else %>
-      <nav class="navbar-left">
-        <%= link_to "サイトロゴ", root_path %>
-      </nav>
-      <nav>
-        <div id= "slidemenu">
-          <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-            <li class="headtext">
-              こんにちは、ゲストさん
-            </li>
-            <li class="headtext">
-              <%= link_to '新規会員登録', new_end_user_registration_path , :style=>"color:black;"%>
-            </li>
-            <li class="headtext">
-              <%= link_to "ログイン", new_end_user_session_path  , :style=>"color:black;"%>
-            </li>
-          </ul>
-          <%= search_form_for @search, url: users_items_path do |f| %>
-            <%= f.text_field :title_cont,id: "autocomplete_search" %>
-            <input name="arrayJson" type="hidden" value=<%= @autocomplete_item %> class='arrayJson' >
-            <%= f.submit "検索" %>
-          <% end %>
-        </div>
-      </nav>
     <% end %>
   </header>
+
   <body>
     <%= yield %>
   </body>
