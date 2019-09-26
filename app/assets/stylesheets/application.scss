@@ -35,17 +35,10 @@ header {
    font-family: ‘Hiragino Kaku Gothic Pro’, ‘ヒラギノ角ゴ Pro W3’, メイリオ, Meiryo, ‘ＭＳ Ｐゴシック’, sans-serif;
    color: #222222;
    font-size:16px;
+   margin-bottom: 30px;
 }
 .headtext {
    color: #222222;
-	width: 100%;
-    height: 80px;
-	background-color: #DDDDDD ;
-    float: left;
-    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
-    color: #222222;
-    font-size:16px;
-    margin-bottom: 30px;
 }
 .navbar-inverse {
     float: left;
@@ -64,6 +57,7 @@ footer {
  height: 100%;
  text-align: center;
  padding: 50px 0;
+ background-color: #DDDDDD;
  float: left;
 }
 .footer_text{
@@ -78,7 +72,7 @@ footer {
     background-position: center;
 }
 
-.pagination>li>a { 
+.pagination>li>a {
     /*枠線をなくす*/
   color: black;   /*文字の色を変える*/
   justify-content: center;
@@ -108,16 +102,17 @@ footer {
     font-size: 15px;
     text-align: center;
     height: 50px;
-    margin-top: 0;
+    margin-top: -50px;
     padding-top: 15px;
     width: 100%;
 }
 .return:hover {
 	opacity: 0.6;
-	max-width: 80px;
+/*	max-width: 80px;
 	height : 80px;
 	background-size: 80px 80px;
 	background-position: center;
+	*/
 }
 
 .king_icon {
