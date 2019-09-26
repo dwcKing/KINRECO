@@ -69,13 +69,16 @@
                 <tr>
               <td>レーベル　　　　　　|  <%=@label.label_name %></td>
                 </tr>
+                 <td>販売状況　| <%= @item.selling_status %></td>
                  <tr>
                     <% quantity = 0 %>
                     <% @item.arrivals.each do |arrival| %>
                       <% quantity += arrival.arrivals_quantity %>
                     <% end %>
                     <td>数量　　　| <%= quantity %></td>
+
                 </tr>
+
                   <h3>いいね件数: <%= @item.likes.count %></h3>
             </table>
           </td>

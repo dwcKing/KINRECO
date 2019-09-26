@@ -35,7 +35,8 @@
 
     <h4>商品画像</h4>
       <%= f.attachment_field :items_images_images, multiple: true %>
-
+    <h4>販売ステータス</h4>
+      <%= f.select :selling_status,Item.selling_statuses.keys %>
 
   <%= f.submit '保存' %>
 <% end %>
