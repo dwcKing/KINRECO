@@ -1,0 +1,58 @@
+
+<div class="container-fluid">
+    <div class="row">
+	<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<table class=table >
+				
+				<h1>購入履歴</h1>
+				<% @order.each do |order| %>
+				<% order.items_orders.each do |item_order| %>
+				  <tr>
+						<td>
+						    <% item_order.item.items_images.each do |image| %>
+							 <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+							<% end %>
+						</td>
+						<td>
+				  <table>
+			    <tr>
+				   <td>タイトル<br>
+				   	<h3><%= item_order.item.title %></h3>
+				   </td>
+				</tr>
+				<tr>
+				　　<td><h5>アーティスト</h5>:<%= item_order.item.artist %></td>
+				　　
+			　　</tr>
+			　　  </table>
+               </td> 
+				<td>
+		   			 <table class="table table-striped">
+						<tr>
+							<td>ジャンル　| <%= item_order.item.genre.genre_name %></td>
+						</tr>
+						<tr>
+							<td>レーベル　| <%= item_order.item.label.label_name %></td>
+						</tr>
+						<tr>
+							<td>数量　| <%= item_order.item.genre.genre_name %></td>
+						</tr>
+						<tr>
+						    <td>価格　　　| <%= item_order.item.price %>円</td>
+						</tr>
+						
+					</table>
+				</td>
+			　　</tr>
+
+                   <% end %>
+				　　<% end %>
+				
+			</table>
+			<%= paginate @search_items %>
+		</div>
+	<div class="col-md-1"></div>
+	<div class="row">
+	</div>
+</div>

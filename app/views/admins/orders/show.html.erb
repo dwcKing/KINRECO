@@ -1,0 +1,28 @@
+<h1>受注詳細画面</h1>
+  注文状況ステータス<%= @order.order_status %><br>
+  料金<%= @order.delivery_charge %><br>
+  名前<%= @order.last_name %>
+  <%= @order.first_name %><br>
+  フリガナ <%= @order.last_kana %>
+  <%= @order.first_kana %><br>
+  郵便番号<%= @order.post_code %><br>
+  住所<%= @order.address %><br>
+  電話番号<%= @order.phone_number %><br>
+  決済方法<%= @order.payment %><br><br><br>
+
+ <%@order.items_orders.each do |order_item|%>
+注文内容<br>
+
+
+商品名<%= order_item.item.title%>
+数量<%= order_item.quantity%>
+総計<%= order_item.price%><br>
+
+<%end%>
+
+
+
+
+
+
+

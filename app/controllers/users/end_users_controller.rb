@@ -36,8 +36,17 @@ class Users::EndUsersController < ApplicationController
      @address = Destination.all
      @destination = Destination.new
   end
+  
+  def purchase_history
+
+     @order = Item.where(end_user_id: current_end_user.id)
+     @order = current_end_user.orders
+  end
+  
+  
 
 private
+
   def enduser_params
      params.require(:end_user).permit(:last_name,:first_name,:last_kana,:first_kana,:phone_number,:email,:post_code,:address,:password)
   end
