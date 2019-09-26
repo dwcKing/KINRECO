@@ -1,152 +1,68 @@
+<div class="container main-content">
+	<h1>管理者ページ</h1>
+	<div class="row">
+    <div class="col-md-8">
+      <table class="table table-striped">
+	      <thead>
+          <tr>
+            <th><h2>商品について</h2></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= link_to "商品登録 ", new_admins_item_path, class: "btn btn-default fontsize" %></td>
+						<td><%= link_to "入荷予定 ", arrivals_index_path, class: "btn btn-default fontsize" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th><h2>一覧ページ</h2></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td1"><%= link_to "商品情報", admins_items_path, class: "btn btn-default fontsize" %></td>
+            <td><%= link_to "顧客情報", admins_admins_path, class: "btn btn-default fontsize" %></td>
+						<td><%= link_to "受注情報 ", admins_path, class: "btn btn-default fontsize" %></td>
+            <td><%= link_to "レーベル", admins_labels_path, class: "btn btn-default fontsize" %></td>
+            <td><%= link_to "ジャンル", admins_genres_path, class: "btn btn-default fontsize" %></td>
+          </tr>
+        </tbody>
+      </table>
 
-<table>
-	<p>管理者ページ</p>
-  <thead>
-    <tr>
-      <th>商品について</th>
-    </tr>
-  </thead>
+      <div class="container text-center">
+        <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post1">レーベルを登録する</button>
+        <div class="modal fade" id="post1" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-content">
+            <%= form_for @label, url: admins_labels_path do |f| %>
+            <h4>レーベル</h4>
+            <%= f.text_field :label_name,class: "form-control", placeholder:"レーベル内容を入力" %>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+              <%= f.submit '送信' , class: "btn btn-primary"%>
+            </div>
+						<% end %>
+				  </div>
+				</div>
+			</div>
 
-  <tbody>
-      <tr>
-        <td><%= link_to "商品の登録 ", new_admins_item_path  %></td>
-     </tr>
-      <tr>
-
-        <td><%= link_to "受注一覧 ", admins_path  %></td>
-
-        <td><%= link_to "入荷予定 ", arrivals_index_path %></td>
-      </tr>
-
-      </tr>
-  </tbody>
-</table><br>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>商品一覧</th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td><%= link_to "商品一覧 ", admins_items_path  %></td>
-      </tr>
-
-      </tr>
-  </tbody>
-</table><br>
-
-<table>
-  <thead>
-    <tr>
-      <th>ユーザー 一覧</th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td><%= link_to "ユーザー 一覧 ", admins_admins_path  %></td>
-      </tr>
-
-      </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr>
-      <th>レーベル一覧</th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td><%= link_to "レーベル　一覧 ", admins_labels_path  %></td>
-      </tr>
-
-      </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr>
-      <th>ジャンル一覧</th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td><%= link_to "ジャンル　一覧 ", admins_genres_path  %></td>
-      </tr>
-
-      </tr>
-  </tbody>
-</table>
-
-<% @likes.each.with_index(1) do |like,i| %>
-<h5>第 <%= i %> 位</h5>
-<%= like.title %>
-
-<% end %>
-
-
-
-<td><div class="container text-center">
-  <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post1">レーベルを登録する</button>
-  <div class="modal fade" id="post1" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-      <div class="modal-body">
-
-
-        <%= form_for @label, url: admins_labels_path do |f| %>
-      </div>
-        <div class="modal-footer">
-          <h4>レーベル</h4>
-           <%= f.text_field :label_name,class: "form-control", placeholder:"レーベル内容を入力" %>
-           <div class="modal-footer">
-             <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-             <%= f.submit '送信' , class: "btn btn-primary"%>
-           </div>
-         <% end %>
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div></td>
-
-
-
-<div class="container text-center">
-  <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post2">ジャンルを登録する</button>
-  <div class="modal fade" id="post2" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-      <div class="modal-body">
-
-
-        <%= form_for @genre, url: admins_genres_path do |f| %>
-      </div>
-        <div class="modal-footer">
-          <h4>ジャンル</h4></h4>
-           <%= f.text_field :genre_name,class: "form-control", placeholder:"ジャンル内容を入力" %>
-           <div class="modal-footer">
-             <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-             <%= f.submit '送信' , class: "btn btn-primary"%>
-           </div>
-         <% end %>
-
-
+      <div class="container text-center">
+        <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post2">ジャンルを登録する</button>
+        <div class="modal fade" id="post2" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-content">
+            <%= form_for @genre, url: admins_genres_path do |f| %>
+              <h4>ジャンル</h4>
+              <%= f.text_field :genre_name,class: "form-control", placeholder:"ジャンル内容を入力" %>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                <%= f.submit '送信' , class: "btn btn-primary"%>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-</body>
-</html>
