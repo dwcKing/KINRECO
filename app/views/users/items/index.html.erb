@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 </h1>検索結果</h>
 <div class="container-fluid">
@@ -47,7 +50,9 @@
 					</tr>
 				 <% end %>
 			</table>
-			<%= paginate @search_items %>
+			<div class="paginate_block">
+			 <%= paginate @search_items  %>
+			</div>
 		</div>
 	<div class="col-md-1"></div>
 	<div class="row">
