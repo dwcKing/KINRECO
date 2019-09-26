@@ -66,7 +66,6 @@ Rails.application.routes.draw do
 
   get '/review' => 'admins/items#review'
 
-
   get 'users' => 'users/end_users#purchase_history'
 
   resources :users
