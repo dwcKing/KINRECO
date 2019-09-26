@@ -22,6 +22,9 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :admins
+
+    resources :orders 
+
     resources :items do
         resources :arrivals
     end
@@ -36,7 +39,7 @@ Rails.application.routes.draw do
   get 'admins' => 'admins/admins#top'
   root to: 'users/items#top'
   get '/admin/:id/edit/password' => 'admins/admins#edit_password'
-  post 'admin/password/:id' => 'admins/admins#password_update', as: 'password_update'
+  patch 'admin/password/:id' => 'admins/admins#password_update', as: 'password_update'
   post '/add_item' => 'cart_contents#add_item'
   post '/update_item' => 'cart_contents#update_item'
   delete '/delete_item' => 'cart_contents#delete_item'
@@ -51,8 +54,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :orders, only: [:new,:create,:index]
-  resources :users
+  resources :orders, only: [:new,:create,]
 
   get '/arrivals_index' => 'admins/arrivals#arrivals_index'
   get 'orders/:id/confirmation' => 'orders#confirmation', as: 'confirmation'
@@ -65,5 +67,10 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
+
+  get 'users' => 'users/end_users#purchase_history'
+  resources :users
+
   get '/review' => 'admins/items#review'
+
 end

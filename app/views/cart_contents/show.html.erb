@@ -1,4 +1,6 @@
-
+<% if @cart_items.empty? %>
+  お客様のカートに商品は入っていません
+<% else %>
   <% total_price = 0 %>
   <%= form_for @item,url: update_item_path(@item),method: :post do |f| %>
     <% cart_item_ids = [] %> <!--カート内商品それぞれのid格納用-->
@@ -40,7 +42,7 @@
       <%= f.submit "レジに進む" %><br>
       小計<%= f.text_field :title, id: "item_price_total", name: "小計", value:  "#{(total_price * 1.08).floor}円",  readonly: 'readonly' %>
   <% end %>
-
+<% end %>
 
 <script>
   $('select').change(function(){

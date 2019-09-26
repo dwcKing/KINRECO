@@ -2,15 +2,15 @@
 <%= form_for @order,url: confirmation_path, method: :get do |f| %>
 
   <div>
-  <%= radio_button :end_user_id, "exist" ,required:'required', id: "widthtext1" %>登録されている住所に送付する<br>
-  <%= f.collection_select :delivery_charge, @address, :id, :view_name_and_address, {prompt: ""},class: "address"%><br>
+  <%= f.radio_button :end_user_id, "exist", required: 'required' %>登録されている住所に送付する<br>
+  <%= f.collection_select :delivery_charge, @address, :id, :view_name_and_address, {prompt: "送り先を選択してください"},class: "address"%><br>
   </div>
 
   <div>
-  <%= f.radio_button :end_user_id, "new", required:'required', id: "widthtext2" %>別のお届け先を入力する<br>
+  <%= f.radio_button :end_user_id, "new", required:'required', id: "widthtext" %>別のお届け先を入力する<br>
 
   <%= f.label :last_name, "名前(姓)"%>
-  <%= f.text_field :last_name, oninput: "AutoCheck(this.value ,'widthtext2')" %><br>
+  <%= f.text_field :last_name, oninput: "AutoCheck(this.value ,'widthtext')" %><br>
   <% if @destination.errors.any? %>
     <% @destination.errors.full_messages_for(:last_name).each do |message| %>
       ※<%= message %><br>
@@ -82,15 +82,18 @@
     if( str.length > 0 ) {
         // あればチェックを入れる
         document.getElementById(checkname).checked = true;
+        document.getElementById('order_end_user_id_exist').checked = false;
     }
     else {
         // なければチェックを外す
         document.getElementById(checkname).checked = false;
+
     }
 }
 
-$('.address').change(function(){
-    document.getElementById('widthtext1').checked = true;
+$('select').change(function(){
+    document.getElementById('order_end_user_id_exist').checked = true;
+    document.getElementById('widthtext').checked = false;
 })
 
 </script>

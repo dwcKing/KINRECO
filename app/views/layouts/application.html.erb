@@ -1,20 +1,19 @@
 
 <!DOCTYPE html>
 <html land="ja">
-<head>
-    <title>KINRECO</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.css"/>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-</head>
+  <head>
+      <title>KINRECO</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+      <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.css"/>
+      <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+  </head>
 
 <header class="navbar-inverse">
   <%if admin_signed_in? %>
@@ -73,7 +72,7 @@
           <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
          </li>
          <li class="headtext">
-          <%= link_to "ショッピングカート",cart_content_path(current_end_user.id)  %>
+          <%= link_to "🛒ショッピングカート",cart_content_path(current_end_user.id)  %>
          </li>
         </ul>
       </div>
@@ -88,41 +87,39 @@
         <% end %>
      </nav>
    </div>
-        <nav>
+      <nav>
         <div id= "slidemenu">
-        <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-        <li class="headtext">
-           <%= link_to ' こんにちは、ゲストさん '%>
-        </li>
-
-         <li class="headtext">
-          <%= link_to '新規会員登録', new_end_user_registration_path %>
-        </li>
-
-         <li class="headtext">
-          <%= link_to "ログイン", new_end_user_session_path  %>
-        </li>
-
-         <li class="headtext">
-          <%= link_to "🛒ショッピングカート"  %>
-        </li>
-        </ul>
+          <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+            <li class="headtext">
+              こんにちは、ゲストさん
+            </li>
+            <li class="headtext">
+              <%= link_to '新規会員登録', new_end_user_registration_path %>
+            </li>
+            <li class="headtext">
+              <%= link_to "ログイン", new_end_user_session_path  %>
+            </li>
+          </ul>
+          <%= search_form_for @search, url: users_items_path do |f| %>
+            <%= f.text_field :title_cont,id: "autocomplete_search" %>
+            <input name="arrayJson" type="hidden" value=<%= @autocomplete_item %> class='arrayJson' >
+            <%= f.submit "検索" %>
+          <% end %>
         </div>
-        </nav>
+      </nav>
     <% end %>
-</div>
-</header>
-<body>
-  <%= yield %>
-</body>
-   <footer>
-      <ul>
-        <div>CDの良さを体験してもらう</div>
-        <div>ヤングジェネレーション向けの</div>
-        <div>KINRECOという</div>
-        <div>CDショップです</div>
-      </ul>
-    </footer>
+  </header>
+  <body>
+    <%= yield %>
+  </body>
+  <footer>
+    <div>
+      CDの良さを体験してもらう<br>
+      ヤングジェネレーション向けの<br>
+      KINRECOという<br>
+      CDショップです<br>
+    </div>
+  </footer>
 </html>
 
 <script>
