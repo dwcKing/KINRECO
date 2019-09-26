@@ -1,11 +1,15 @@
 
 
+<html>
+<head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 <div class="container-fluid">
-	<h1>商品詳細</h1>
-
     <div class="row">
-	                           <div class="col-md-1"></div>
-		<div class="col-md-11">
+		 <div class="col-md-offset-1 col-md-10">
+		 		     <p class=item_show>商品詳細</p>
 			<table class=table >
 				<tr>
 					<td width="50%">
@@ -30,17 +34,19 @@
 					</td>
 					<td width="20%">
 						<table>
-							<td><h5>商品価格</h5><%= (@item.price * 1.08).floor %>円(税込み)</td>
+							<div class=cart_container>
+							<td><p class=item_price>商品価格<br><%= (@item.price * 1.08).floor %>円(税込み)</p></td>
 							<%= form_for @item,url: add_item_path,method: :post do |f| %>
 							  <%= f.hidden_field :item_id, :value => "#{@item.id}" %>
 							  <%= f.hidden_field :quantity, :value => "1" %>
 							  <tr>
 							  <%	if @total_stock <= 0 || @item.selling_status == "販売停止中" || current_end_user == nil %><!--または販売ステータスが販売停止中-->
 							  <% else %>
-								  <td><%= f.submit 'カートに入れる' %></td>
+								  <td><%= f.submit '🛒カートに入れる', class: "cart" %></td>
 							  <% end %>
 							<% end %>
 						    </tr>
+						    </div>
 						</table>
 					</td>
 				</tr>
@@ -81,18 +87,26 @@
 							<td>レーベル　　　　　　|  <%=@label.label_name %></td>
 						    </tr>
 						      <tr>
-                  <h3>いいね件数: <%= @item.likes.count %></h3>
+                  <h3>
                   <% if end_user_signed_in? && current_end_user.already_liked?(@item) %>
-                    <%= button_to 'いいねを取り消す', item_like_path(@item), method: :delete %>
+						<%= link_to item_like_path(@item), method: :delete do %>
+						<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+						<%= @item.likes.count %> いいね
+						<% end %>
                   <% elsif end_user_signed_in? %>
-                    <%= button_to 'いいね', item_likes_path(@item) %>
+						<%= link_to item_likes_path(@item), method: :post do %>
+						<i class="fa fa-heart-o" aria-hidden="true"></i>
+						<%= @item.likes.count %> いいね
+						<% end %>
                   <% end %>
+              </h3>
                 </tr>
 						</table>
 					</td>
 				</tr>
 			</table>
-					<p><%= link_to "戻る ", users_items_path  %></p>
 		</div>
 	</div>
 </div>
+</body>
+</html>
