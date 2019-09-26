@@ -12,7 +12,7 @@ class Admins::ItemsController < ApplicationController
     def create #登録処理
          @item = Item.new(item_params)
          if @item.save
-           redirect_to admins_items_path(item.id)
+           redirect_to admins_items_path(@item.id)
          else
             render "admins/items/new"
          end

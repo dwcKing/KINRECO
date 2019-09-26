@@ -1,3 +1,32 @@
 // Place all the styles related to the end_users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+table .mypage_table{
+  border: none;
+  background-color: white;
+}
+
+.main-contents{
+  height: 1500px;
+}
+
+h2{
+  font-size: 5px;
+}
+
+.fontsize{
+  font-size: 25px;
+}
+
+.height{
+  height: 100px;
+}
+
+.btn {
+    padding: 30px 50px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: black;
+}
