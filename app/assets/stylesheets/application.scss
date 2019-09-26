@@ -16,7 +16,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
+ul {
+	padding-right: 40px;
+}
 
 .slick-next {
     right: 5px !important;
@@ -78,7 +86,7 @@ footer {
     background-position: center;
 }
 
-.pagination>li>a { 
+.pagination>li>a {
     /*枠線をなくす*/
   color: black;   /*文字の色を変える*/
   justify-content: center;
