@@ -68,10 +68,10 @@ Rails.application.routes.draw do
   end
 
 
+  get '/review' => 'admins/items#review'
+ 
 
   get 'users' => 'users/end_users#purchase_history'
   resources :users
-
- get '/review' => 'admins/items#review'
 end
- 
+
