@@ -33,7 +33,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   def set_search
     @search = Item.ransack(params[:q])
     @search_items = @search.result.page(params[:page]).per(5)
@@ -43,4 +42,5 @@ class ApplicationController < ActionController::Base
   def autocomplete
     @autocomplete_item = Item.pluck(:title).to_json.html_safe
   end
+
 end
