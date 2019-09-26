@@ -16,22 +16,36 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 ul {
 	padding-right: 40px;
 }
 
 .slick-next {
-	right: 5px !important;
+    right: 5px !important;
 }
-
 .slick-prev {
-  left: 10px !important;
+ left: 10px !important;
 }
 .slick-next:before, .slick-prev:before{
-	color: #000 !important;
+    color: #000 !important;
 }
-
 header {
+    width: 100%;
+   height: 80px;
+    background-color: #DDDDDD ;
+   float: left;
+   font-family: ‘Hiragino Kaku Gothic Pro’, ‘ヒラギノ角ゴ Pro W3’, メイリオ, Meiryo, ‘ＭＳ Ｐゴシック’, sans-serif;
+   color: #222222;
+   font-size:16px;
+}
+.headtext {
+   color: #222222;
 	width: 100%;
     height: 80px;
 	background-color: #DDDDDD ;
@@ -40,38 +54,74 @@ header {
     color: #222222;
     font-size:16px;
     margin-bottom: 30px;
-
 }
-
-.headtext {
-    color: #222222;
-}
-
 .navbar-inverse {
-	float: left;
+    float: left;
 }
-
 .containerhead {
-      width: 100%;
-      height: 100%;
-	  background-color: #DDDDDD ;
-	  float: left;
+     width: 100%;
+     height: 100%;
+      background-color: #DDDDDD ;
+      float: left;
 }
-
 .navbar-left {
-		  float: left;
+          float: left;
 }
-
 footer {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  padding: 50px 0;
-  background-color: #DDDDDD ;
-  float: left;
+ width: 100%;
+ height: 100%;
+ text-align: center;
+ padding: 50px 0;
+ float: left;
+}
+.footer_text{
+	background-color: #CCCCCC;
+	width: 100%;
+	height: 150px;
+}
+.site_logo {
+    max-width: 80px;
+    height : 80px;
+    background-size: 80px 80px;
+    background-position: center;
 }
 
-.site_logo {
+.pagination>li>a {
+    /*枠線をなくす*/
+  color: black;   /*文字の色を変える*/
+  justify-content: center;
+  background-color: #EEEEEE;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #D7EEFF;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+  color: black;
+}
+.paginate_block{
+	width: 100%;
+	text-align: center;
+	padding-top: 40px;
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+  justify-content: center;
+}
+
+.return {
+	background-color: gray;
+    font-size: 15px;
+    text-align: center;
+    height: 50px;
+    margin-top: 0;
+    padding-top: 15px;
+    width: 100%;
+}
+.return:hover {
+	opacity: 0.6;
 	max-width: 80px;
 	height : 80px;
 	background-size: 80px 80px;
