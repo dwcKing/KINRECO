@@ -1,54 +1,87 @@
 <% require 'date' %>
 
 <h1>商品登録</h1>
-<!-- form_for部分 -->
 <%= form_for @item,url: admins_items_path do |f| %>
 
-    <h4>商品名</h4>
-    <%= f.text_field :title %>
+    <%= f.label :title, "商品名" %>
+    <%= f.text_field :title %><br>
+    <% if @item.errors.any? %>
+      <% @item.errors.full_messages_for(:title).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
 
-    <h4>アーティスト名</h4>
-    <%= f.text_field :artist %>
+    <%= f.label :artist, "アーティスト名" %>
+    <%= f.text_field :artist %><br>
+    <% if @item.errors.any? %>
+      <% @item.errors.full_messages_for(:artist).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
 
-    <h4>シングル・アルバム</h4>
-    <%= f.select :disc_type, Item.disc_types.keys %>
+    <%= f.label :disc_type, "シングル・アルバム" %>
+    <%= f.select :disc_type, Item.disc_types.keys %><br>
 
-    <h4>ジャンル</h4>
+    <%= f.label :genre_id, "ジャンル" %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %><br>
 
-    <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
-
-
-
-    <h4>曲名</h4>
+    <%= f.label :discs, "曲名" %>
     <div id="discs">
-        <%= f.fields_for :discs do |disc| %>
-            <%= render 'disc_fields', f: disc %>
-        <% end %>
-        <div id="links">
-             <%= link_to_add_association 'ディスクを追加',f, :discs %>
-        </div>
-    </div>
+      <%= f.fields_for :discs do |disc| %>
+        <%= render 'disc_fields', f: disc %>
+      <% end %>
+      <div id="links">
+        <%= link_to_add_association 'ディスクを追加',f, :discs %>
+      </div>
+    </div><br>
+    <% if @item.errors.any? %>
+      <% @item.errors.full_messages_for(:discs).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
 
-    <h4>レーベル</h4>
-    <%= f.collection_select :label_id, Label.all, :id, :label_name %>
-     <h4>商品数量</h4>
+    <%= f.label :label_id, "レーベル" %>
+    <%= f.collection_select :label_id, Label.all, :id, :label_name %><br>
+    <% if @item.errors.any? %>
+      <% @item.errors.full_messages_for(:label_id).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
+
+    <%= f.label :arrivals, "商品数量" %>
     <%= f.fields_for :arrivals do |b| %>
       <%= b.number_field :arrivals_quantity, min:1 %>
       <%= b.hidden_field :arrivals_date, value: Date.today.to_time %>
-    <%end%>
+    <% end %><br>
+    <% if @item.errors.any? %>
+      <% @item.errors.full_messages_for(:arrivals).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
 
+    <%= f.label :comment, "商品説明" %>
+    <%= f.text_area :comment %><br>
+    <% if @item.errors.any? %>
+      <% @item.errors.full_messages_for(:comment).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
 
-    <h4>商品説明</h4>
-    <%= f.text_area :comment %>
+    <%= f.label :price, "商品価格" %>
+    <%= f.text_field :price %><br>
+    <% if @item.errors.any? %>
+      <% @item.errors.full_messages_for(:price).each do |message| %>
+        ※<%= message %><br>
+      <% end %>
+    <% end %><br>
 
-    <h4>商品価格</h4>
-    <%= f.text_field :price %>
-    <h4>商品画像</h4>
-    <%= f.attachment_field :items_images_images, multiple: true %>
-    <h4>販売ステータス</h4>
-    <%= f.select :selling_status,Item.selling_statuses.keys %>
+    <%= f.label :items_images_images, "商品画像" %>
+    <%= f.attachment_field :items_images_images, multiple: true %><br>
 
-     <td><%= link_to "戻る ", admins_path  %></td>
+    <%= f.label :selling_status, "販売ステータス" %>
+    <%= f.select :selling_status,Item.selling_statuses.keys %><br>
+
+    <%= link_to "戻る ", admins_path  %>
     <%= f.submit '送信' %>
 
 <% end %>
