@@ -10,11 +10,11 @@ class Admins::ItemsController < ApplicationController
     end
 
     def create #登録処理
-         item = Item.new(item_params)
-         if item.save
-           redirect_to admins_items_path(item.id)
+         @item = Item.new(item_params)
+         if @item.save
+           redirect_to admins_items_path(@item.id)
          else
-            #バリデーションを書く
+            render "admins/items/new"
          end
     end
 

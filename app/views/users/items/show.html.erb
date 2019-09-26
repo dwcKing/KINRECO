@@ -1,3 +1,5 @@
+
+
 <html>
 <head>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -38,7 +40,7 @@
 							  <%= f.hidden_field :item_id, :value => "#{@item.id}" %>
 							  <%= f.hidden_field :quantity, :value => "1" %>
 							  <tr>
-							  <%	if @total_stock <= 0 || @item.selling_status == "販売停止中" || current_end_user == nil %><!--または販売ステータスが販売停止中-->
+							  <%	if @total_stock <= 0 || @item.selling_status == "販売停止中"%><!--または販売ステータスが販売停止中-->
 							  <% else %>
 								  <td><%= f.submit '🛒カートに入れる', class: "cart" %></td>
 							  <% end %>
@@ -51,7 +53,7 @@
 			</table>
 			<table class=table >
 				<tr>
-					<h4>商品情報</h4>
+					<h2>商品情報</h2>
 					<td>
 					</td>
 					<td width="70%">

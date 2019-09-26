@@ -30,13 +30,6 @@
                 <tr>
                   <td>レーベル　| <%= item.label.label_name %></td>
                 </tr>
-                 <tr>
-                    <% quantity = 0 %>
-                    <% item.arrivals.each do |arrival| %>
-                      <% quantity += arrival.arrivals_quantity %>
-                    <% end %>
-                    <td>数量　　　| <%= quantity %></td>
-                </tr>
                 <tr>
                     <td>価格　　　| <%= item.price %>円</td>
                 </tr>
