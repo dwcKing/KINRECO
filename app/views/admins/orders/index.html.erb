@@ -2,9 +2,11 @@
 
 <% @orders.each do |order|%>
 配送ステータス<%= @order_status %>
-注文日時<%=order.created_at%>
+注文日時<%= order.created_at%>
 名前<%= link_to order.last_name ,admins_order_path(order.id)%>
 名前<%= order.first_name%>
 総計<%= order.delivery_charge %>
 <% end %>
+
+
 

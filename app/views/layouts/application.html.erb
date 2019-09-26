@@ -117,10 +117,14 @@
   <footer>
        <div class = "return">
     <% if end_user_signed_in? %>
-      <%= link_to "TOPへ戻る ", root_path , :style=>"color:black;", data: {"turbolinks" => false}%>
-    <% elsif admin_signed_in? %>
-      <%= link_to "TOPへ戻る ", admins_path , :style=>"color:black;", data: {"turbolinks" => false}%>
+    <%= link_to root_path , :style=>"color:black;", data: {"turbolinks" => false} do %>
+    <div><p>TOPへ戻る</p></div>
     <% end %>
+    <% elsif admin_signed_in? %>
+      <%= link_to  admins_path , :style=>"color:black;", data: {"turbolinks" => false} do %>
+      <div><p>TOPへ戻る</p></div>
+    <% end %>
+     <% end %>
     </div>
     <div class="footer_text">
       CDの良さを体験してもらう<br>

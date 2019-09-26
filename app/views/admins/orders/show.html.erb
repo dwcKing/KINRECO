@@ -9,20 +9,15 @@
   住所<%= @order.address %><br>
   電話番号<%= @order.phone_number %><br>
   決済方法<%= @order.payment %><br><br><br>
-
- <%@order.items_orders.each do |order_item|%>
 注文内容<br>
+ <% total_price = 0 %>
+ <%@order.items_orders.each do |order_item|%>
+   商品名<%= order_item.item.title%>
+   数量<%= order_item.quantity%>
+   商品価格<%= order_item.price%>円
+   小計<%= order_item.price * order_item.quantity %>円
+ <%= order_item.item.disc_type%><br>
+ <% total_price += order_item.price * order_item.quantity %>
+ <%end%>
 
-
-商品名<%= order_item.item.title%>
-数量<%= order_item.quantity%>
-総計<%= order_item.price%><br>
-
-<%end%>
-
-
-
-
-
-
-
+ <%= total_price %>
