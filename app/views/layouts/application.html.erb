@@ -67,7 +67,7 @@
                 <%= link_to "🛒ショッピングカート",cart_content_path(current_end_user.id) , :style=>"color:black;" %>
               </li>
               <%= search_form_for @search, url: users_items_path do |f| %>
-                <%= f.text_field :title_cont,id: "autocomplete_search" %>
+                <%= f.search_field :title_cont,id: "autocomplete_search" %>
                 <input name="arrayJson" type="hidden" value=<%= @autocomplete_item %> class='arrayJson' >
                 <%= f.submit "検索" %>
               <% end %>
@@ -95,7 +95,7 @@
                 <%= link_to "ログイン", new_end_user_session_path  , :style=>"color:black;"%>
               </li>
               <%= search_form_for @search, url: users_items_path do |f| %>
-                <%= f.text_field :title_cont,id: "autocomplete_search" %>
+                <%= f.search_field :title_cont,id: "autocomplete_search" %>
                 <input name="arrayJson" type="hidden" value=<%= @autocomplete_item %> class='arrayJson' >
                 <%= f.submit "検索" %>
               <% end %>

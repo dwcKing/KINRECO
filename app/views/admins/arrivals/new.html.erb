@@ -1,11 +1,16 @@
-<%= form_for @arrivals, url: admins_item_arrivals_path do |f| %>
-  <div class="field">
-    <p>入荷日程</p>
-    <%= f.date_select :arrivals_date %>
-  </div>
-    <p>入荷枚数<br></p>
-     <%= f.number_field :arrivals_quantity  %>
-     <%= f.submit'登録' ,class: 'btn btn-primary btn-block' %>
-     <%= f.hidden_field :item_id, :value => @item.id %>
-<% end %>
-<%= link_to '戻る', :back %>
+<div class="container-fluid">
+    <div class="row">
+     <div class="col-md-offset-3 col-md-6"><%= form_for @arrivals, url: admins_item_arrivals_path do |f| %>
+		  <div class="arrival-new">
+			    <p>入荷日程</p>
+			    <%= f.date_select :arrivals_date %>
+			    <p>入荷枚数<br></p>
+			     <%= f.number_field :arrivals_quantity  %>
+			     <%= f.submit'登録' ,class: 'btn btn-primary btn-block' %>
+			     <%= f.hidden_field :item_id, :value => @item.id %>
+				<% end %>
+			<%= link_to '戻る', :back %>
+		</div>
+	 </div>
+    </div>
+</div>
