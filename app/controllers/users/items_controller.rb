@@ -9,7 +9,7 @@ class Users::ItemsController < ApplicationController
         @genre = @item.genre
         @label = @item.label
         @items = Item.all.page(params[:page]).per(10)
-
+        @likes=Item.find(Like.group(:item_id).order("count(item_id) desc").limit(5).pluck(:item_id))
         total_quantity_i = 0
         @item.arrivals.each do |item_arrival|
           total_quantity_i  += item_arrival.arrivals_quantity #商品の入荷数総数
