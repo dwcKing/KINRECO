@@ -33,7 +33,7 @@ ul {
  left: 10px !important;
 }
 .slick-next:before, .slick-prev:before{
-    color: #000 !important;
+   color: #000 !important;
 }
 header {
     width: 100%;
@@ -43,19 +43,25 @@ header {
    font-family: ‘Hiragino Kaku Gothic Pro’, ‘ヒラギノ角ゴ Pro W3’, メイリオ, Meiryo, ‘ＭＳ Ｐゴシック’, sans-serif;
    color: #222222;
    font-size:16px;
+	 margin-bottom:30px;
 }
 .headtext {
-   color: #222222;
-
+    color: #222222;
+	  background-color: #DDDDDD ;
+    float: left;
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+    color: #222222;
+    font-size:16px;
+    margin-bottom: 30px;
 }
 .navbar-inverse {
     float: left;
 }
 .containerhead {
-     width: 100%;
-     height: 100%;
-      background-color: #DDDDDD ;
-      float: left;
+    width: 100%;
+    height: 100%;
+    background-color: #DDDDDD ;
+    float: left;
 }
 .navbar-left {
           float: left;
@@ -115,7 +121,6 @@ footer {
 }
 .return:hover {
 	opacity: 0.6;
-
 }
 
 .king_icon {

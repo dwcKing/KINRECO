@@ -1,105 +1,100 @@
 
-
-<html>
-<head>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 <div class="container-fluid">
-    <div class="row">
-		 <div class="col-md-offset-1 col-md-10">
-		 		     <p class=item_show>商品詳細</p>
+  <div class="row">
+	  <div class="col-md-offset-1 col-md-10">
+		  <p class=item_show>商品詳細</p>
 			<table class=table >
-				<tr>
-					<td width="50%">
-						<% @item.items_images.each do |image| %>
-						<%= attachment_image_tag image, :image, :fill, 350, 350 %>
-						<%end%>
+			  <tr>
+				  <td width="50%">
+					  <% @item.items_images.each do |image| %>
+						  <%= attachment_image_tag image, :image, :fill, 350, 350 %>
+						<% end %>
 					</td>
 					<td width="30%">
 						<table>
-						   <tr>商品名<br>
-							<h3><%= @item.title %></h3></tr>
-						 <tr>
-						   アーティスト名<br>
+						  <tr>商品名<br>
+							  <h3><%= @item.title %></h3>
+              </tr>
+						  <tr>
+						    アーティスト名<br>
 						    <h3><%= @item.artist %></h3>
-						 </tr>
-						 <tr>
-						     販売状況<br>
-							   <h3><%= @item.selling_status %></h3>
-						 </tr>
+						  </tr>
+						  <tr>
+                販売状況<br>
+                <%	if @total_stock <= 0 %><!--または販売ステータスが販売停止中-->
+                  <h3 class="soldout">売り切れ中</h3>
+                <% else %>
+                  <h3><%= @item.selling_status %></h3>
+                <% end %>
+						  </tr>
 						</table>
 					</td>
 					<td width="20%">
-						<table>
-							<div class=cart_container>
-							<td><p class=item_price>商品価格<br><%= (@item.price * 1.08).floor %>円(税込み)</p></td>
-							<%= form_for @item,url: add_item_path,method: :post do |f| %>
-							  <%= f.hidden_field :item_id, :value => "#{@item.id}" %>
-							  <%= f.hidden_field :quantity, :value => "1" %>
-							  <tr>
-							  <%	if @total_stock <= 0 || @item.selling_status == "販売停止中"%><!--または販売ステータスが販売停止中-->
-							  <% else %>
-								  <td><%= f.submit '🛒カートに入れる', class: "cart" %></td>
+					  <table>
+						  <div class=cart_container>
+							  <td><p class=item_price>商品価格<br>¥<%= (@item.price * 1.08).floor.to_s(:delimited) %>(税込み)</p></td>
+							  <%= form_for @item,url: add_item_path,method: :post do |f| %>
+							    <%= f.hidden_field :item_id, :value => "#{@item.id}" %>
+							    <%= f.hidden_field :quantity, :value => "1" %>
+							    <tr>
+							      <% if @total_stock <= 0 || @item.selling_status == "販売停止中" %><!--在庫0,販売停止中-->
+							      <% elsif end_user_signed_in? %>
+								      <td><%= f.submit '🛒カートに入れる', class: "cart" %></td>
+							      <% end %>
+                  </tr>
 							  <% end %>
-							<% end %>
-						    </tr>
-						    </div>
+						  </div>
 						</table>
 					</td>
 				</tr>
 			</table>
 			<table class=table >
-				<tr>
-					<h2>商品情報</h2>
+			  <tr>
+				  <h2>商品情報</h2>
 					<td>
 					</td>
 					<td width="70%">
-						<table>
-							<tr>
-								<% @item.discs.each do |disc| %>
-								<h4>Disc<%= disc.disc %></h4>
-								<% disc.songs.each do |song| %>
-								<%= song.song_order %>.
-								<%= song.song_title %>
-								<% end %>
+					  <table>
+						  <tr>
+							  <% @item.discs.each do |disc| %>
+								  <h4>Disc<%= disc.disc %></h4>
+								  <% disc.songs.each do |song| %>
+								    <%= song.song_order %>.
+								    <%= song.song_title %>
+								  <% end %>
 								<% end %>
 							</tr>
 							<tr>
-								<h4>商品説明</h4>
+							  <h4>商品説明</h4>
 								<tr>
-								<td><%=@item.comment %></td>
-							    </tr>
+								  <td><%=@item.comment %></td>
+							  </tr>
 							</tr>
 						</table>
 					</td>
 					<td width="30%">
-						<table class="table table-striped">
-							<tr>
-							<td>ジャンル　　　　　　|  <%=@genre.genre_name %></td>
-						    </tr>
-						    <tr>
-							<td>シングル・アルバム　|  <%=@item.disc_type %></td>
-						    </tr>
-						    <tr>
-							<td>レーベル　　　　　　|  <%=@label.label_name %></td>
-						    </tr>
-						      <tr>
-                  <h3>
-                  <% if end_user_signed_in? && current_end_user.already_liked?(@item) %>
-						<%= link_to item_like_path(@item), method: :delete do %>
-						<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-						<%= @item.likes.count %> いいね
-						<% end %>
-                  <% elsif end_user_signed_in? %>
-						<%= link_to item_likes_path(@item), method: :post do %>
-						<i class="fa fa-heart-o" aria-hidden="true"></i>
-						<%= @item.likes.count %> いいね
-						<% end %>
-                  <% end %>
-              </h3>
-                </tr>
+					  <table class="table table-striped">
+						  <tr>
+							  <td>ジャンル　　　　　　|  <%=@genre.genre_name %></td>
+						  </tr>
+						  <tr>
+							  <td>シングル・アルバム　|  <%=@item.disc_type %></td>
+						  </tr>
+						  <tr>
+							  <td>レーベル　　　　　　|  <%=@label.label_name %></td>
+						  </tr>
+						  <tr>
+                <h3><% if end_user_signed_in? && current_end_user.already_liked?(@item) %>
+						          <%= link_to item_like_path(@item), method: :delete do %>
+						            <i class="fa fa-heart" aria-hidden="true" style="color: red;">いいね</i>
+						          <% end %>
+                    <% elsif end_user_signed_in? %>
+						          <%= link_to item_likes_path(@item), method: :post do %>
+						            <i class="fa fa-heart" aria-hidden="true">いいね</i>
+						          <% end %>
+                    <% end %>
+                </h3>
+              </tr>
 						</table>
 					</td>
 				</tr>
@@ -107,5 +102,3 @@
 		</div>
 	</div>
 </div>
-</body>
-</html>
