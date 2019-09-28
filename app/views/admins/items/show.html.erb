@@ -1,44 +1,42 @@
 <div class="container-fluid">
   <h1>商品詳細</h1>
-
     <div class="row">
-                             <div class="col-md-1"></div>
-    <div class="col-md-11">
-      <table class=table >
-        <tr>
-          <td width="50%">
-            <% @item.items_images.each do |image| %>
-            <%= attachment_image_tag image, :image, :fill, 350, 350 %>
-            <%end%>
-          </td>
-          <td width="30%">
-            <table>
-               <tr>商品名<br>
-              <h3><%= @item.title %></h3></tr>
-             <tr>
-               アーティスト名<br>
-                <h3><%= @item.artist %></h3>
-             </tr>
-            </table>
-          </td>
-          <td width="20%">
-            <table>
-              <td><h5>商品価格</h5><%= @item.price %>円</td>
-              <%= form_for @item,url: add_item_path,method: :post do |f| %>
-              <%= f.hidden_field :item_id, :value => "#{@item.id}" %>
-              <%= f.hidden_field :quantity, :value => "1" %>
-              <tr>
-                <% end %>
-                </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-      <table class=table >
-        <tr>
-          <h4>商品情報</h4>
-          <td>
-          </td>
+      <div class="col-md-1"></div>
+        <div class="col-md-11">
+          <table class=table >
+            <tr>
+              <td width="50%">
+                <% @item.items_images.each do |image| %>
+                  <%= attachment_image_tag image, :image, :fill, 350, 350 %>
+                <%end%>
+              </td>
+              <td width="30%">
+                <table>
+                  <tr>商品名<br>
+                    <h3><%= @item.title %></h3></tr>
+                  <tr>
+                    アーティスト名<br>
+                    <h3><%= @item.artist %></h3>
+                  </tr>
+                </table>
+              </td>
+              <td width="20%">
+                <table>
+                  <td><h5>商品価格</h5>¥<%= @item.price.to_s(:delimited) %></td>
+                  <%= form_for @item,url: add_item_path,method: :post do |f| %>
+                    <%= f.hidden_field :item_id, :value => "#{@item.id}" %>
+                    <%= f.hidden_field :quantity, :value => "1" %>
+                  <% end %>
+                  <tr></tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <table class=table >
+            <tr>
+              <h4>商品情報</h4>
+              <td>
+              </td>
           <td width="70%">
             <table>
               <tr>
@@ -76,9 +74,7 @@
                       <% quantity += arrival.arrivals_quantity %>
                     <% end %>
                     <td>数量　　　| <%= quantity %></td>
-
                 </tr>
-
                   <h3>いいね件数: <%= @item.likes.count %></h3>
             </table>
           </td>

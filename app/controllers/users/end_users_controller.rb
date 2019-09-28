@@ -36,14 +36,12 @@ class Users::EndUsersController < ApplicationController
      @address = Destination.all
      @destination = Destination.new
   end
-  
-  def purchase_history
 
-     @order = Item.where(end_user_id: current_end_user.id)
-     @order = current_end_user.orders
+  def purchase_history
+     @orders = current_end_user.orders.page(params[:page]).per(1)
   end
-  
-  
+
+
 
 private
 

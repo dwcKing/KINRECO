@@ -25,6 +25,12 @@ class Admins::AdminsController < ApplicationController
 	  redirect_to admins_admin_path(enduser.id)
 	end
 
+	def destroy
+	  enduser = EndUser.find(params[:id])
+	  enduser.destroy
+	  redirect_to admins_admins_path
+	end
+
 	def edit_password #ユーザ編集 パスワード変更
 		@password = EndUser.find(params[:id])
 	end

@@ -19,7 +19,6 @@ class Admins::ItemsController < ApplicationController
     end
 
     def index #一覧
-        @items = Item.page(params[:page]).per(10)
     end
 
     def show #詳細
