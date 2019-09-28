@@ -1,4 +1,8 @@
-<p>ご注文内容の確認</p>
+<div class="container-fluid">
+    <div class="row">
+     <div class="col-md-offset-3 col-md-6">
+      <div class="cofirmation">
+      	<p>ご注文内容の確認</p>
 
 <% @cart_contents.each do |cart_content| %>
 <% cart_content.item.items_images.each do |image| %>
@@ -6,7 +10,7 @@
 <% end %><br>
 <%= cart_content.item.title %>
 数量<%= cart_content.quantity%>枚
-<%= (cart_content.item.price * 1.08).floor %>円<br>
+¥<%= (cart_content.item.price * 1.08).floor.to_s(:delimited) %><br>
 <% end %>
 
 
@@ -14,23 +18,27 @@
 
 
 
-<p>お届け先情報</p>
-名前(姓)<%= @destination.last_name %><br>
-名前(名)<%= @destination.first_name %><br>
-フリガナ(姓)<%= @destination.last_kana %><br>
-フリガナ(名)<%= @destination.first_kana %><br>
-電話番号<%= @destination.phone_number %><br>
-郵便番号〒<%= @destination.post_code %><br>
-住所<%= @destination.address %><br>
-決済方法<%= @payment %><br>
-<%= link_to "ショッピングカートに戻る",cart_content_path(current_end_user) %>
-<%= link_to "お届け先編集",destinations_path(current_end_user) %>
-<%= link_to "注文の確定", orders_complete_path(
-  post_code: @destination.post_code,
-  last_name: @destination.last_name,
-  first_name: @destination.first_name,
-  last_kana: @destination.last_kana,
-  first_kana: @destination.first_kana,
-  address: @destination.address,
-  phone_number: @destination.phone_number,
-  payment: @payment), method: :post %>
+			<p>お届け先情報</p>
+			名前(姓)<%= @destination.last_name %><br>
+			名前(名)<%= @destination.first_name %><br>
+			フリガナ(姓)<%= @destination.last_kana %><br>
+			フリガナ(名)<%= @destination.first_kana %><br>
+			電話番号<%= @destination.phone_number %><br>
+			郵便番号〒<%= @destination.post_code %><br>
+			住所<%= @destination.address %><br>
+			決済方法<%= @payment %><br>
+			<%= link_to "ショッピングカートに戻る",cart_content_path(current_end_user) %>
+			<%= link_to "お届け先編集",destinations_path(current_end_user) %>
+			<%= link_to "注文の確定", orders_complete_path(
+			  post_code: @destination.post_code,
+			  last_name: @destination.last_name,
+			  first_name: @destination.first_name,
+			  last_kana: @destination.last_kana,
+			  first_kana: @destination.first_kana,
+			  address: @destination.address,
+			  phone_number: @destination.phone_number,
+			  payment: @payment), method: :post %>
+   </div>
+  </div>
+ </div>
+</div>

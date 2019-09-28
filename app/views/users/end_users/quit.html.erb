@@ -1,21 +1,27 @@
 <html>
 <body>
 
-<table>
-	
-  <thead>
-    <tr>
-      <th>本当に退会しますか？</th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td><%= link_to "退会します ",users_end_user_path, method: :delete  %></td>
-        <td><%= link_to "退会しません", mypage_path(@user)  %></td> 
-      </tr>
-  </tbody>
-</table><br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4">
+      <div class="quit">
+      <table>
+        <thead>
+          <tr>
+            <th>本当に退会しますか？</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= link_to "退会します ",users_end_user_path, method: :delete  %></td>
+            <td><%= link_to "退会しません", mypage_path(@user)  %></td> 
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

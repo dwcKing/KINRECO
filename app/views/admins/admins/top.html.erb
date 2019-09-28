@@ -1,27 +1,53 @@
-
 <div class="container main-content">
-  <h1>管理者ページ</h1>
-  <div class="row">
+	<div class="pagetitle"><h1>管理者ページ</h1></div>
+	<div class="row">
+
     <div class="col-md-8">
+			<h2>商品について</h2>
       <table class="table table-striped">
-        <thead>
-          <tr>
-            <th><h2>商品について</h2></th>
-          </tr>
-        </thead>
+        
         <tbody>
           <tr>
             <td><%= link_to "商品登録 ", new_admins_item_path, class: "btn btn-default fontsize" %></td>
-            <td><%= link_to "入荷予定 ", arrivals_index_path, class: "btn btn-default fontsize" %></td>
+						<td>
+						<span class="text-center">
+			        <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post2">ジャンル登録</button>
+			        <div class="modal fade" id="post2" tabindex="-1" role="dialog" aria-hidden="true">
+			          <div class="modal-content">
+			            <%= form_for @genre, url: admins_genres_path do |f| %>
+			              <h4>ジャンル</h4>
+			              <%= f.text_field :genre_name,class: "form-control", placeholder:"ジャンル内容を入力" %>
+			              <div class="modal-footer">
+			                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+			                <%= f.submit '送信' , class: "btn btn-primary"%>
+			              </div>
+			            <% end %>
+			          </div>
+			        </div>
+			      </span>
+						<td>
+						<span class="text-center">
+			        <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post1">レーベル登録</button>
+			        <div class="modal fade" id="post1" tabindex="-1" role="dialog" aria-hidden="true">
+			          <div class="modal-content">
+			            <%= form_for @label, url: admins_labels_path do |f| %>
+			            <h4>レーベル</h4>
+			            <%= f.text_field :label_name,class: "form-control", placeholder:"レーベル内容を入力" %>
+			            <div class="modal-footer">
+			              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+			              <%= f.submit '送信' , class: "btn btn-primary"%>
+			            </div>
+									<% end %>
+							  </div>
+							</div>
+						</span>
+						</td>
+
           </tr>
         </tbody>
-      </table>
+      </table><br><br>
+			<h2>一覧ページ</h2>
       <table class="table table-striped">
-        <thead>
-          <tr>
-            <th><h2>一覧ページ</h2></th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
             <td class="td1"><%= link_to "商品情報", admins_items_path, class: "btn btn-default fontsize" %></td>
@@ -64,7 +90,18 @@
           </div>
         </div>
       </div>
+            <td><%= link_to "商品情報", admins_items_path, class: "btn btn-default fontsize" %></td>
+						<td><%= link_to "入荷予定 ", arrivals_index_path, class: "btn btn-default fontsize" %></td>
+						<td><%= link_to "受注情報 ", admins_orders_path, class: "btn btn-default fontsize" %></td>
+				  </tr>
+					<tr></tr>
+          <tr>
+						<td><%= link_to "ジャンル情報", admins_genres_path, class: "btn btn-default fontsize" %></td>
+            <td><%= link_to "レーベル情報", admins_labels_path, class: "btn btn-default fontsize" %></td>
+						<td><%= link_to "顧客情報", admins_admins_path, class: "btn btn-default fontsize" %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
-

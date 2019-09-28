@@ -1,23 +1,24 @@
+<% subtotal_price = 0 %>
+<% total_price = 0 %>
+<div class="maincontent">
 <h1>受注詳細画面</h1>
-  注文状況ステータス<%= @order.order_status %><br>
-  料金<%= @order.delivery_charge %><br>
-  名前<%= @order.last_name %>
-  <%= @order.first_name %><br>
-  フリガナ <%= @order.last_kana %>
-  <%= @order.first_kana %><br>
-  郵便番号<%= @order.post_code %><br>
-  住所<%= @order.address %><br>
-  電話番号<%= @order.phone_number %><br>
-  決済方法<%= @order.payment %><br><br><br>
-注文内容<br>
- <% total_price = 0 %>
- <%@order.items_orders.each do |order_item|%>
-   商品名<%= order_item.item.title%>
-   数量<%= order_item.quantity%>
-   商品価格<%= order_item.price%>円
-   小計<%= order_item.price * order_item.quantity %>円
- <%= order_item.item.disc_type%><br>
- <% total_price += order_item.price * order_item.quantity %>
- <%end%>
+名前  <%= @order.last_name + @order.first_name %>(<%= @order.last_kana + @order.first_kana%>)<br>
+郵便番号  <%= @order.post_code %><br>
+住所  <%= @order.address %><br>
+電話番号  <%= @order.phone_number %><br>
+決済方法  <%= @order.payment %><br>
+ステータス  <%= @order.order_status %><br><br>
 
- <%= total_price %>
+
+注文内容<br>
+<% @order.items_orders.each do |order_item| %>
+  <%= order_item.item.title %>
+  数量<%= order_item.quantity %>
+  <% subtotal_price += order_item.quantity * order_item.price %>
+  小計¥<%= subtotal_price.to_s(:delimited)  %><br>
+  <% total_price += subtotal_price %>
+<% end %>
+総計¥<%= total_price.to_s(:delimited) %><br>
+
+<%= link_to "戻る",admins_orders_path %>
+</div>

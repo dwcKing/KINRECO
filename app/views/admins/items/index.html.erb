@@ -31,7 +31,7 @@
                   <td>レーベル　| <%= item.label.label_name %></td>
                 </tr>
                 <tr>
-                    <td>価格　　　| <%= item.price %>円</td>
+                    <td>価格　　　| ¥<%= item.price.to_s(:delimited) %></td>
                 </tr>
                 <tr>
                   <td>販売状況　| <%= item.selling_status %></td>
@@ -40,7 +40,9 @@
 
          <% end %>
       </table>
-      <%= paginate @items %>
+      <div class="paginate_block">
+        <%= paginate @search_items %>
+      </div>
     </div>
   <div class="col-md-1"></div>
   <div class="row">

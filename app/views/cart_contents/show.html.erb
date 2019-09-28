@@ -1,5 +1,10 @@
+<div class="container-fluid">
+    <div class="row">
+     <div class="col-md-offset-3 col-md-6">
+      <div class="cart-show">
+<div class="main-content">
 <% if @cart_items.empty? %>
-  お客様のカートに商品は入っていません
+  <div class="emptycart">お客様のショッピングカートに商品はありません</div>
 <% else %>
   <% total_price = 0 %>
   <%= form_for @item,url: update_item_path(@item),method: :post do |f| %>
@@ -10,39 +15,43 @@
           <% total_quantity_i  += item_arrival.arrivals_quantity %><!--カート商品の入荷数総数-->
         <% end %>
 
-        <% total_item_quantity_i = 0 %>
-        <% cart_item.item.items_orders.each_with_index do |item_quantity,i| %><!--販売済み商品の総数-->
-          <% total_item_quantity_i += item_quantity.quantity %>
-        <% end %>
+                <% total_item_quantity_i = 0 %>
+                <% cart_item.item.items_orders.each_with_index do |item_quantity,i| %><!--販売済み商品の総数-->
+                  <% total_item_quantity_i += item_quantity.quantity %>
+                <% end %>
 
-        <% total_stock = total_quantity_i - total_item_quantity_i %><!-- 在庫数量 = 入荷総数 - 販売済み商品の総数 -->
+                <% total_stock = total_quantity_i - total_item_quantity_i %><!-- 在庫数量 = 入荷総数 - 販売済み商品の総数 -->
+
 
         <% cart_item_ids.push(cart_item.id) %>
         <div class="form-box">
-        <p class="cart_item_menu" data-price="<%= cart_item.item.price %>">
+          <p class="cart_item_menu" data-price="<%= cart_item.item.price %>">
 
-        <div class="f-container cart-item">
-          <% cart_item.item.items_images.each do |image| %>
-            <%= attachment_image_tag image, :image, :fill, 200, 200 %>
-          <% end %>
-          <div class="f-item ">
-         <%= cart_item.item.title %>
-         <span class="price"><%= (cart_item.item.price * 1.08).floor %>円(税込み)</span>
-         <% total_price += cart_item.item.price * cart_item.quantity %>
-         </div>
+          <div class="f-container cart-item">
+            <% cart_item.item.items_images.each do |image| %>
+              <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+            <% end %>
+          <div class="f-container reverse">
+            <div class="f-item">
+              <span class="item-title"><%= cart_item.item.title %></span>
+              <span class="price">¥<%= (cart_item.item.price * 1.08).floor.to_s(:delimited) %>(税込み)</span>
+              <% total_price += cart_item.item.price * cart_item.quantity %>
+            </div>
 
-          <div class=" ">
-          <%= select_tag("cart_item_id" + cart_item.id.to_s, options_for_select((1..total_stock), selected: cart_item.quantity.to_i) {}, id:"cart-quo-" + i.to_s) %>
-          <%= f.hidden_field :item_id, :value => cart_item_ids %>
-          <%= link_to "削除",cart_content_path(cart_item),method: :delete %><br>
+            <div class="f-item">
+              数量<%= select_tag("cart_item_id" + cart_item.id.to_s, options_for_select((1..total_stock), selected: cart_item.quantity.to_i) {}, id:"cart-quo-" + i.to_s) %>
+              <%= f.hidden_field :item_id, :value => cart_item_ids %>
+              ｜<%= link_to "削除",cart_content_path(cart_item),method: :delete %><br>
+            </div>
+          </div>
           </div>
         </div>
       <% end %>
       <%= f.submit "レジに進む" %><br>
-      小計<%= f.text_field :title, id: "item_price_total", name: "小計", value:  "#{(total_price * 1.08).floor}円",  readonly: 'readonly' %>
+      総計<%= f.text_field :title, id: "item_price_total", name: "小計", value:  "¥#{(total_price * 1.08).floor.to_s(:delimited)}",  readonly: 'readonly' %>
   <% end %>
 <% end %>
-
+</div>
 <script>
   $('select').change(function(){
     var array = [];
@@ -54,9 +63,14 @@
     var total = 0;
     for(var j = 0; j < array.length; j++){
       total += array[j];
+      total_add_tax = Math.floor(total * 1.08).toLocaleString();
     }
-    $("#item_price_total").val(total * 1.08 + "円");
+    $("#item_price_total").val("¥" + total_add_tax);
 
   })
 
 </script>
+</div>
+</div>
+</div>
+</div>

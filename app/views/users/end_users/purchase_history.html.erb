@@ -1,58 +1,57 @@
 
 <div class="container-fluid">
-    <div class="row">
-	<div class="col-md-1"></div>
+  <div class="row">
+	  <div class="col-md-1"></div>
 		<div class="col-md-10">
-			<table class=table >
-				
-				<h1>購入履歴</h1>
-				<% @order.each do |order| %>
-				<% order.items_orders.each do |item_order| %>
-				  <tr>
-						<td>
+		  <table class="table" >
+			  <h1>購入履歴</h1>
+        <% subtotal_price = 0 %>
+        <% total_price = 0 %>
+				<% @orders.each do |order| %>
+          お届け先<%= order.address %>
+          注文日<%= order.created_at.strftime("%Y年%-m月%-d日") %>
+          <%= order.order_status %>
+				  <% order.items_orders.each do |item_order| %>
+				    <tr>
+						  <td>
 						    <% item_order.item.items_images.each do |image| %>
-							 <%= attachment_image_tag image, :image, :fill, 200, 200 %>
-							<% end %>
-						</td>
-						<td>
-				  <table>
-			    <tr>
-				   <td>タイトル<br>
-				   	<h3><%= item_order.item.title %></h3>
-				   </td>
-				</tr>
-				<tr>
-				　　<td><h5>アーティスト</h5>:<%= item_order.item.artist %></td>
-				　　
-			　　</tr>
-			　　  </table>
-               </td> 
-				<td>
-		   			 <table class="table table-striped">
-						<tr>
-							<td>ジャンル　| <%= item_order.item.genre.genre_name %></td>
-						</tr>
-						<tr>
-							<td>レーベル　| <%= item_order.item.label.label_name %></td>
-						</tr>
-						<tr>
-							<td>数量　| <%= item_order.item.genre.genre_name %></td>
-						</tr>
-						<tr>
-						    <td>価格　　　| <%= item_order.item.price %>円</td>
-						</tr>
-						
-					</table>
-				</td>
-			　　</tr>
-
-                   <% end %>
-				　　<% end %>
-				
+							    <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+							  <% end %>
+						  </td>
+            <td>
+				    <table>
+			        <tr>
+				        <td>
+				   	      <h3><%= item_order.item.title %></h3>
+				        </td>
+				      </tr>
+				      <tr>
+				        <td><%= item_order.item.artist %></td>
+			        </tr>
+			      </table>
+            </td>
+				    <td>
+		   			  <table class="table table-striped">
+						    <tr>
+							    <td>フォーマット| <%= item_order.item.disc_type %></td>
+						    </tr>
+						    <tr>
+							    <td>購入枚数　　| 　<%= item_order.quantity %></td>
+						    </tr>
+						    <tr>
+                  <% subtotal_price = item_order.quantity * item_order.tax_add_price %>
+						      <td>小計　　　　| ¥<%= subtotal_price.to_s(:delimited) %></td>
+                  <% total_price += subtotal_price %>
+						    </tr>
+					    </table>
+				    </td>
+          <% end %>
+          合計金額¥<%= total_price.to_s(:delimited) %><br>
+				<% end %>
 			</table>
-			<%= paginate @search_items %>
+      <div class="paginate_block">
+			  <%= paginate @search_items %>
+      </div>
 		</div>
-	<div class="col-md-1"></div>
-	<div class="row">
-	</div>
+  </div>
 </div>
