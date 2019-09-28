@@ -6,7 +6,7 @@
 <% end %><br>
 <%= cart_content.item.title %>
 数量<%= cart_content.quantity%>枚
-<%= (cart_content.item.price * 1.08).floor %>円<br>
+¥<%= (cart_content.item.price * 1.08).floor.to_s(:delimited) %><br>
 <% end %>
 
 
