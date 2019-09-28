@@ -1,9 +1,11 @@
 <div class="container main-content">
 	<div class="pagetitle"><h1>管理者ページ</h1></div>
 	<div class="row">
+
     <div class="col-md-8">
 			<h2>商品について</h2>
       <table class="table table-striped">
+
         <tbody>
           <tr>
             <td><%= link_to "商品登録 ", new_admins_item_path, class: "btn btn-default fontsize" %></td>
@@ -16,7 +18,7 @@
 			              <h4>ジャンル</h4>
 			              <%= f.text_field :genre_name,class: "form-control", placeholder:"ジャンル内容を入力" %>
 			              <div class="modal-footer">
-			                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+			                <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
 			                <%= f.submit '送信' , class: "btn btn-primary"%>
 			              </div>
 			            <% end %>
@@ -32,7 +34,7 @@
 			            <h4>レーベル</h4>
 			            <%= f.text_field :label_name,class: "form-control", placeholder:"レーベル内容を入力" %>
 			            <div class="modal-footer">
-			              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+			              <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
 			              <%= f.submit '送信' , class: "btn btn-primary"%>
 			            </div>
 									<% end %>

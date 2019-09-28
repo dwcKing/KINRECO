@@ -64,6 +64,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
+
   get '/review' => 'admins/items#review'
 
   get 'users' => 'users/end_users#purchase_history'

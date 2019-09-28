@@ -22,15 +22,14 @@
 	box-sizing: border-box;
 }
 
-ul {
-	padding-right: 40px;
-}
+
 
 .slick-next {
-    right: 5px !important;
+    right: 40px !important;
 }
 .slick-prev {
- left: 10px !important;
+ left: 20px !important;
+ z-index: 99;
 }
 .slick-next:before, .slick-prev:before{
    color: #000 !important;
@@ -43,7 +42,7 @@ header {
    font-family: ‘Hiragino Kaku Gothic Pro’, ‘ヒラギノ角ゴ Pro W3’, メイリオ, Meiryo, ‘ＭＳ Ｐゴシック’, sans-serif;
    color: #222222;
    font-size:16px;
-	 margin-bottom:30px;
+   margin-bottom:30px;
 }
 .headtext {
     color: #222222;
@@ -71,6 +70,7 @@ footer {
  height: 100%;
  text-align: center;
  padding: 50px 0;
+ background-color: #DDDDDD;
  float: left;
 }
 .footer_text{
@@ -115,12 +115,18 @@ footer {
     font-size: 15px;
     text-align: center;
     height: 50px;
-    margin-top: 0;
+    margin-top: -50px;
     padding-top: 15px;
     width: 100%;
 }
 .return:hover {
 	opacity: 0.6;
+
+/*	max-width: 80px;
+	height : 80px;
+	background-size: 80px 80px;
+	background-position: center;
+	*/
 }
 
 .king_icon {
