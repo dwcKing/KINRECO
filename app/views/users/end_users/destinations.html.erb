@@ -1,99 +1,106 @@
+<div class="container-fluid">
+    <div class="row">
+     <div class="col-md-offset-3 col-md-6">
+      <div class="destination">
+          <%= form_for @order,url: confirmation_path, method: :get do |f| %>
 
-<%= form_for @order,url: confirmation_path, method: :get do |f| %>
+            <div>
+            <%= f.radio_button :end_user_id, "exist", required: 'required' %>登録されている住所に送付する<br>
+            <%= f.collection_select :delivery_charge, @address, :id, :view_name_and_address, {prompt: "送り先を選択してください"},class: "address"%><br>
+            </div>
 
-  <div>
-  <%= f.radio_button :end_user_id, "exist", required: 'required' %>登録されている住所に送付する<br>
-  <%= f.collection_select :delivery_charge, @address, :id, :view_name_and_address, {prompt: "送り先を選択してください"},class: "address"%><br>
-  </div>
+            <div>
+            <%= f.radio_button :end_user_id, "new", required:'required', id: "widthtext" %>別のお届け先を入力する<br>
 
-  <div>
-  <%= f.radio_button :end_user_id, "new", required:'required', id: "widthtext" %>別のお届け先を入力する<br>
+            <%= f.label :last_name, "名前(姓)"%>
+            <%= f.text_field :last_name, oninput: "AutoCheck(this.value ,'widthtext')" %><br>
+            <% if @destination.errors.any? %>
+              <% @destination.errors.full_messages_for(:last_name).each do |message| %>
+                ※<%= message %><br>
+              <% end %>
+            <% end %>
 
-  <%= f.label :last_name, "名前(姓)"%>
-  <%= f.text_field :last_name, oninput: "AutoCheck(this.value ,'widthtext')" %><br>
-  <% if @destination.errors.any? %>
-    <% @destination.errors.full_messages_for(:last_name).each do |message| %>
-      ※<%= message %><br>
-    <% end %>
-  <% end %>
+            <%= f.label :first_name, "名前(名)" %>
+            <%= f.text_field :first_name %><br>
+            <%# byebug %>
+            <% if @destination.errors.any? %>
+              <% @destination.errors.full_messages_for(:first_name).each do |message| %>
+                ※<%= message %><br>
+              <% end %>
+            <% end %>
 
-  <%= f.label :first_name, "名前(名)" %>
-  <%= f.text_field :first_name %><br>
-  <%# byebug %>
-  <% if @destination.errors.any? %>
-    <% @destination.errors.full_messages_for(:first_name).each do |message| %>
-      ※<%= message %><br>
-    <% end %>
-  <% end %>
+            <%= f.label :last_kana, "フリガナ(姓)" %>
+            <%= f.text_field :last_kana %><br>
+            <% if @destination.errors.any? %>
+              <% @destination.errors.full_messages_for(:last_kana).each do |message| %>
+                ※<%= message %><br>
+              <% end %>
+            <% end %>
 
-  <%= f.label :last_kana, "フリガナ(姓)" %>
-  <%= f.text_field :last_kana %><br>
-  <% if @destination.errors.any? %>
-    <% @destination.errors.full_messages_for(:last_kana).each do |message| %>
-      ※<%= message %><br>
-    <% end %>
-  <% end %>
+            <%= f.label :first_kana, "フリガナ(名)" %>
+            <%= f.text_field :first_kana %><br>
+            <% if @destination.errors.any? %>
+              <% @destination.errors.full_messages_for(:first_kana).each do |message| %>
+                ※<%= message %><br>
+              <% end %>
+            <% end %>
 
-  <%= f.label :first_kana, "フリガナ(名)" %>
-  <%= f.text_field :first_kana %><br>
-  <% if @destination.errors.any? %>
-    <% @destination.errors.full_messages_for(:first_kana).each do |message| %>
-      ※<%= message %><br>
-    <% end %>
-  <% end %>
+            <%= f.label :phone_number, "電話番号" %>
+            <%= f.text_field :phone_number %><br>
+            <% if @destination.errors.any? %>
+              <% @destination.errors.full_messages_for(:phone_number).each do |message| %>
+                ※<%= message %><br>
+              <% end %>
+            <% end %>
 
-  <%= f.label :phone_number, "電話番号" %>
-  <%= f.text_field :phone_number %><br>
-  <% if @destination.errors.any? %>
-    <% @destination.errors.full_messages_for(:phone_number).each do |message| %>
-      ※<%= message %><br>
-    <% end %>
-  <% end %>
+            <%= f.label :post_code, "郵便番号" %>〒
+            <%= f.text_field :post_code %><br>
+            <% if @destination.errors.any? %>
+              <% @destination.errors.full_messages_for(:post_code).each do |message| %>
+                ※<%= message %><br>
+              <% end %>
+            <% end %>
 
-  <%= f.label :post_code, "郵便番号" %>〒
-  <%= f.text_field :post_code %><br>
-  <% if @destination.errors.any? %>
-    <% @destination.errors.full_messages_for(:post_code).each do |message| %>
-      ※<%= message %><br>
-    <% end %>
-  <% end %>
+            <%= f.label :address, "住所" %>
+            <%= f.text_field :address %><br>
+            <% if @destination.errors.any? %>
+              <% @destination.errors.full_messages_for(:address).each do |message| %>
+                ※<%= message %><br>
+              <% end %>
+            <% end %>
+            </div>
 
-  <%= f.label :address, "住所" %>
-  <%= f.text_field :address %><br>
-  <% if @destination.errors.any? %>
-    <% @destination.errors.full_messages_for(:address).each do |message| %>
-      ※<%= message %><br>
-    <% end %>
-  <% end %>
-  </div>
+            <div>
+              <%= label :payment, "決済方法の選択" %>
+              <%= f.select :payment, Order.payments.keys%>
+              </div>
 
-  <div>
-    <%= label :payment, "決済方法の選択" %>
-    <%= f.select :payment, Order.payments.keys%>
+              <%= f.submit "次へ進む" %>
+
+          <% end %>
+
+          <script>
+            function AutoCheck(str,checkname) {
+              // 入力文字数が1文字以上あるかどうかを確認
+              if( str.length > 0 ) {
+                  // あればチェックを入れる
+                  document.getElementById(checkname).checked = true;
+                  document.getElementById('order_end_user_id_exist').checked = false;
+              }
+              else {
+                  // なければチェックを外す
+                  document.getElementById(checkname).checked = false;
+
+              }
+          }
+
+          $('select').change(function(){
+              document.getElementById('order_end_user_id_exist').checked = true;
+              document.getElementById('widthtext').checked = false;
+          })
+
+          </script>
+        </div>
+      </div>
     </div>
-
-    <%= f.submit "次へ進む" %>
-
-<% end %>
-
-<script>
-  function AutoCheck(str,checkname) {
-    // 入力文字数が1文字以上あるかどうかを確認
-    if( str.length > 0 ) {
-        // あればチェックを入れる
-        document.getElementById(checkname).checked = true;
-        document.getElementById('order_end_user_id_exist').checked = false;
-    }
-    else {
-        // なければチェックを外す
-        document.getElementById(checkname).checked = false;
-
-    }
-}
-
-$('select').change(function(){
-    document.getElementById('order_end_user_id_exist').checked = true;
-    document.getElementById('widthtext').checked = false;
-})
-
-</script>
+  </div>
