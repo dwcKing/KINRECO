@@ -36,9 +36,9 @@ ul {
    color: #000 !important;
 }
 header {
-   width: 100%;
-   height: 80px;
-   background-color: #DDDDDD ;
+    width: 100%;
+   height: 90px;
+    background-color: #DDDDDD ;
    float: left;
    font-family: ‘Hiragino Kaku Gothic Pro’, ‘ヒラギノ角ゴ Pro W3’, メイリオ, Meiryo, ‘ＭＳ Ｐゴシック’, sans-serif;
    color: #222222;
@@ -129,4 +129,64 @@ footer {
   float: left;
   background-size: cover;
   background-position: center;
+}
+
+.field {
+  font-size:18px;
+  margin: 0 auto;
+}
+
+.field-height {
+   width: 400px;
+  height:800px;
+  padding-top: 100px;
+  margin: 0 auto;
+}
+
+.submit {
+  font-size: 18px;
+  padding: 5px 5px 5px 5px;
+  margin: 10px;
+}
+
+.login_form {
+  font-size:18px;
+}
+
+.arrival-new {
+  width: 400px;
+  height:500px;
+  padding-top: 100px;
+  margin: 0 auto;
+  font-size: 26px;
+}
+
+.cart-show {
+  font-size: 18px;
+  padding-top: 100px;
+  padding-left:50px;
+}
+
+.destination {
+  font-size: 18px;
+  height: 500px;
+  padding-top: 100px;
+}
+
+.confirmation {
+  padding-top: 100px;
+
+}
+
+.order_complete {
+    height: 500px;
+    padding-top: 100px;
+    font-size: 40px;
+    font-family: Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+.quit {
+      height: 500px;
+    padding-top: 100px;
+    font-size: 30px;
 }

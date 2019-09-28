@@ -1,3 +1,7 @@
+<div class="container-fluid">
+    <div class="row">
+     <div class="col-md-offset-3 col-md-6">
+      <div class="cart-show">
 <div class="main-content">
 <% if @cart_items.empty? %>
   <div class="emptycart">お客様のショッピングカートに商品はありません</div>
@@ -11,12 +15,13 @@
           <% total_quantity_i  += item_arrival.arrivals_quantity %><!--カート商品の入荷数総数-->
         <% end %>
 
-        <% total_item_quantity_i = 0 %>
-        <% cart_item.item.items_orders.each_with_index do |item_quantity,i| %><!--販売済み商品の総数-->
-          <% total_item_quantity_i += item_quantity.quantity %>
-        <% end %>
+                <% total_item_quantity_i = 0 %>
+                <% cart_item.item.items_orders.each_with_index do |item_quantity,i| %><!--販売済み商品の総数-->
+                  <% total_item_quantity_i += item_quantity.quantity %>
+                <% end %>
 
-        <% total_stock = total_quantity_i - total_item_quantity_i %><!-- 在庫数量 = 入荷総数 - 販売済み商品の総数 -->
+                <% total_stock = total_quantity_i - total_item_quantity_i %><!-- 在庫数量 = 入荷総数 - 販売済み商品の総数 -->
+
 
         <% cart_item_ids.push(cart_item.id) %>
         <div class="form-box">
@@ -65,3 +70,7 @@
   })
 
 </script>
+</div>
+</div>
+</div>
+</div>

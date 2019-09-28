@@ -34,20 +34,17 @@
 
       <div id="Carousel" class="glide">
         <ul class="gride__wrapper">
-          <li class="glide__slide"><img src="/img/city-of-london-4481399_640.jpg"></li>
-          <li class="glide__slide"><img src="/img/porsche-4476539_640.jpg" /></li>
-          <li class="glide__slide"><img src="/img/recup-4481723_640.jpg" /></li>
-          <li class="glide__slide"><img src="/img/pets-4415649_640.jpg" /></li>
-          <li class="glide__slide"><img src="/img/money-4474715_640.jpg" /></li>
-          <li class="glide__slide"><img src="/img/background-4477221_640.jpg" /></li>
-          <li class="glide__slide"><img src="/img/dogs-4429513_640.jpg" /></li>
-          <li class="glide__slide"><img src="/img/chose-4473945_640.jpg" /></li>
-          <li class="glide__slide"><img src="/img/beer-garden-4471014_640.jpg" /></li>
-          <li class="glide__slide"><img src="/img/wood-skeleton-4474810_640.jpg" /></li>
-
+          <% @new_item_image.each do |item| %>
+            <% item.items_images.each do |image| %>
+              <li class="glide__slide">
+                <%= link_to users_item_path(item), data: {"turbolinks" => false} do %>
+                  <%= attachment_image_tag image, :image, :fill, 300, 300 %>
+                <% end %>
+              </li>
+            <% end %>
+          <% end %>
           </ul>
         </div>
-
 
 
     <script>
