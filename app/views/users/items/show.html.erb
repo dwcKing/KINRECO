@@ -50,7 +50,7 @@
 			</table>
 			<table class=table >
 			  <tr>
-				  <h2>商品情報</h2>
+				  <p class=item_show>商品情報</p>
 					<td>
 					</td>
 					<td width="70%">
@@ -60,7 +60,7 @@
 								  <h4>Disc<%= disc.disc %></h4>
 								  <% disc.songs.each do |song| %>
 								    <%= song.song_order %>.
-								    <%= song.song_title %>
+								    <%= song.song_title %><br>
 								  <% end %>
 								<% end %>
 							</tr>

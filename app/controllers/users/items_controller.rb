@@ -34,7 +34,7 @@ class Users::ItemsController < ApplicationController
   end
 
   def top
-  	@new_item_image = Item.order('id').limit(10)
+  	@new_item_image = Item.order('id')
     @items = Item.select(:title)
   end
 
